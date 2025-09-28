@@ -239,3 +239,27 @@
     ["info1","info2","info3","info4"].forEach((idSymbol, index) => {
         const boxId = "infoBox" + (index + 1);
         const symbol = document.getElementById(idSymbol);
+        const box = document.getElementById(boxId);
+        const closeBtn = box.querySelector(".close-btn");
+
+        symbol.addEventListener("click", (e) => {
+            box.style.display = (box.style.display === "block") ? "none" : "block";
+            e.stopPropagation();
+        });
+
+        closeBtn.addEventListener("click", (e) => {
+            box.style.display = "none";
+            e.stopPropagation();
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest("#temaToggle")) {
+            ["infoBox1","infoBox2","infoBox3","infoBox4"].forEach(id => {
+                document.getElementById(id).style.display = "none";
+            });
+        }
+    });
+</script>
+</body>
+</html>
