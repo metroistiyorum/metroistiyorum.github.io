@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Metro Hattı Açılış Sayaçları</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        color: #000;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+        background: black;
+        color: white;
+    }
+
+    .wrapper {
+        margin-top: 50px;
+    }
+
+    .sayaç-grubu {
+        margin-bottom: 80px;
+        position: relative;
+    }
+
+    .clock {
+        font-size: 40px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .message {
+        font-size: 30px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        position: relative;
+    }
+
+    .green {
+        color: #008000;
+    }
+
+    img.logo {
+        height: 60px;
+    }
+
+    #temaToggle {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        cursor: pointer;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 5px;
+        z-index: 2000; /* üstte kalması için */
+    }
+
+    .info-symbol {
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 50%;
+        background: #ccc;
+        color: #000;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: 3px;
+    }
+
+    .info-symbol:hover {
+        background: #888;
+        color: #fff;
+    }
+
+    .info-box {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 25px;
+        transform: translateY(-50%);
+        background: #f0f0f0;
+        color: #000;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 8px;
+        width: 400px;
+        line-height: 1.2;
+        white-space: normal;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    body.dark-mode .info-box {
+        background: #333;
+        color: #fff;
+        border-color: #555;
+    }
+
+    .info-box p {
+        margin: 0;
+        padding: 0;
+    }
+
+    @media (max-width: 500px) {
+        .message {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        img.logo {
+            height: 50px;
+        }
+
+        .info-box {
+            width: 280px;
+        }
+    }
+</style>
+</head>
+<body>
+<button id="temaToggle">Tema Değiştir</button>
+<div class="wrapper">
+    <!-- Akçaray -->
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="Akçaray_Logo.png" alt="Akçaray Logo" class="logo">
+            <span class="text">Otogar - Stadyum Uzatması</span>
+            <span class="info-symbol" id="info1">i
+                <div class="info-box" id="infoBox1">
+                    <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihinde açılması hedefleniyor</p>
+                    <button class="close-btn">Kapat</button>
+                </div>
+            </span>
+        </div>
+        <div class="clock" id="clock1">00 gün 00h 00m 00s</div>
+    </div>
+    <!-- M11 -->
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Istanbul_M11_Line_Symbol.svg" alt="M11 Logo" class="logo">
+            <span class="text">Arnavutköy - Halkalı Uzatması</span>
+            <span class="info-symbol" id="info2">i
+                <div class="info-box" id="infoBox2">
+                    <p>M11 hattı 2025 Ekim sonunda açılacak. İstasyon sayısı: 6, toplam uzunluk: 15 km</p>
+                    <button class="close-btn">Kapat</button>
+                </div>
+            </span>
+        </div>
+        <div class="clock" id="clock2">00 gün 00h 00m 00s</div>
+    </div>
+    <!-- M5 -->
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Istanbul_M5_Line_Symbol.svg" alt="M5 Logo" class="logo">
+            <span class="text">Samandıra - Sultanbeyli Uzatması</span>
+            <span class="info-symbol" id="info3">i
+                <div class="info-box" id="infoBox3">
+                    <p>M5 hattı 2026 Ocak ayında açılacak. İstasyon sayısı: 4, toplam uzunluk: 10 km</p>
+                    <button class="close-btn">Kapat</button>
+                </div>
+            </span>
+        </div>
+        <div class="clock" id="clock3">00 gün 00h 00m 00s</div>
+    </div>
+    <!-- M12 -->
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_M12_Line_Symbol.svg" alt="M12 Logo" class="logo">
+            <span class="text">Ümraniye - Ataşehir - Göztepe Hattı</span>
+            <span class="info-symbol" id="info4">i
+                <div class="info-box" id="infoBox4">
+                    <p>M12 hattı 2026 Mayıs sonunda açılacak. İstasyon sayısı: 7, toplam uzunluk: 18 km</p>
+                    <button class="close-btn">Kapat</button>
+                </div>
+            </span>
+        </div>
+        <div class="clock" id="clock4">00 gün 00h 00m 00s</div>
+    </div>
+</div>
+
+<script>
+    // Açılış tarihleri
+    const acilis1 = new Date("2025-10-14T10:00:00").getTime();
+    const acilis2 = new Date("2025-10-29T10:00:00").getTime();
+    const acilis3 = new Date("2026-01-30T10:00:00").getTime();
+    const acilis4 = new Date("2026-05-31T10:00:00").getTime();
+
+    // Geri sayım fonksiyonu
+    function geriSayim(clockId, acilisTarihi, mesaj) {
+        const simdi = new Date().getTime();
+        const kalan = acilisTarihi - simdi;
+
+        if (kalan > 0) {
+            const gün = Math.floor(kalan / (1000 * 60 * 60 * 24));
+            const saat = Math.floor((kalan % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const dakika = Math.floor((kalan % (1000 * 60 * 60)) / (1000 * 60));
+            const saniye = Math.floor((kalan % (1000 * 60)) / 1000);
+
+            document.getElementById(clockId).innerHTML =
+                `<span class="green">${gün} gün</span> ${saat}h ${dakika}m ${saniye}s`;
+        } else {
+            document.getElementById(clockId).textContent = "00 gün 00h 00m 00s";
+            const textSpan = document.getElementById(clockId).previousElementSibling.querySelector(".text");
+            if (textSpan) textSpan.innerHTML = `<span class="green">${mesaj}</span>`;
+        }
+    }
+
+    function updateAll() {
+        geriSayim("clock1", acilis1, "Akçaray Açıldı 🎉");
+        geriSayim("clock2", acilis2, "M11 Hattı Açıldı 🎉");
+        geriSayim("clock3", acilis3, "M5 Hattı Açıldı 🎉");
+        geriSayim("clock4", acilis4, "M12 Hattı Açıldı 🎉");
+    }
+
+    setInterval(updateAll, 1000);
+    updateAll();
+
+    // Tema toggle (info kutuları kapanmaz)
+    const temaBtn = document.getElementById("temaToggle");
+    temaBtn.addEventListener("click", (e) => {
+        document.body.classList.toggle("dark-mode");
+        e.stopPropagation(); // tema click, sayfa clicki tetiklemesin
+    });
+
+    // Info kutusu toggle ve Kapat tuşu
+    ["info1","info2","info3","info4"].forEach((idSymbol, index) => {
+        const boxId = "infoBox" + (index + 1);
+        const symbol = document.getElementById(idSymbol);
+        const box = document.getElementById(boxId);
+        const closeBtn = box.querySelector(".close-btn");
+
+        symbol.addEventListener("click", (e) => {
+            box.style.display = (box.style.display === "block") ? "none" : "block";
+            e.stopPropagation();
+        });
+
+        closeBtn.addEventListener("click", (e) => {
+            box.style.display = "none";
+            e.stopPropagation();
+        });
+    });
+
+    // Sayfanın herhangi bir yerine tıklayınca info kutularını kapat
+    document.addEventListener("click", (e) => {
+        // Eğer tıklama tema butonuna değilse kutuları kapat
+        if (!e.target.closest("#temaToggle")) {
+            ["infoBox1","infoBox2","infoBox3","infoBox4"].forEach(id => {
+                document.getElementById(id).style.display = "none";
+            });
+        }
+    });
+</script>
+</body>
+</html>
