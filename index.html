@@ -2,7 +2,6 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Metro Hattı Açılış Sayaçları</title>
 <style>
 html, body {
@@ -32,43 +31,42 @@ body.dark-mode {
     z-index: 2000;
 }
 .wrapper {
-    margin-top: 60px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 10px;
+    padding: 0 10px;
     box-sizing: border-box;
 }
 .sayaç-grubu {
     margin-bottom: 60px;
     width: 100%;
-    max-width: 600px; /* masaüstünde sabit, mobilde %100 */
+    max-width: 600px;
     text-align: left;
     position: relative;
-    padding: 10px;
+    padding: 0 10px;
     box-sizing: border-box;
 }
 .message {
     display: flex;
     align-items: center;
     gap: 15px;
-    font-size: 30px;
-    flex-wrap: wrap; /* taşmayı engeller */
+    font-size: 24px;
+    flex-wrap: wrap;
 }
 img.logo {
-    height: 60px;
-    max-width: 100%;
+    height: 50px;
     object-fit: contain;
     flex-shrink: 0;
 }
 #hat5b img.logo {
-    border-radius: 8px; /* BursaRay logosu için yumuşatma */
+    border-radius: 8px;
 }
 .clock {
-    font-size: 40px;
+    font-size: 32px;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 .green { color: #008000; }
 .clock span + span { margin-left: 10px; color: black; }
@@ -90,6 +88,7 @@ body.dark-mode .clock span + span { color: white; }
     align-items: center;
     justify-content: center;
     position: relative;
+    top: 0;
     margin-left: 5px;
 }
 .info-symbol:hover { background: #888; color: #fff; }
@@ -104,8 +103,7 @@ body.dark-mode .clock span + span { color: white; }
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
+    width: 400px;
     line-height: 1.2;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -120,7 +118,7 @@ body.dark-mode .info-box {
 
 .link-box {
     margin-top: 10px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: orange;
     cursor: pointer;
@@ -128,16 +126,26 @@ body.dark-mode .info-box {
 }
 #gelecek { display: none; margin-top: 30px; }
 
-/* --- Mobil uyum için medya sorguları --- */
+/* Mobil Uyumluluk */
 @media (max-width: 768px) {
-    .message { font-size: 22px; }
-    .clock { font-size: 28px; }
-    img.logo { height: 50px; }
+    .message { font-size: 18px; gap: 10px; }
+    img.logo { height: 40px; }
+    .clock { font-size: 26px; }
+    .info-box {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-top: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .sayaç-grubu { margin-bottom: 50px; }
+    #temaToggle { font-size: 14px; padding: 8px 12px; }
 }
 @media (max-width: 480px) {
-    .message { font-size: 18px; flex-direction: column; align-items: flex-start; }
-    .clock { font-size: 24px; }
-    img.logo { height: 40px; }
+    .message { flex-direction: column; align-items: flex-start; }
+    .clock { font-size: 22px; }
+    img.logo { height: 35px; }
+    .info-box { font-size: 14px; line-height: 1.3; }
 }
 </style>
 </head>
@@ -152,7 +160,7 @@ body.dark-mode .info-box {
             <span class="text">Otogar - Stadyum Uzatması</span>
             <span class="info-symbol" id="info1">i
                 <div class="info-box" id="infoBox1">
-                    <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına kadar açılması hedefleniyor.</p>
+                    <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına kadar açılması hedefleniyor. Bu etapla beraber sistemin büyüklüğü 18 km ve 27 istasyona ulaşacak </p>
                     <button class="close-btn">Kapat</button>
                 </div>
             </span>
@@ -167,7 +175,7 @@ body.dark-mode .info-box {
             <span class="text">Arnavutköy - Halkalı Uzatması</span>
             <span class="info-symbol" id="info2">i
                 <div class="info-box" id="infoBox2">
-                    <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyor.</p>
+                    <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyor. Ulaştırma Bakanlığı 2025 sonu dediğinden beri ek bilgi paylaşmadı</p>
                     <button class="close-btn">Kapat</button>
                 </div>
             </span>
@@ -182,7 +190,7 @@ body.dark-mode .info-box {
             <span class="text">Samandıra - Sultanbeyli Uzatması</span>
             <span class="info-symbol" id="info3">i
                 <div class="info-box" id="infoBox3">
-                    <p>Üsküdar - Samandıra hattının 4.4 km ve 3 istasyondan oluşan son etabının Ocak 2026'da açılması bekleniyor.</p>
+                    <p>Üsküdar - Samandıra arasında çalışmakta olan hattın 4.4 km ve 3 istasyondan oluşan son etabının ocak ayı bitmeden açılacağını belirtiliyor. 2023 yılında Çekmeköy - Samandıra arasının açılışına yetişmediği için pas geçilen Sancaktepe Şehir Hastanesi istasyonunun ocak ayında açılıp açılmayacağı hakkında kesin bir bilgilendirme yok</p>
                     <button class="close-btn">Kapat</button>
                 </div>
             </span>
@@ -197,7 +205,7 @@ body.dark-mode .info-box {
             <span class="text">Ümraniye - Ataşehir - Göztepe Hattı</span>
             <span class="info-symbol" id="info4">i
                 <div class="info-box" id="infoBox4">
-                    <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosu. Açılış hedefi 2026 bahar aylarıdır.</p>
+                    <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Lakin ek borçlanma ihtiyacı gerektiği için çalışmalar durdu. İBB hatta çalışmalara yeniden başlayıp mayıs ayında açmayı hedefliyor</p>
                     <button class="close-btn">Kapat</button>
                 </div>
             </span>
@@ -209,47 +217,77 @@ body.dark-mode .info-box {
     <div class="link-box" onclick="showGelecek()">uzak gelecek..</div>
 
     <div id="gelecek">
-        <!-- Gebze - Darıca -->
+        <!-- 5. Hat -->
         <div class="sayaç-grubu" id="hat5">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Istanbul_Metro_Logo_%28subway_of_the_ministry%29.svg" class="logo">
                 <span class="text">Gebze - Darıca Metro Hattı</span>
+                <span class="info-symbol" id="info5">i
+                    <div class="info-box" id="infoBox5">
+                        <p>Koceli'nin ilk metrosu olacak hat 15 km ve 11 istasyondan oluşmakta. Ulaştırma bakanlığı doğrudan açıklama yapmamış olsa da yerel gazetelerin bakanlıktan aldığı bilgiye göre hattın 2026'nın haziran ayında açılması hedefleniyor </p>
+                        <button class="close-btn">Kapat</button>
+                    </div>
+                </span>
             </div>
             <div class="clock" id="clock5"></div>
         </div>
 
-        <!-- Balat - Şehir Hastanesi -->
+        <!-- Yeni 5b Hat: Balat - Şehir Hastanesi -->
         <div class="sayaç-grubu" id="hat5b">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/BursaRay_logo.svg" class="logo">
                 <span class="text">Balat - Şehir Hastanesi Uzatması</span>
+                <span class="info-symbol" id="info5b">i
+                    <div class="info-box" id="infoBox5b">
+                        <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı ve şehir hastanesine erişmesini sağlayacak uzatma 4 km ve 3 istasyondan oluşmaktadır. Emek ve Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı</p>
+                        <button class="close-btn">Kapat</button>
+                    </div>
+                </span>
             </div>
             <div class="clock" id="clock5b"></div>
         </div>
 
-        <!-- Feshane - Bayrampaşa -->
+        <!-- 6. Hat (Feshane - Bayrampaşa) -->
         <div class="sayaç-grubu" id="hat65">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Istanbul_T5_Line_Symbol.svg" class="logo">
                 <span class="text">Feshane - Bayrampaşa Uzatması</span>
+                <span class="info-symbol" id="info65">i
+                    <div class="info-box" id="infoBox65">
+                        <p>Eminönü - Alibeyköy tramvay hattına Feshane istasyonuna 3. peron eklenerek bağlanacak uzatma 3.2 km ve 4 istasyondan oluşmakta. Hat açıldığında Eminönü - Alibeyköy ve Eminönü - Bayrampaşa olmak üzere iki ayrı işletmeye geçilecek</p>
+                        <button class="close-btn">Kapat</button>
+                    </div>
+                </span>
             </div>
             <div class="clock" id="clock65"></div>
         </div>
 
-        <!-- Yıldız - Kabataş -->
+        <!-- 7. Hat (Yıldız - Kabataş) -->
         <div class="sayaç-grubu" id="hat7">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo">
                 <span class="text">Yıldız - Kabataş Uzatması</span>
+                <span class="info-symbol" id="info7">i
+                    <div class="info-box" id="infoBox7">
+                        <p>Mecidiyeköy - Mahmutbey hattını sahile indirmek amacıyla projelendirilen Mecidiyeköy - Kabataş uzatmasının ilk etabı olan Mecidiyeköy - Yıldız arası 2 Ocak 2023 tarihinde açıldı. Arkeolojik kazılar geriye kalan Beşiktaş ve Kabataş istasyonlarında uzun yıllar süren gecikmelere sebep oldu. Bu etap açıldığında Mecidiyeköy - Yıldız arası shuttle işletmesi de sona erecek</p>
+                        <button class="close-btn">Kapat</button>
+                    </div>
+                </span>
             </div>
             <div class="clock" id="clock7"></div>
         </div>
 
-        <!-- Altunizade - Bosna -->
+        <!-- 8. Hat (Altunizade - Bosna) -->
         <div class="sayaç-grubu" id="hat6">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Istanbul_M14_Line_Symbol.svg" class="logo">
                 <span class="text">Altunizade - Bosna Bulvarı Metrosu</span>
+                <span class="info-symbol" id="info6">i
+                    <div class="info-box" id="infoBox6">
+                        <p>İstanbul'un 4. Levent - Hisarüstü (M6) hattından sonra ikinci tek tünelli metrosu olacak hattın 2023 yılında açılması hedefleniyordu. Lakin zemin zorlukları sebebiyle sürekli ertelendi. Şu anda tünel kazıları bitmek üzere olan hattın istasyon inşaatları da devam etmekte</p>
+                        <button class="close-btn">Kapat</button>
+                    </div>
+                </span>
             </div>
             <div class="clock" id="clock6"></div>
         </div>
@@ -342,6 +380,31 @@ function showGelecek(){
 
 document.getElementById("temaToggle").addEventListener("click", ()=>{
     document.body.classList.toggle("dark-mode");
+});
+
+["info1","info2","info3","info4","info5","info5b","info65","info6","info7"].forEach((id)=>{
+    const boxId = id.replace("info","infoBox");
+    const box = document.getElementById(boxId);
+    const symbol = document.getElementById(id);
+    if(!box || !symbol) return;
+    const closeBtn = box.querySelector(".close-btn");
+
+    symbol.addEventListener("click",(e)=>{
+        box.style.display = (box.style.display==="block")?"none":"block";
+        e.stopPropagation();
+    });
+    closeBtn.addEventListener("click",(e)=>{
+        box.style.display = "none";
+        e.stopPropagation();
+    });
+});
+
+document.addEventListener("click",(e)=>{
+    if(!e.target.closest("#temaToggle")){
+        ["infoBox1","infoBox2","infoBox3","infoBox4","infoBox5","infoBox5b","infoBox65","infoBox6","infoBox7"].forEach(id=>{
+            document.getElementById(id).style.display="none";
+        });
+    }
 });
 </script>
 </body>
