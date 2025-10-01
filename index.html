@@ -55,7 +55,7 @@ img.logo {
     flex-shrink: 0;
 }
 #hat5b img.logo {
-    border-radius: 8px; /* Balat - Şehir Hastanesi logosunu yumuşattık */
+    border-radius: 8px;
 }
 .clock {
     font-size: 40px;
@@ -111,14 +111,13 @@ body.dark-mode .info-box {
 .info-box .close-btn { margin-top:5px; cursor:pointer; }
 
 .link-box {
-    margin-top: 10px;
     font-size: 22px;
     font-weight: bold;
-    color: orange;
+    color: purple;
     cursor: pointer;
     text-decoration: none;
+    padding: 10px 0; /* boşluk görünürken */
 }
-#gelecek { display: none; margin-top: 30px; }
 </style>
 </head>
 <body>
@@ -187,10 +186,11 @@ body.dark-mode .info-box {
 
     <!-- Link -->
     <div class="link-box" onclick="showGelecek()">
-        uzak gelecek..
+        Uzak geleceği görmek istiyorsan tıkla
     </div>
 
-    <div id="gelecek">
+    <!-- Gelecek Sayaçlar -->
+    <div id="gelecek" style="display:none;">
         <!-- 5. Hat -->
         <div class="sayaç-grubu" id="hat5">
             <div class="message">
@@ -198,7 +198,7 @@ body.dark-mode .info-box {
                 <span class="text">Gebze - Darıca Metro Hattı</span>
                 <span class="info-symbol" id="info5">i
                     <div class="info-box" id="infoBox5">
-                        <p>Koceli'nin ilk metrosu olacak hat 15 km ve 11 istasyondan oluşmakta. Ulaştırma bakanlığı doğrudan açıklama yapmamış olsa da yerel gazetelerin bakanlıktan aldığı bilgiye göre hattın 2026'nın haziran ayında açılması hedefleniyor </p>
+                        <p>Koceli'nin ilk metrosu olacak hat 15 km ve 11 istasyondan oluşmakta...</p>
                         <button class="close-btn">Kapat</button>
                     </div>
                 </span>
@@ -206,15 +206,14 @@ body.dark-mode .info-box {
             <div class="clock" id="clock5"></div>
         </div>
 
-        <!-- Yeni 5b Hat: Balat - Şehir Hastanesi -->
+        <!-- Balat - Şehir Hastanesi -->
         <div class="sayaç-grubu" id="hat5b">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/BursaRay_logo.svg" class="logo">
                 <span class="text">Balat - Şehir Hastanesi Uzatması</span>
                 <span class="info-symbol" id="info5b">i
                     <div class="info-box" id="infoBox5b">
-                        <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı ve şehir hastanesine erişmesini sağlayacak uzatma 4 km ve 3 istasyondan oluşmaktadır. Emek ve Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı
-                             </p>
+                        <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı ve şehir hastanesine erişmesini sağlayacak uzatma 4 km ve 3 istasyondan oluşmaktadır. Emek ve Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı</p>
                         <button class="close-btn">Kapat</button>
                     </div>
                 </span>
@@ -222,14 +221,14 @@ body.dark-mode .info-box {
             <div class="clock" id="clock5b"></div>
         </div>
 
-        <!-- 6. Hat (Feshane - Bayrampaşa) -->
+        <!-- Feshane - Bayrampaşa -->
         <div class="sayaç-grubu" id="hat65">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Istanbul_T5_Line_Symbol.svg" class="logo">
                 <span class="text">Feshane - Bayrampaşa Uzatması</span>
                 <span class="info-symbol" id="info65">i
                     <div class="info-box" id="infoBox65">
-                        <p>Eminönü - Alibeyköy tramvay hattına Feshane istasyonuna 3. peron eklenerek bağlanacak uzatma 3.2 km ve 4 istasyondan oluşmakta. Hat açıldığında Eminönü - Alibeyköy ve Eminönü - Bayrampaşa olmak üzere iki ayrı işletmeye geçilecek</p>
+                        <p>Eminönü - Alibeyköy tramvay hattına Feshane istasyonuna 3. peron eklenerek bağlanacak uzatma 3.2 km ve 4 istasyondan oluşmakta.</p>
                         <button class="close-btn">Kapat</button>
                     </div>
                 </span>
@@ -237,14 +236,14 @@ body.dark-mode .info-box {
             <div class="clock" id="clock65"></div>
         </div>
 
-        <!-- 7. Hat (Yıldız - Kabataş) -->
+        <!-- Yıldız - Kabataş -->
         <div class="sayaç-grubu" id="hat7">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo">
                 <span class="text">Yıldız - Kabataş Uzatması</span>
                 <span class="info-symbol" id="info7">i
                     <div class="info-box" id="infoBox7">
-                        <p>Mecidiyeköy - Mahmutbey hattını sahile indirmek amacıyla projelendirilen Mecidiyeköy - Kabataş uzatmasının ilk etabı olan Mecidiyeköy - Yıldız arası 2 Ocak 2023 tarihinde açıldı. Arkeolojik kazılar geriye kalan Beşiktaş ve Kabataş istasyonlarında uzun yıllar süren gecikmelere sebep oldu. Bu etap açıldığında Mecidiyeköy - Yıldız arası shuttle işletmesi de sona erecek   </p>
+                        <p>Mecidiyeköy - Mahmutbey hattını sahile indirmek amacıyla projelendirilen Mecidiyeköy - Kabataş uzatmasının ilk etabı...</p>
                         <button class="close-btn">Kapat</button>
                     </div>
                 </span>
@@ -252,14 +251,14 @@ body.dark-mode .info-box {
             <div class="clock" id="clock7"></div>
         </div>
 
-        <!-- 8. Hat (Altunizade - Bosna) -->
+        <!-- Altunizade - Bosna -->
         <div class="sayaç-grubu" id="hat6">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Istanbul_M14_Line_Symbol.svg" class="logo">
                 <span class="text">Altunizade - Bosna Bulvarı Metrosu</span>
                 <span class="info-symbol" id="info6">i
                     <div class="info-box" id="infoBox6">
-                        <p>İstanbul'un 4. Levent - Hisarüstü (M6) hattından sonra ikinci tek tünelli metrosu olacak hattın 2023 yılında açılması hedefleniyordu. Lakin zemin zorlukları sebebiyle sürekli ertelendi. Şu anda tünel kazıları bitmek üzere olan hattın istasyon inşaatları da devam etmekte</p>
+                        <p>İstanbul'un 4. Levent - Hisarüstü (M6) hattından sonra ikinci tek tünelli metrosu olacak hattın 2023 yılında açılması hedefleniyordu...</p>
                         <button class="close-btn">Kapat</button>
                     </div>
                 </span>
@@ -347,9 +346,11 @@ setInterval(updateAll,1000);
 updateAll();
 
 function showGelecek(){
-    const hat5 = document.getElementById("hat5");
+    const gelecekLink = document.querySelector(".link-box");
     const gelecek = document.getElementById("gelecek");
-    gelecek.style.display="block";
+    const hat5 = document.getElementById("hat5");
+    gelecek.style.display = "block";
+    gelecekLink.style.display = "none"; // link tamamen kayboluyor, margin de gitmiş oluyor
     hat5.scrollIntoView({behavior:"smooth", block:"start"});
 }
 
@@ -384,4 +385,3 @@ document.addEventListener("click",(e)=>{
 </script>
 </body>
 </html>
-
