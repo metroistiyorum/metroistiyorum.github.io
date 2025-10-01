@@ -8,8 +8,6 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow-y: auto;
     font-family: Arial, sans-serif;
     transition: background 0.3s, color 0.3s;
 }
@@ -39,7 +37,7 @@ body.dark-mode {
     width: 100%;
 }
 .sayaç-grubu {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     width: 90%;
     max-width: 600px;
     text-align: left;
@@ -58,11 +56,8 @@ img.logo {
     object-fit: contain;
     flex-shrink: 0;
 }
-#hat5b img.logo {
-    border-radius: 8px;
-}
 .clock {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
     margin-top: 10px;
     word-wrap: break-word;
@@ -79,7 +74,6 @@ body.dark-mode .clock span + span { color: white; }
     font-weight: bold;
     width: 20px;
     height: 20px;
-    line-height: 20px;
     border-radius: 50%;
     background: #ccc;
     color: #000;
@@ -100,7 +94,7 @@ body.dark-mode .clock span + span { color: white; }
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 8px;
-    width: 90%;
+    width: 95%;
     max-width: 400px;
     line-height: 1.3;
     z-index: 1000;
@@ -114,17 +108,7 @@ body.dark-mode .info-box {
 .info-box p { margin:0; padding:0; }
 .info-box .close-btn { margin-top:5px; cursor:pointer; }
 
-.link-box {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: orange;
-    cursor: pointer;
-    text-decoration: none;
-}
-#gelecek { display: none; margin-top: 30px; }
-
-/* Mobil uyumluluk */
+/* 📱 Mobil uyumluluk */
 @media (max-width: 600px) {
     .message {
         flex-direction: column;
@@ -136,7 +120,7 @@ body.dark-mode .info-box {
         max-width: 80px;
     }
     .clock {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     .info-box {
         font-size: 0.9rem;
@@ -147,230 +131,96 @@ body.dark-mode .info-box {
 </style>
 </head>
 <body>
-<button id="temaToggle">Tema Değiştir</button>
+<button id="temaToggle">🌙</button>
+<div class="wrapper">
 
-<div class="wrapper" id="wrapper">
-    <!-- Akçaray -->
-    <div class="sayaç-grubu">
+    <!-- Sayaç 1 -->
+    <div class="sayaç-grubu" id="hat1">
         <div class="message">
-            <img src="https://upload.wikimedia.org/wikipedia/tr/d/d9/Ak%C3%A7aray_logo.png" class="logo">
-            <span class="text">Otogar - Stadyum Uzatması</span>
-            <span class="info-symbol" id="info1">i
-                <div class="info-box" id="infoBox1">
-                    <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına kadar açılması hedefleniyor. Bu etapla beraber sistemin büyüklüğü 18 km ve 27 istasyona ulaşacak </p>
-                    <button class="close-btn">Kapat</button>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/BursaRay_logo.svg" class="logo" alt="logo">
+            Hat 1 Açılışı
+            <span class="info-symbol">i
+                <div class="info-box">
+                    <p>Hat 1 bilgileri</p>
+                    <div class="close-btn">Kapat</div>
                 </div>
             </span>
         </div>
-        <div class="clock" id="clock1"></div>
+        <div id="clock1" class="clock"></div>
     </div>
 
-    <!-- M11 -->
-    <div class="sayaç-grubu">
-        <div class="message">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Istanbul_M11_Line_Symbol.svg" class="logo">
-            <span class="text">Arnavutköy - Halkalı Uzatması</span>
-            <span class="info-symbol" id="info2">i
-                <div class="info-box" id="infoBox2">
-                    <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyor. Ulaştırma Bakanlığı 2025 sonu dediğinden beri ek bilgi paylaşmadı</p>
-                    <button class="close-btn">Kapat</button>
-                </div>
-            </span>
-        </div>
-        <div class="clock" id="clock2"></div>
+    <!-- Sayaç 2 -->
+    <div class="sayaç-grubu" id="hat2">
+        <div class="message">Hat 2 Açılışı</div>
+        <div id="clock2" class="clock"></div>
     </div>
 
-    <!-- M5 -->
-    <div class="sayaç-grubu">
-        <div class="message">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Istanbul_M5_Line_Symbol.svg" class="logo">
-            <span class="text">Samandıra - Sultanbeyli Uzatması</span>
-            <span class="info-symbol" id="info3">i
-                <div class="info-box" id="infoBox3">
-                    <p>Üsküdar - Samandıra arasında çalışmakta olan hattın 4.4 km ve 3 istasyondan oluşan son etabının ocak ayı bitmeden açılacağını belirtiliyor. 2023 yılında Çekmeköy - Samandıra arasının açılışına yetişmediği için pas geçilen Sancaktepe Şehir Hastanesi istasyonunun ocak ayında açılıp açılmayacağı hakkında kesin bir bilgilendirme yok</p>
-                    <button class="close-btn">Kapat</button>
-                </div>
-            </span>
-        </div>
-        <div class="clock" id="clock3"></div>
+    <!-- Sayaç 3 -->
+    <div class="sayaç-grubu" id="hat3">
+        <div class="message">Hat 3 Açılışı</div>
+        <div id="clock3" class="clock"></div>
     </div>
 
-    <!-- M12 -->
-    <div class="sayaç-grubu">
-        <div class="message">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_M12_Line_Symbol.svg" class="logo">
-            <span class="text">Ümraniye - Ataşehir - Göztepe Hattı</span>
-            <span class="info-symbol" id="info4">i
-                <div class="info-box" id="infoBox4">
-                    <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Lakin ek borçlanma ihtiyacı gerektiği için çalışmalar durdu. İBB hatta çalışmalara yeniden başlayıp mayıs ayında açmayı hedefliyor</p>
-                    <button class="close-btn">Kapat</button>
-                </div>
-            </span>
-        </div>
-        <div class="clock" id="clock4"></div>
+    <!-- Sayaç 4 -->
+    <div class="sayaç-grubu" id="hat4">
+        <div class="message">Hat 4 Açılışı</div>
+        <div id="clock4" class="clock"></div>
     </div>
 
-    <!-- Link -->
-    <div class="link-box" onclick="showGelecek()">
-        uzak gelecek..
+    <!-- Sayaç 5 -->
+    <div class="sayaç-grubu" id="hat5">
+        <div class="message">Hat 5 Açılışı</div>
+        <div id="clock5" class="clock"></div>
     </div>
 
-    <div id="gelecek">
-        <!-- 5. Hat -->
-        <div class="sayaç-grubu" id="hat5">
-            <div class="message">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Istanbul_Metro_Logo_%28subway_of_the_ministry%29.svg" class="logo">
-                <span class="text">Gebze - Darıca Metro Hattı</span>
-                <span class="info-symbol" id="info5">i
-                    <div class="info-box" id="infoBox5">
-                        <p>Koceli'nin ilk metrosu olacak hat 15 km ve 11 istasyondan oluşmakta. Ulaştırma bakanlığı doğrudan açıklama yapmamış olsa da yerel gazetelerin bakanlıktan aldığı bilgiye göre hattın 2026'nın haziran ayında açılması hedefleniyor </p>
-                        <button class="close-btn">Kapat</button>
-                    </div>
-                </span>
-            </div>
-            <div class="clock" id="clock5"></div>
-        </div>
-
-        <!-- Yeni 5b Hat: Balat - Şehir Hastanesi -->
-        <div class="sayaç-grubu" id="hat5b">
-            <div class="message">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/BursaRay_logo.svg" class="logo">
-                <span class="text">Balat - Şehir Hastanesi Uzatması</span>
-                <span class="info-symbol" id="info5b">i
-                    <div class="info-box" id="infoBox5b">
-                        <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı ve şehir hastanesine erişmesini sağlayacak uzatma 4 km ve 3 istasyondan oluşmaktadır. Emek ve Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı
-                             </p>
-                        <button class="close-btn">Kapat</button>
-                    </div>
-                </span>
-            </div>
-            <div class="clock" id="clock5b"></div>
-        </div>
-
-        <!-- 6. Hat (Feshane - Bayrampaşa) -->
-        <div class="sayaç-grubu" id="hat65">
-            <div class="message">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Istanbul_T5_Line_Symbol.svg" class="logo">
-                <span class="text">Feshane - Bayrampaşa Uzatması</span>
-                <span class="info-symbol" id="info65">i
-                    <div class="info-box" id="infoBox65">
-                        <p>Eminönü - Alibeyköy tramvay hattına Feshane istasyonuna 3. peron eklenerek bağlanacak uzatma 3.2 km ve 4 istasyondan oluşmakta. Hat açıldığında Eminönü - Alibeyköy ve Eminönü - Bayrampaşa olmak üzere iki ayrı işletmeye geçilecek</p>
-                        <button class="close-btn">Kapat</button>
-                    </div>
-                </span>
-            </div>
-            <div class="clock" id="clock65"></div>
-        </div>
-
-        <!-- 7. Hat (Yıldız - Kabataş) -->
-        <div class="sayaç-grubu" id="hat7">
-            <div class="message">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo">
-                <span class="text">Yıldız - Kabataş Uzatması</span>
-                <span class="info-symbol" id="info7">i
-                    <div class="info-box" id="infoBox7">
-                        <p>Mecidiyeköy - Mahmutbey hattını sahile indirmek amacıyla projelendirilen Mecidiyeköy - Kabataş uzatmasının ilk etabı olan Mecidiyeköy - Yıldız arası 2 Ocak 2023 tarihinde açıldı. Arkeolojik kazılar geriye kalan Beşiktaş ve Kabataş istasyonlarında uzun yıllar süren gecikmelere sebep oldu. Bu etap açıldığında Mecidiyeköy - Yıldız arası shuttle işletmesi de sona erecek   </p>
-                        <button class="close-btn">Kapat</button>
-                    </div>
-                </span>
-            </div>
-            <div class="clock" id="clock7"></div>
-        </div>
-
-        <!-- 8. Hat (Altunizade - Bosna) -->
-        <div class="sayaç-grubu" id="hat6">
-            <div class="message">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Istanbul_M14_Line_Symbol.svg" class="logo">
-                <span class="text">Altunizade - Bosna Bulvarı Metrosu</span>
-                <span class="info-symbol" id="info6">i
-                    <div class="info-box" id="infoBox6">
-                        <p>İstanbul'un 4. Levent - Hisarüstü (M6) hattından sonra ikinci tek tünelli metrosu olacak hattın 2023 yılında açılması hedefleniyordu. Lakin zemin zorlukları sebebiyle sürekli ertelendi. Şu anda tünel kazıları bitmek üzere olan hattın istasyon inşaatları da devam etmekte</p>
-                        <button class="close-btn">Kapat</button>
-                    </div>
-                </span>
-            </div>
-            <div class="clock" id="clock6"></div>
-        </div>
+    <!-- Sayaç 6 -->
+    <div class="sayaç-grubu" id="hat6">
+        <div class="message">Hat 6 Açılışı</div>
+        <div id="clock6" class="clock"></div>
     </div>
+
+    <!-- Sayaç 7 -->
+    <div class="sayaç-grubu" id="hat7">
+        <div class="message">Hat 7 Açılışı</div>
+        <div id="clock7" class="clock"></div>
+    </div>
+
 </div>
 
 <script>
-// Tarihler
-const acilis1 = new Date("2025-10-14T10:00:00").getTime();
-const acilis2 = new Date("2025-10-29T10:00:00").getTime();
-const acilis3 = new Date("2026-01-30T10:00:00").getTime();
-const acilis4 = new Date("2026-05-31T10:00:00").getTime();
-const acilis5 = new Date("2026-06-30T10:00:00").getTime();
-const acilis5b = new Date("2026-12-31T23:59:59").getTime();
-const baslangic65 = new Date("2027-01-01T00:00:00").getTime();
-const bitis65 = new Date("2027-06-30T23:59:59").getTime();
-const baslangic7 = new Date("2027-01-01T00:00:00").getTime();
-const bitis7 = new Date("2027-12-31T23:59:59").getTime();
-const baslangic6 = new Date("2027-01-01T00:00:00").getTime();
-const bitis6 = new Date("2027-12-31T23:59:59").getTime();
+// Açılış tarihleri
+const acilis1 = new Date("2026-12-31");
+const acilis2 = new Date("2027-01-01");
+const acilis3 = new Date("2027-06-30");
+const acilis4 = new Date("2027-12-31");
+const acilis5 = new Date("2028-06-30");
+const acilis6 = new Date("2028-12-31");
+const acilis7 = new Date("2029-12-31");
 
-const tarihler = {
-    clock1: "14 Ekim 2025",
-    clock2: "29 Ekim 2025",
-    clock3: "30 Ocak 2026",
-    clock4: "31 Mayıs 2026",
-    clock5: "30 Haziran 2026",
-};
-
-function gunSayaci(clockId, acilisTarihi, mesaj){
-    const simdi = new Date().getTime();
-    const kalan = acilisTarihi - simdi;
-    const clock = document.getElementById(clockId);
-    if(kalan > 0){
-        const gün = Math.floor(kalan/(1000*60*60*24));
-        clock.innerHTML = `<span class="green">${gün} gün</span> <span>${tarihler[clockId] || ''}</span>`;
-    } else {
-        clock.innerHTML = `<span class="green">${mesaj}</span>`;
-    }
+// Sayaç fonksiyonu
+function gunSayaci(clockId, hedef, mesaj){
+    const simdi = new Date();
+    const fark = hedef - simdi;
+    const gun = Math.floor(fark / (1000*60*60*24));
+    document.getElementById(clockId).innerHTML = 
+        gun > 0 ? `<span class="green">${gun} gün</span> <span>${hedef.getFullYear()} hedef</span>` : mesaj;
 }
 
-function gunSayaci5b(clockId){
-    const simdi = new Date().getTime();
-    const gun = Math.floor((acilis5b - simdi)/(1000*60*60*24));
-    document.getElementById(clockId).innerHTML = `<span class="green">${gun} gün</span> <span>2026 sonu</span>`;
-}
-
-function gunSayaci65(clockId){
-    const simdi = new Date().getTime();
-    const gun1 = Math.floor((baslangic65 - simdi)/(1000*60*60*24));
-    const gun2 = Math.floor((bitis65 - simdi)/(1000*60*60*24));
-    document.getElementById(clockId).innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 ilk yarı</span>`;
-}
-
-function gunSayaci7(clockId){
-    const simdi = new Date().getTime();
-    const gun1 = Math.floor((baslangic7 - simdi)/(1000*60*60*24));
-    const gun2 = Math.floor((bitis7 - simdi)/(1000*60*60*24));
-    document.getElementById(clockId).innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 yılı</span>`;
-}
-
-function gunSayaci6(clockId){
-    const simdi = new Date().getTime();
-    const gun1 = Math.floor((baslangic6 - simdi)/(1000*60*60*24));
-    const gun2 = Math.floor((bitis6 - simdi)/(1000*60*60*24));
-    document.getElementById(clockId).innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 yılı</span>`;
-}
-
+// Sayaçları güncelle
 setInterval(()=>{
     gunSayaci("clock1", acilis1, "AÇILDI");
     gunSayaci("clock2", acilis2, "AÇILDI");
     gunSayaci("clock3", acilis3, "AÇILDI");
     gunSayaci("clock4", acilis4, "AÇILDI");
     gunSayaci("clock5", acilis5, "AÇILDI");
-    gunSayaci5b("clock5b");
-    gunSayaci65("clock65");
-    gunSayaci7("clock7");
-    gunSayaci6("clock6");
+    gunSayaci("clock6", acilis6, "AÇILDI");
+    gunSayaci("clock7", acilis7, "AÇILDI");
 }, 1000);
 
-// Tema
-const temaToggle = document.getElementById("temaToggle");
-temaToggle.addEventListener("click", ()=> document.body.classList.toggle("dark-mode"));
+// Tema toggle
+document.getElementById("temaToggle").addEventListener("click", ()=>{
+    document.body.classList.toggle("dark-mode");
+});
 
 // Bilgi kutuları
 document.querySelectorAll(".info-symbol").forEach(symbol=>{
@@ -388,11 +238,6 @@ document.querySelectorAll(".info-symbol").forEach(symbol=>{
 document.addEventListener("click", ()=> {
     document.querySelectorAll(".info-box").forEach(box=> box.style.display="none");
 });
-
-// Gelecek kutusu
-function showGelecek(){
-    document.getElementById("gelecek").style.display="block";
-}
 </script>
 </body>
 </html>
