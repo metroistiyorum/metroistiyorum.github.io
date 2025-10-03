@@ -123,26 +123,11 @@ body.dark-mode .info-box {
     padding: 10px 0;      /* görünürken hafif boşluk */
 }
 #gelecek { display: none; margin-top: 0; } /* başlangıçta gizli */
-
-/* Web ve mevcut mobil stil */
 @media (max-width:640px){
     .message { font-size: 20px; gap:10px; }
     img.logo { height:44px; }
     .clock { font-size: 28px; }
     .info-box { width: calc(100% - 80px); left: 60px; }
-}
-
-/* Mobilde bilgi kutularını tam ekran yap */
-@media (max-width:640px){
-    .info-box {
-        width: 90vw !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        max-height: 90vh !important;
-        overflow-y: auto !important;
-        z-index: 3000 !important;
-    }
 }
 </style>
 </head>
@@ -333,7 +318,7 @@ function gunSayaci5b(clockId){
     const simdi = Date.now();
     const gun = Math.floor((acilis5b - simdi) / (1000*60*60*24));
     const el = document.getElementById(clockId);
-    if(el) el.innerHTML = `<span class="green">${gun > 0 ? gun + ' gün' : 'Açıldı 🎉'}</span> <span>2026 sonu</span>`;
+    if(el) el.innerHTML = `<span class="green">${gun} gün</span> <span>2026 sonu</span>`;
 }
 function gunSayaci65(clockId){
     const simdi = Date.now();
@@ -382,6 +367,7 @@ document.querySelectorAll(".info-symbol").forEach(symbol => {
     const closeBtn = box ? box.querySelector(".close-btn") : null;
     symbol.addEventListener("click", (e) => {
         e.stopPropagation();
+        // toggle kendi kutusu
         if(box) box.style.display = (box.style.display === "block") ? "none" : "block";
     });
     if(closeBtn){
@@ -398,12 +384,13 @@ document.addEventListener("click", (e) => {
     document.querySelectorAll(".info-box").forEach(b => b.style.display = "none");
 });
 
-/* Link tıklandığında: gelecek görünür, link kaybolur */
+/* Link tıklandığında: gelecek görünür, link kaybolur (display:none) */
 function showGelecek(){
     const gelecek = document.getElementById("gelecek");
     const link = document.getElementById("linkGelecek");
     if(gelecek) gelecek.style.display = "block";
-    if(link) link.style.display = "none";
+    if(link) link.style.display = "none"; // link tamamen kaldırılır -> 4. ve 5. sayaç arası .sayaç-grubu margin'leri eşit olur
+    // kaydırma
     const hat5 = document.getElementById("hat5");
     if(hat5) hat5.scrollIntoView({behavior: "smooth", block: "start"});
 }
@@ -418,13 +405,3 @@ window.addEventListener("resize", () => {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
