@@ -4,90 +4,105 @@
 <meta charset="UTF-8">
 <title>Metro Hattı Açılış Sayaçları</title>
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: white;
-  color: black;
-  transition: background 0.3s, color 0.3s;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+    font-family: Arial, sans-serif;
+    transition: background 0.3s, color 0.3s;
 }
 body.dark-mode {
-  background: black;
-  color: white;
+    background: black;
+    color: white;
 }
 .container {
-  padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 .sayaç-grubu {
-  margin-bottom: 80px;
+    margin-bottom: 80px;
+    width: 600px;
+    text-align: left;
+    position: relative;
 }
-.message {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.sayaç {
+    font-size: 22px;
+    margin: 10px 0;
+}
+.siyah-yazi {
+    font-size: 16px;
+    color: black;
+}
+body.dark-mode .siyah-yazi {
+    color: white;
 }
 .logo {
-  width: 40px;
-  height: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
 }
-.text {
-  font-size: 20px;
-  font-weight: bold;
+#temaToggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #444;
+    color: white;
+    cursor: pointer;
 }
-.clock {
-  margin-top: 10px;
-  font-size: 18px;
+.link {
+    display: block;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    color: purple;
 }
-.green {
-  color: green;
-}
-.link-box {
-  font-size: 22px;
-  font-weight: bold;
-  color: purple;
-  cursor: pointer;
-  text-decoration: none;
-  margin: 40px 0;
-  display: block;
-  text-align: center;
+#gelecek {
+    display: none;
+    margin-top: 40px;
 }
 .info-symbol {
-  font-weight: bold;
-  margin-left: 8px;
-  cursor: pointer;
-  position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    color: blue;
+    cursor: pointer;
+    font-weight: bold;
 }
 .info-box {
-  display: none;
-  position: absolute;
-  background: white;
-  color: black;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  max-width: 300px;
-  z-index: 10;
+    display: none;
+    position: absolute;
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
 }
 body.dark-mode .info-box {
-  background: #222;
-  color: white;
-  border-color: #555;
-}
-.info-box p {
-  margin: 0 0 10px;
+    background: #333;
+    color: white;
 }
 .close-btn {
-  background: #444;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 6px;
-  cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: #444;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-/* Mobilde bilgi kutusu tam ekran */
+/* 🔹 Mobilde bilgi kutusu tam ekran */
 @media (max-width: 768px) {
   .info-box {
     position: fixed !important;
@@ -97,14 +112,12 @@ body.dark-mode .info-box {
     height: 100% !important;
     max-width: none !important;
     max-height: none !important;
-    overflow-y: auto !important;
-    background: var(--bg, white) !important;
-    z-index: 9999 !important;
-    padding: 20px !important;
-    box-shadow: none !important;
     border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 20px !important;
+    overflow-y: auto !important;
+    z-index: 9999 !important;
   }
-
   .info-box .close-btn {
     position: absolute;
     top: 15px;
@@ -112,8 +125,8 @@ body.dark-mode .info-box {
     background: red;
     color: white;
     font-size: 18px;
-    padding: 5px 10px;
-    border-radius: 8px;
+    padding: 5px 12px;
+    border-radius: 6px;
   }
 }
 </style>
@@ -121,228 +134,104 @@ body.dark-mode .info-box {
 <body>
 <button id="temaToggle">🌙/☀️</button>
 <div class="container">
-
-  <!-- Sayaç 1 -->
-  <div class="sayaç-grubu" id="hat1">
-    <div class="message">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Ak%C3%A7aray_logo.svg" class="logo">
-      <span class="text">Akçaray</span>
-      <span class="info-symbol" id="info1">i
-        <div class="info-box" id="infoBox1">
-          <p>Kocaeli'nin tramvay hattıdır. 2017'de hizmete açılmıştır.</p>
-          <button class="close-btn">Kapat</button>
-        </div>
-      </span>
-    </div>
-    <div class="clock" id="clock1"></div>
-  </div>
-
-  <!-- Sayaç 2 -->
-  <div class="sayaç-grubu" id="hat2">
-    <div class="message">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Istanbul_M11_Line_Symbol.svg" class="logo">
-      <span class="text">M11 Gayrettepe - İstanbul Havalimanı</span>
-      <span class="info-symbol" id="info2">i
-        <div class="info-box" id="infoBox2">
-          <p>İstanbul Havalimanı’nı şehre bağlayan hızlı metro hattıdır.</p>
-          <button class="close-btn">Kapat</button>
-        </div>
-      </span>
-    </div>
-    <div class="clock" id="clock2"></div>
-  </div>
-
-  <!-- Sayaç 3 -->
-  <div class="sayaç-grubu" id="hat3">
-    <div class="message">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Istanbul_M5_Line_Symbol.svg" class="logo">
-      <span class="text">M5 Üsküdar - Çekmeköy</span>
-      <span class="info-symbol" id="info3">i
-        <div class="info-box" id="infoBox3">
-          <p>İstanbul Anadolu yakasının ilk sürücüsüz metro hattıdır.</p>
-          <button class="close-btn">Kapat</button>
-        </div>
-      </span>
-    </div>
-    <div class="clock" id="clock3"></div>
-  </div>
-
-  <!-- Sayaç 4 -->
-  <div class="sayaç-grubu" id="hat4">
-    <div class="message">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Istanbul_M12_Line_Symbol.svg" class="logo">
-      <span class="text">M12 Göztepe - Ataşehir - Ümraniye</span>
-      <span class="info-symbol" id="info4">i
-        <div class="info-box" id="infoBox4">
-          <p>Asya yakasında önemli finans merkezi bölgelerini birbirine bağlar.</p>
-          <button class="close-btn">Kapat</button>
-        </div>
-      </span>
-    </div>
-    <div class="clock" id="clock4"></div>
-  </div>
-
-  <!-- Tıklanacak link -->
-  <span class="link-box" onclick="showGelecek()">Uzak geleceği görmek istiyorsan tıkla</span>
-
-  <!-- Gelecek sayaçları -->
-  <div id="gelecek" style="display:none">
-
-    <!-- Sayaç 5 -->
-    <div class="sayaç-grubu" id="hat5">
-      <div class="message">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Marmaray_logo.svg" class="logo">
-        <span class="text">Gebze - Darıca Metro</span>
-        <span class="info-symbol" id="info5">i
-          <div class="info-box" id="infoBox5">
-            <p>Kocaeli’nin ilk metro hattıdır. İstanbul ile entegre çalışması hedeflenmiştir.</p>
-            <button class="close-btn">Kapat</button>
+    <div class="sayaç-grubu">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Istanbul_metro_logo.svg" class="logo">
+        <span class="siyah-yazi">2025 Sonu</span>
+        <div id="clock1" class="sayaç"></div>
+        <span class="info-symbol">ℹ
+          <div class="info-box">
+            Haliç - Kemerburgaz metro hattı hakkında bilgi buraya gelecek.
+            <div class="close-btn">Kapat</div>
           </div>
         </span>
-      </div>
-      <div class="clock" id="clock5"></div>
-      <div class="clock" id="clock5b"></div>
     </div>
-
-    <!-- Sayaç 6.5 -->
-    <div class="sayaç-grubu" id="hat65">
-      <div class="message">
+    <div class="sayaç-grubu">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Istanbul_metro_logo.svg" class="logo">
+        <span class="siyah-yazi">2026 Sonu</span>
+        <div id="clock2" class="sayaç"></div>
+        <span class="info-symbol">ℹ
+          <div class="info-box">
+            Gayrettepe - İstanbul Havalimanı hattı bilgileri.
+            <div class="close-btn">Kapat</div>
+          </div>
+        </span>
+    </div>
+    <div class="sayaç-grubu">
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/BursaRay_logo.svg" class="logo">
-        <span class="text">Balat - Şehir Hastanesi Uzatması</span>
-        <span class="info-symbol" id="info65">i
-          <div class="info-box" id="infoBox65">
-            <p>BursaRay hattının şehir hastanesine uzatılmasıdır.</p>
-            <button class="close-btn">Kapat</button>
+        <span class="siyah-yazi">2026 Sonu</span>
+        <div id="clock3" class="sayaç"></div>
+        <span class="info-symbol">ℹ
+          <div class="info-box">
+            Balat - Şehir Hastanesi uzatması bilgileri.
+            <div class="close-btn">Kapat</div>
           </div>
         </span>
-      </div>
-      <div class="clock" id="clock65"></div>
     </div>
-
-    <!-- Sayaç 7 -->
-    <div class="sayaç-grubu" id="hat7">
-      <div class="message">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo">
-        <span class="text">Yıldız - Kabataş Uzatması</span>
-        <span class="info-symbol" id="info7">i
-          <div class="info-box" id="infoBox7">
-            <p>Mecidiyeköy - Kabataş hattının devamıdır, Kabataş bağlantısını sağlar.</p>
-            <button class="close-btn">Kapat</button>
-          </div>
-        </span>
-      </div>
-      <div class="clock" id="clock7"></div>
+    <div id="gelecek">
+        <div class="sayaç-grubu">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Istanbul_metro_logo.svg" class="logo">
+            <span class="siyah-yazi">2027 İlk Yarı</span>
+            <div id="clock4" class="sayaç"></div>
+            <span class="info-symbol">ℹ
+              <div class="info-box">
+                Feshane - Bayrampaşa uzatması bilgileri.
+                <div class="close-btn">Kapat</div>
+              </div>
+            </span>
+        </div>
+        <div class="sayaç-grubu">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Istanbul_metro_logo.svg" class="logo">
+            <span class="siyah-yazi">2027</span>
+            <div id="clock5" class="sayaç"></div>
+            <span class="info-symbol">ℹ
+              <div class="info-box">
+                Altunizade - Bosna hattı bilgileri.
+                <div class="close-btn">Kapat</div>
+              </div>
+            </span>
+        </div>
     </div>
-
-    <!-- Sayaç 6 -->
-    <div class="sayaç-grubu" id="hat6">
-      <div class="message">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Istanbul_M14_Line_Symbol.svg" class="logo">
-        <span class="text">Altunizade - Bosna Bulvarı Metrosu</span>
-        <span class="info-symbol" id="info6">i
-          <div class="info-box" id="infoBox6">
-            <p>İstanbul Anadolu yakasında yeni kuzey-güney aksını oluşturacak projedir.</p>
-            <button class="close-btn">Kapat</button>
-          </div>
-        </span>
-      </div>
-      <div class="clock" id="clock6"></div>
-    </div>
-
-  </div>
+    <span class="link" onclick="showGelecek()">Uzak geleceği görmek istiyorsan tıkla</span>
 </div>
 
 <script>
-// Tarihler
-const acilis1 = new Date("2025-10-14T10:00:00").getTime();
-const acilis2 = new Date("2025-10-29T10:00:00").getTime();
-const acilis3 = new Date("2026-01-30T10:00:00").getTime();
-const acilis4 = new Date("2026-05-31T10:00:00").getTime();
-const acilis5 = new Date("2026-06-30T10:00:00").getTime();
-const acilis5b = new Date("2026-12-31T23:59:59").getTime();
-const baslangic65 = new Date("2027-01-01T00:00:00").getTime();
-const bitis65 = new Date("2027-06-30T23:59:59").getTime();
-const baslangic7 = new Date("2027-01-01T00:00:00").getTime();
-const bitis7 = new Date("2027-12-31T23:59:59").getTime();
-const baslangic6 = new Date("2027-01-01T00:00:00").getTime();
-const bitis6 = new Date("2027-12-31T23:59:59").getTime();
+function Sayaci(id, tarih, aciklama) {
+    var hedef = new Date(tarih).getTime();
+    var x = setInterval(function() {
+        var simdi = new Date().getTime();
+        var fark = hedef - simdi;
+        if (fark < 0) {
+            document.getElementById(id).innerHTML = aciklama;
+            clearInterval(x);
+            return;
+        }
+        var gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+        var saat = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var dakika = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+        var saniye = Math.floor((fark % (1000 * 60)) / 1000);
+        document.getElementById(id).innerHTML = gun + "g " + saat + "s " + dakika + "d " + saniye + "sn ";
+    }, 1000);
+}
+Sayaci("clock1", "Dec 31, 2025 23:59:59", "Açıldı 🎉");
+Sayaci("clock2", "Dec 31, 2026 23:59:59", "Açıldı 🎉");
+Sayaci("clock3", "Dec 31, 2026 23:59:59", "Açıldı 🎉");
+Sayaci("clock4", "Jan 1, 2027 00:00:00", "Açıldı 🎉");
+Sayaci("clock5", "Dec 31, 2027 23:59:59", "Açıldı 🎉");
 
-const tarihler = {
-  clock1: "14 Ekim 2025",
-  clock2: "29 Ekim 2025",
-  clock3: "30 Ocak 2026",
-  clock4: "31 Mayıs 2026",
-  clock5: "30 Haziran 2026"
-};
-
-function gunSayaci(clockId, acilisTarihi, mesaj){
-  const simdi = new Date().getTime();
-  const kalan = acilisTarihi - simdi;
-  const clock = document.getElementById(clockId);
-  if(kalan > 0){
-    const gün = Math.floor(kalan/(1000*60*60*24));
-    clock.innerHTML = `<span class="green">${gün} gün</span> <span>${tarihler[clockId] || ''}</span>`;
-  } else {
-    clock.innerHTML = `<span class="green">${mesaj}</span>`;
-  }
-}
-function gunSayaci5b(clockId){
-  const simdi = new Date().getTime();
-  const gun = Math.floor((acilis5b - simdi)/(1000*60*60*24));
-  document.getElementById(clockId).innerHTML = `<span class="green">${gun} gün</span> <span>2026 sonu</span>`;
-}
-function gunSayaci65(clockId){
-  const simdi = new Date().getTime();
-  const gun1 = Math.floor((baslangic65 - simdi)/(1000*60*60*24));
-  const gun2 = Math.floor((bitis65 - simdi)/(1000*60*60*24));
-  document.getElementById(clockId).innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 ilk yarı</span>`;
-}
-function gunSayaci7(clockId){
-  const simdi = new Date().getTime();
-  const gun1 = Math.floor((baslangic7 - simdi)/(1000*60*60*24));
-  const gun2 = Math.floor((bitis7 - simdi)/(1000*60*60*24));
-  document.getElementById(clockId).innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 yılı</span>`;
-}
-function gunSayaci6(clockId){
-  const simdi = new Date().getTime();
-  const gun1 = Math.floor((baslangic6 - simdi)/(1000*60*60*24));
-  const gun2 = Math.floor((bitis6 - simdi)/(1000*60*60*24));
-  document.getElementById(clockId).innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 yılı</span>`;
-}
-
-function updateAll(){
-  gunSayaci("clock1",acilis1,"Akçaray Açıldı 🎉");
-  gunSayaci("clock2",acilis2,"M11 Açıldı 🎉");
-  gunSayaci("clock3",acilis3,"M5 Açıldı 🎉");
-  gunSayaci("clock4",acilis4,"M12 Açıldı 🎉");
-  gunSayaci("clock5",acilis5,"Gebze-Darıca Açıldı 🎉");
-  gunSayaci5b("clock5b");
-  gunSayaci65("clock65");
-  gunSayaci7("clock7");
-  gunSayaci6("clock6");
-}
-setInterval(updateAll,1000);
-updateAll();
-
-document.getElementById("temaToggle").addEventListener("click",()=>{
-  document.body.classList.toggle("dark-mode");
+document.getElementById("temaToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
 });
-
-document.querySelectorAll(".info-symbol").forEach(s=>{
-  const box=s.querySelector(".info-box");
-  const btn=box.querySelector(".close-btn");
-  s.addEventListener("click",()=>{box.style.display="block"});
-  btn.addEventListener("click",(e)=>{box.style.display="none";e.stopPropagation()});
+document.querySelectorAll(".info-symbol").forEach(s => {
+    const box = s.querySelector(".info-box");
+    const btn = box.querySelector(".close-btn");
+    s.addEventListener("click", () => { box.style.display = "block"; });
+    btn.addEventListener("click", (e) => { box.style.display = "none"; e.stopPropagation(); });
 });
-
-function showGelecek(){
-  const gelecek=document.getElementById("gelecek");
-  const link=document.querySelector(".link-box");
-  gelecek.style.display="block";
-  link.style.display="none"; // yazı kayboluyor, boşluk aynı kalıyor
-}
+function showGelecek(){ document.getElementById("gelecek").style.display="block"; }
 </script>
 </body>
 </html>
+
+
 
 
