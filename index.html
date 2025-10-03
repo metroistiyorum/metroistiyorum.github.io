@@ -57,9 +57,6 @@ img.logo {
     object-fit: contain;
     flex-shrink: 0;
 }
-#hat5b img.logo {
-    border-radius: 8px;
-}
 .clock {
     font-size: 40px;
     font-weight: bold;
@@ -89,6 +86,7 @@ body.dark-mode .clock span + span { color: white; }
     margin-left: 5px;
 }
 .info-symbol:hover { background: #888; color: #fff; }
+
 .info-box {
     display: none;
     position: absolute;
@@ -124,13 +122,11 @@ body.dark-mode .info-box {
 }
 #gelecek { display: none; margin-top: 0; }
 
-/* Mobil stil */
+/* Mobilde info-box tam ekran */
 @media (max-width:640px){
     .message { font-size: 20px; gap:10px; }
     img.logo { height:44px; }
     .clock { font-size: 28px; }
-    
-    /* Mobilde bilgi kutularını TAM EKRAN yap */
     .info-box {
         position: fixed !important;
         top: 0 !important;
@@ -143,6 +139,11 @@ body.dark-mode .info-box {
         overflow-y: auto !important;
         z-index: 3000 !important;
         box-shadow: none !important;
+        background: #f0f0f0 !important;
+    }
+    body.dark-mode .info-box {
+        background: #333 !important;
+        color: #fff !important;
     }
 }
 </style>
@@ -151,7 +152,7 @@ body.dark-mode .info-box {
 <button id="temaToggle">Tema Değiştir</button>
 
 <div class="wrapper" id="wrapper">
-    <!-- Web sürümü sayaçları (hiç değişmedi) -->
+    <!-- 1. Akçaray -->
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/tr/d/d9/Ak%C3%A7aray_logo.png" class="logo" alt="Akçaray">
@@ -166,6 +167,7 @@ body.dark-mode .info-box {
         <div class="clock" id="clock1"></div>
     </div>
 
+    <!-- 2. M11 -->
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Istanbul_M11_Line_Symbol.svg" class="logo" alt="M11">
@@ -180,6 +182,7 @@ body.dark-mode .info-box {
         <div class="clock" id="clock2"></div>
     </div>
 
+    <!-- 3. M5 -->
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Istanbul_M5_Line_Symbol.svg" class="logo" alt="M5">
@@ -194,6 +197,7 @@ body.dark-mode .info-box {
         <div class="clock" id="clock3"></div>
     </div>
 
+    <!-- 4. M12 -->
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_M12_Line_Symbol.svg" class="logo" alt="M12">
@@ -213,8 +217,9 @@ body.dark-mode .info-box {
         Uzak geleceği görmek istiyorsan tıkla
     </div>
 
-    <!-- Gelecek Sayaçlar -->
+    <!-- Gelecek Sayaçlar (başlangıç gizli) -->
     <div id="gelecek" style="display:none;">
+        <!-- 5. Hat -->
         <div class="sayaç-grubu" id="hat5">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Istanbul_Metro_Logo_%28subway_of_the_ministry%29.svg" class="logo" alt="Gebze-Darıca">
@@ -229,6 +234,7 @@ body.dark-mode .info-box {
             <div class="clock" id="clock5"></div>
         </div>
 
+        <!-- 5b. Hat -->
         <div class="sayaç-grubu" id="hat5b">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/BursaRay_logo.svg" class="logo" alt="Balat">
@@ -243,6 +249,7 @@ body.dark-mode .info-box {
             <div class="clock" id="clock5b"></div>
         </div>
 
+        <!-- 6. Hat (Feshane - Bayrampaşa) -->
         <div class="sayaç-grubu" id="hat65">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Istanbul_T5_Line_Symbol.svg" class="logo" alt="T5">
@@ -257,6 +264,7 @@ body.dark-mode .info-box {
             <div class="clock" id="clock65"></div>
         </div>
 
+        <!-- 7. Hat (Yıldız - Kabataş) -->
         <div class="sayaç-grubu" id="hat7">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo" alt="M7">
@@ -271,6 +279,7 @@ body.dark-mode .info-box {
             <div class="clock" id="clock7"></div>
         </div>
 
+        <!-- 8. Hat (Altunizade - Bosna) -->
         <div class="sayaç-grubu" id="hat6">
             <div class="message">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Istanbul_M14_Line_Symbol.svg" class="logo" alt="M14">
@@ -333,43 +342,24 @@ function gunSayaci65(clockId){
     const gun1 = Math.floor((baslangic65 - simdi) / (1000*60*60*24));
     const gun2 = Math.floor((bitis65 - simdi) / (1000*60*60*24));
     const el = document.getElementById(clockId);
-    if(el) el.innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 ilk yarı</span>`;
-}
-function gunSayaci7(clockId){
-    const simdi = Date.now();
-    const gun1 = Math.floor((baslangic7 - simdi) / (1000*60*60*24));
-    const gun2 = Math.floor((bitis7 - simdi) / (1000*60*60*24));
-    const el = document.getElementById(clockId);
-    if(el) el.innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 yılı</span>`;
-}
-function gunSayaci6(clockId){
-    const simdi = Date.now();
-    const gun1 = Math.floor((baslangic6 - simdi) / (1000*60*60*24));
-    const gun2 = Math.floor((bitis6 - simdi) / (1000*60*60*24));
-    const el = document.getElementById(clockId);
-    if(el) el.innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 yılı</span>`;
+    if(el) el.innerHTML = `<span class="green">${gun1} - ${gun2} gün</span>`;
 }
 
-function updateAll(){
-    gunSayaci("clock1", acilis1, "Akçaray Açıldı 🎉");
-    gunSayaci("clock2", acilis2, "M11 Hattı Açıldı 🎉");
-    gunSayaci("clock3", acilis3, "M5 Hattı Açıldı 🎉");
-    gunSayaci("clock4", acilis4, "M12 Hattı Açıldı 🎉");
-    gunSayaci("clock5", acilis5, "Gebze - Darıca Metro Açıldı 🎉");
+setInterval(() => {
+    gunSayaci("clock1", acilis1, "Açıldı");
+    gunSayaci("clock2", acilis2, "Açıldı");
+    gunSayaci("clock3", acilis3, "Açıldı");
+    gunSayaci("clock4", acilis4, "Açıldı");
+    gunSayaci("clock5", acilis5, "Açıldı");
     gunSayaci5b("clock5b");
-    gunSayaci65("clock65");
-    gunSayaci7("clock7");
-    gunSayaci6("clock6");
-}
-setInterval(updateAll, 1000);
-updateAll();
+}, 1000);
 
-/* Tema toggle */
+// Tema toggle
 document.getElementById("temaToggle").addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
 });
 
-/* Info kutuları: aç/kapat */
+// Info kutuları
 document.querySelectorAll(".info-symbol").forEach(symbol => {
     const box = symbol.querySelector(".info-box");
     const closeBtn = box ? box.querySelector(".close-btn") : null;
@@ -384,33 +374,21 @@ document.querySelectorAll(".info-symbol").forEach(symbol => {
         });
     }
 });
-
-/* Dışarı tıklayınca tüm info kutularını kapat */
 document.addEventListener("click", (e) => {
     if(e.target.closest(".info-symbol")) return;
     document.querySelectorAll(".info-box").forEach(b => b.style.display = "none");
 });
 
-/* Link tıklandığında: gelecek görünür, link kaybolur */
+// Gelecek sayaçları göster
 function showGelecek(){
-    const gelecek = document.getElementById("gelecek");
-    const link = document.getElementById("linkGelecek");
-    if(gelecek) gelecek.style.display = "block";
-    if(link) link.style.display = "none";
-    const hat5 = document.getElementById("hat5");
-    if(hat5) hat5.scrollIntoView({behavior: "smooth", block: "start"});
+    document.getElementById("gelecek").style.display = "block";
+    document.getElementById("linkGelecek").style.display = "none";
 }
-
-/* Resize durumunda gelecek gizlensin, link tekrar gözüksün */
-window.addEventListener("resize", () => {
-    const gelecek = document.getElementById("gelecek");
-    const link = document.getElementById("linkGelecek");
-    if(gelecek) gelecek.style.display = "none";
-    if(link) link.style.display = "block";
-});
 </script>
 </body>
 </html>
+
+
 
 
 
