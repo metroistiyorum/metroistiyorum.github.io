@@ -119,28 +119,28 @@ body.dark-mode .info-box {
     color: purple;
     cursor: pointer;
     text-decoration: none;
-    margin: 0;            
-    padding: 10px 0;      
+    margin: 0;            /* margin 0, böylece gizlendiğinde ekstra boşluk kalmaz */
+    padding: 10px 0;      /* görünürken hafif boşluk */
 }
-#gelecek { display: none; margin-top: 0; } 
+#gelecek { display: none; margin-top: 0; } /* başlangıçta gizli */
 @media (max-width:640px){
     .message { font-size: 20px; gap:10px; }
     img.logo { height:44px; }
     .clock { font-size: 28px; }
     
-    /* Bilgi kutusunun tam ekran görünmesi için yeni kurallar */
+    /* İstenen mobil değişiklik */
     .info-box {
-        width: calc(100% - 80px); /* Geri kalan genişlik */
-        left: 40px; /* Sol boşluk */
-        right: 40px; /* Sağ boşluk */
-        top: 0; /* Üstten hizala */
-        transform: none; /* Dikey merkezlemeyi kaldır */
-        position: fixed; /* Ekranda sabit kalsın */
+        width: calc(100% - 80px); 
+        left: 40px; 
+        right: 40px; 
+        top: 0; 
+        transform: none; 
+        position: fixed; 
         height: auto; 
-        max-height: 90vh; /* Maksimum yükseklik */
-        overflow-y: auto; /* Gerektiğinde kaydırma */
-        margin-top: 50px; /* Üstteki buton için boşluk */
-        z-index: 9999; /* En üstte göster */
+        max-height: 90vh; 
+        overflow-y: auto; 
+        margin-top: 50px; 
+        z-index: 9999; 
         box-sizing: border-box;
     }
 }
@@ -249,7 +249,7 @@ body.dark-mode .info-box {
                         <button class="close-btn">Kapat</button>
                     </div>
                 </span>
-        </div>
+            </div>
             <div class="clock" id="clock65"></div>
         </div>
 
@@ -263,7 +263,7 @@ body.dark-mode .info-box {
                         <button class="close-btn">Kapat</button>
                     </div>
                 </span>
-        </div>
+            </div>
             <div class="clock" id="clock7"></div>
         </div>
 
@@ -277,7 +277,7 @@ body.dark-mode .info-box {
                         <button class="close-btn">Kapat</button>
                     </div>
                 </span>
-        </div>
+            </div>
             <div class="clock" id="clock6"></div>
         </div>
     </div>
@@ -357,7 +357,6 @@ function updateAll(){
     gunSayaci7("clock7");
     gunSayaci6("clock6");
 }
-// Sayaçları her saniye güncelle
 setInterval(updateAll, 1000);
 updateAll();
 
@@ -394,20 +393,19 @@ function showGelecek(){
     const gelecek = document.getElementById("gelecek");
     const link = document.getElementById("linkGelecek");
     if(gelecek) gelecek.style.display = "block";
-    if(link) link.style.display = "none"; 
+    if(link) link.style.display = "none"; // link tamamen kaldırılır -> 4. ve 5. sayaç arası .sayaç-grubu margin'leri eşit olur
     // kaydırma
     const hat5 = document.getElementById("hat5");
     if(hat5) hat5.scrollIntoView({behavior: "smooth", block: "start"});
 }
 
-/* Resize durumunda gelecek gizlensin, link tekrar gözüksün (bu istenmemişti, önceki kuralı koruyorum) */
-// window.addEventListener("resize", () => {
-//     const gelecek = document.getElementById("gelecek");
-//     const link = document.getElementById("linkGelecek");
-//     if(gelecek) gelecek.style.display = "none";
-//     if(link) link.style.display = "block";
-// });
+/* Resize durumunda gelecek gizlensin, link tekrar gözüksün */
+window.addEventListener("resize", () => {
+    const gelecek = document.getElementById("gelecek");
+    const link = document.getElementById("linkGelecek");
+    if(gelecek) gelecek.style.display = "none";
+    if(link) link.style.display = "block";
+});
 </script>
 </body>
 </html>
-
