@@ -40,7 +40,7 @@ body.dark-mode {
     box-sizing: border-box;
 }
 .sayaç-grubu {
-    margin-bottom: 80px;
+    margin-bottom: 80px; /* sayaçlar arası dikey boşluk */
     max-width: 600px;
     width: 100%;
     text-align: left;
@@ -56,6 +56,9 @@ img.logo {
     height: 60px;
     object-fit: contain;
     flex-shrink: 0;
+}
+#hat5b img.logo {
+    border-radius: 8px;
 }
 .clock {
     font-size: 40px;
@@ -86,7 +89,6 @@ body.dark-mode .clock span + span { color: white; }
     margin-left: 5px;
 }
 .info-symbol:hover { background: #888; color: #fff; }
-
 .info-box {
     display: none;
     position: absolute;
@@ -117,33 +119,29 @@ body.dark-mode .info-box {
     color: purple;
     cursor: pointer;
     text-decoration: none;
-    margin: 0;
-    padding: 10px 0;
+    margin: 0;            /* margin 0, böylece gizlendiğinde ekstra boşluk kalmaz */
+    padding: 10px 0;      /* görünürken hafif boşluk */
 }
-#gelecek { display: none; margin-top: 0; }
+#gelecek { display: none; margin-top: 0; } /* başlangıçta gizli */
 
-/* Mobilde info-box tam ekran */
+/* Web ve mevcut mobil stil */
 @media (max-width:640px){
     .message { font-size: 20px; gap:10px; }
     img.logo { height:44px; }
     .clock { font-size: 28px; }
+    .info-box { width: calc(100% - 80px); left: 60px; }
+}
+
+/* Mobilde bilgi kutularını tam ekran yap */
+@media (max-width:640px){
     .info-box {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        transform: none !important;
-        border-radius: 0 !important;
-        padding: 20px !important;
+        width: 90vw !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        max-height: 90vh !important;
         overflow-y: auto !important;
         z-index: 3000 !important;
-        box-shadow: none !important;
-        background: #f0f0f0 !important;
-    }
-    body.dark-mode .info-box {
-        background: #333 !important;
-        color: #fff !important;
     }
 }
 </style>
@@ -335,31 +333,50 @@ function gunSayaci5b(clockId){
     const simdi = Date.now();
     const gun = Math.floor((acilis5b - simdi) / (1000*60*60*24));
     const el = document.getElementById(clockId);
-    if(el) el.innerHTML = `<span class="green">${gun} gün</span> <span>2026 sonu</span>`;
+    if(el) el.innerHTML = `<span class="green">${gun > 0 ? gun + ' gün' : 'Açıldı 🎉'}</span> <span>2026 sonu</span>`;
 }
 function gunSayaci65(clockId){
     const simdi = Date.now();
     const gun1 = Math.floor((baslangic65 - simdi) / (1000*60*60*24));
     const gun2 = Math.floor((bitis65 - simdi) / (1000*60*60*24));
     const el = document.getElementById(clockId);
-    if(el) el.innerHTML = `<span class="green">${gun1} - ${gun2} gün</span>`;
+    if(el) el.innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 ilk yarı</span>`;
+}
+function gunSayaci7(clockId){
+    const simdi = Date.now();
+    const gun1 = Math.floor((baslangic7 - simdi) / (1000*60*60*24));
+    const gun2 = Math.floor((bitis7 - simdi) / (1000*60*60*24));
+    const el = document.getElementById(clockId);
+    if(el) el.innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 yılı</span>`;
+}
+function gunSayaci6(clockId){
+    const simdi = Date.now();
+    const gun1 = Math.floor((baslangic6 - simdi) / (1000*60*60*24));
+    const gun2 = Math.floor((bitis6 - simdi) / (1000*60*60*24));
+    const el = document.getElementById(clockId);
+    if(el) el.innerHTML = `<span class="green">${gun1} - ${gun2} gün</span> <span>2027 yılı</span>`;
 }
 
-setInterval(() => {
-    gunSayaci("clock1", acilis1, "Açıldı");
-    gunSayaci("clock2", acilis2, "Açıldı");
-    gunSayaci("clock3", acilis3, "Açıldı");
-    gunSayaci("clock4", acilis4, "Açıldı");
-    gunSayaci("clock5", acilis5, "Açıldı");
+function updateAll(){
+    gunSayaci("clock1", acilis1, "Akçaray Açıldı 🎉");
+    gunSayaci("clock2", acilis2, "M11 Hattı Açıldı 🎉");
+    gunSayaci("clock3", acilis3, "M5 Hattı Açıldı 🎉");
+    gunSayaci("clock4", acilis4, "M12 Hattı Açıldı 🎉");
+    gunSayaci("clock5", acilis5, "Gebze - Darıca Metro Açıldı 🎉");
     gunSayaci5b("clock5b");
-}, 1000);
+    gunSayaci65("clock65");
+    gunSayaci7("clock7");
+    gunSayaci6("clock6");
+}
+setInterval(updateAll, 1000);
+updateAll();
 
-// Tema toggle
+/* Tema toggle */
 document.getElementById("temaToggle").addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
 });
 
-// Info kutuları
+/* Info kutuları: aç/kapat */
 document.querySelectorAll(".info-symbol").forEach(symbol => {
     const box = symbol.querySelector(".info-box");
     const closeBtn = box ? box.querySelector(".close-btn") : null;
@@ -374,19 +391,34 @@ document.querySelectorAll(".info-symbol").forEach(symbol => {
         });
     }
 });
+
+/* Dışarı tıklayınca tüm info kutularını kapat */
 document.addEventListener("click", (e) => {
     if(e.target.closest(".info-symbol")) return;
     document.querySelectorAll(".info-box").forEach(b => b.style.display = "none");
 });
 
-// Gelecek sayaçları göster
+/* Link tıklandığında: gelecek görünür, link kaybolur */
 function showGelecek(){
-    document.getElementById("gelecek").style.display = "block";
-    document.getElementById("linkGelecek").style.display = "none";
+    const gelecek = document.getElementById("gelecek");
+    const link = document.getElementById("linkGelecek");
+    if(gelecek) gelecek.style.display = "block";
+    if(link) link.style.display = "none";
+    const hat5 = document.getElementById("hat5");
+    if(hat5) hat5.scrollIntoView({behavior: "smooth", block: "start"});
 }
+
+/* Resize durumunda gelecek gizlensin, link tekrar gözüksün */
+window.addEventListener("resize", () => {
+    const gelecek = document.getElementById("gelecek");
+    const link = document.getElementById("linkGelecek");
+    if(gelecek) gelecek.style.display = "none";
+    if(link) link.style.display = "block";
+});
 </script>
 </body>
 </html>
+
 
 
 
