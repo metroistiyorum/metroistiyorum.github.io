@@ -10,31 +10,32 @@ html, body {
     height:100%;
     font-family: Arial, sans-serif;
     transition: background 0.3s, color 0.3s;
+    font-size: 22px;
 }
 
 /* --- Mobil görünüm TAM SAYFA büyütme --- */
 @media (max-width:640px){
     html, body {
-        font-size: 38px !important;
+        font-size: 44px !important;
     }
     .wrapper {
         padding: 0 4vw;
     }
     .message {
-        font-size: 2.2em;
+        font-size: 2.6em;
         gap: 2em;
     }
     img.logo {
-        height: 10em;
+        height: 12em;
         max-width: 90vw;
     }
     .clock {
-        font-size: 2.4em;
-        margin-top: 16px;
+        font-size: 2.8em;
+        margin-top: 20px;
     }
     .info-box {
-        font-size: 1.5em;
-        padding: 2em;
+        font-size: 1.8em;
+        padding: 2.4em;
         width: 98vw !important;
         left: 50% !important;
         top: 50% !important;
@@ -47,21 +48,21 @@ html, body {
         opacity:1 !important;
     }
     .close-btn {
-        font-size: 1.3em;
-        padding: 1em 2em;
+        font-size: 1.4em;
+        padding: 1.2em 2.2em;
     }
     #temaToggle {
-        font-size: 2em;
-        padding: 1em 2em;
-        top: 8px;
-        right: 8px;
+        font-size: 2.4em;
+        padding: 1.2em 2.2em;
+        top: 10px;
+        right: 10px;
     }
     .link-box {
-        font-size: 2em;
+        font-size: 2.4em;
         padding: 1em 0;
     }
     .sayaç-grubu {
-        margin-bottom: 6em;
+        margin-bottom: 7em;
         max-width: 99vw;
     }
 }
@@ -69,40 +70,56 @@ html, body {
 /* Masaüstü ve genel stiller */
 body.dark-mode {background:#000;color:#fff;}
 #temaToggle {
-    position: fixed; top:15px; right:15px; padding:10px 15px;
+    position: fixed; top:15px; right:15px; padding:14px 22px;
     cursor:pointer; background:#333; color:#fff; border:none;
-    font-weight:bold; font-size:16px; border-radius:5px; z-index:2000;
+    font-weight:bold; font-size:20px; border-radius:8px; z-index:2000;
 }
-.wrapper {margin-top:50px; display:flex; flex-direction:column; align-items:center; width:100%; padding:0 16px; box-sizing:border-box;}
-.sayaç-grubu {margin-bottom:80px; max-width:600px; width:100%; text-align:left;}
-.message {display:flex; align-items:center; gap:15px; font-size:30px;}
-img.logo {height:60px; object-fit:contain; flex-shrink:0;}
-.clock {font-size:40px; font-weight:bold; margin-top:10px;}
+.wrapper {
+    margin-top:60px; display:flex; flex-direction:column; align-items:center;
+    width:100%; padding:0 24px; box-sizing:border-box;
+}
+.sayaç-grubu {
+    margin-bottom:100px; max-width:750px; width:100%; text-align:left;
+}
+.message {
+    display:flex; align-items:center; gap:20px; font-size:38px;
+}
+img.logo {
+    height:90px; object-fit:contain; flex-shrink:0;
+}
+.clock {
+    font-size:48px; font-weight:bold; margin-top:12px;
+}
 .green{color:#008000;} 
-.clock span + span{margin-left:10px; color:black;} 
+.clock span + span{margin-left:12px; color:black;} 
 body.dark-mode .clock span{color:white;}
 body.dark-mode .clock .green{color:#008000;}
 body.dark-mode .clock span + span{color:white;}
 
 .info-symbol{
-    cursor:pointer; font-size:16px; font-weight:bold; width:20px; height:20px; line-height:20px;
-    border-radius:50%; background:#ccc; color:#000; display:inline-flex; align-items:center; justify-content:center; margin-left:5px;
+    cursor:pointer; font-size:20px; font-weight:bold; width:26px; height:26px;
+    line-height:26px; border-radius:50%; background:#ccc; color:#000;
+    display:inline-flex; align-items:center; justify-content:center; margin-left:8px;
 }
 .info-symbol:hover{background:#888; color:#fff;}
 
 .info-box{
-    display:none; margin-top:10px; background:#f0f0f0; color:#000; border:1px solid #ccc;
-    padding:12px; border-radius:8px; width:100%; line-height:1.4; font-weight:600;
-    box-shadow:0 4px 8px rgba(0,0,0,0.2); transform:translateY(-20px); opacity:0; transition: all 0.3s ease;
+    display:none; margin-top:12px; background:#f0f0f0; color:#000; border:1px solid #ccc;
+    padding:16px; border-radius:10px; width:100%; line-height:1.6; font-weight:600;
+    box-shadow:0 5px 10px rgba(0,0,0,0.25); transform:translateY(-20px); opacity:0; transition: all 0.3s ease;
 }
 .info-box.show{display:block; transform:translateY(0); opacity:1;}
 body.dark-mode .info-box{background:#333;color:#fff;border-color:#555;}
 .info-box p{margin:0; padding:0;}
-.close-btn{margin-top:8px; cursor:pointer; background:#eee; border:1px solid #ccc; padding:6px; border-radius:6px; font-weight:600; display:inline-block;}
+.close-btn{
+    margin-top:10px; cursor:pointer; background:#eee; border:1px solid #ccc;
+    padding:8px 12px; border-radius:6px; font-weight:600; display:inline-block; font-size:1.1em;
+}
 body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 
 .link-box{
-    font-size:22px; font-weight:bold; color:purple; cursor:pointer; text-decoration:none; margin:0; padding:10px 0;
+    font-size:26px; font-weight:bold; color:purple; cursor:pointer;
+    text-decoration:none; margin:0; padding:14px 0;
 }
 #gelecek{display:none;}
 </style>
@@ -120,7 +137,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock1"></div>
     <div class="info-box" id="infoBox1">
-        <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına kadar açılması hedefleniyor Bu etapla beraber sistemin büyüklüğü 18 km ve 27 istasyona ulaşacak</p>
+        <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025'te açılması bekleniyor.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
@@ -134,7 +151,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock2"></div>
     <div class="info-box" id="infoBox2">
-        <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyor Ulaştırma Bakanlığı 2025 sonu dediğinden beri ek bilgi paylaşmadı</p>
+        <p>Gayrettepe - Havalimanı hattının son etabı 17.5 km uzunluğundadır. 29 Ekim 2025’te açılması hedeflenmektedir.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
@@ -148,7 +165,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock3"></div>
     <div class="info-box" id="infoBox3">
-        <p>Üsküdar - Samandıra arasında çalışmakta olan hattın 4.4 km ve 3 istasyondan oluşan son etabının ocak ayı bitmeden açılacağı belirtiliyor 2023 yılında Çekmeköy - Samandıra arasının açılışına yetişmediği için pas geçilen Sancaktepe Şehir Hastanesi istasyonunun ocak ayında açılıp açılmayacağı hakkında kesin bir bilgilendirme yok</p>
+        <p>M5 hattının 4.4 km’lik son etabı 2026 Ocak sonunda hizmete alınacaktır.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
@@ -157,22 +174,22 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_M12_Line_Symbol.svg" class="logo" alt="M12">
-        <span class="text">Ümraniye - Ataşehir - Göztepe Hattı</span>
+        <span class="text">Ümraniye - Ataşehir - Göztepe</span>
         <span class="info-symbol" data-target="infoBox4">i</span>
     </div>
     <div class="clock" id="clock4"></div>
     <div class="info-box" id="infoBox4">
-        <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu İBB hatta çalışmalara yeniden başlayıp mayıs ayında açmayı hedefliyor</p>
+        <p>M12 metrosunun 13 km’lik güzergahının 2026 Mayıs ayında tamamlanması hedeflenmektedir.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
 <div class="link-box" id="linkGelecek" onclick="showGelecek()">Uzak geleceği görmek istiyorsan tıkla</div>
 
-<div id="gelecek" style="display:none;">
+<div id="gelecek">
 
 <!-- 5. Gebze-Darıca -->
-<div class="sayaç-grubu">
+<div class="sayaç-grubu" id="hat5">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Istanbul_Metro_Logo_%28subway_of_the_ministry%29.svg" class="logo" alt="Gebze-Darıca">
         <span class="text">Gebze - Darıca Metro Hattı</span>
@@ -180,12 +197,12 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock5"></div>
     <div class="info-box" id="infoBox5">
-        <p>Kocaeli'nin ilk metrosu olacak hat 15 km ve 11 istasyondan oluşmakta Ulaştırma Bakanlığı doğrudan açıklama yapmamış olsa da yerel gazetelerin bakanlıktan aldığı bilgiye göre hattın 2026'nın haziran ayında açılması hedefleniyor</p>
+        <p>Kocaeli’nin ilk metrosu olacak hattın 2026 Haziran ayında açılması planlanmaktadır.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- 5b. Balat -->
+<!-- 6. Balat -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/BursaRay_logo.svg" class="logo" alt="Balat">
@@ -194,12 +211,12 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock5b"></div>
     <div class="info-box" id="infoBox5b">
-        <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı ve şehir hastanesine erişmesini sağlayacak uzatma 4 km ve 3 istasyondan oluşmaktadır Emek ve Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı</p>
+        <p>BursaRay’ın Şehir Hastanesi uzatmasının 2026 sonunda tamamlanması bekleniyor.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- 6. Feshane-Bayrampaşa -->
+<!-- 7. T5 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Istanbul_T5_Line_Symbol.svg" class="logo" alt="T5">
@@ -208,12 +225,12 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock65"></div>
     <div class="info-box" id="infoBox65">
-        <p>Eminönü - Alibeyköy tramvay hattına Feshane istasyonuna 3. peron eklenerek bağlanacak uzatma 3.2 km ve 4 istasyondan oluşmakta Hat açıldığında Eminönü - Alibeyköy ve Eminönü - Bayrampaşa olmak üzere iki ayrı işletmeye geçilecek</p>
+        <p>T5 hattının 3.2 km’lik uzatmasının 2027'nin ilk yarısında açılması bekleniyor.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- 7. Yıldız-Kabataş -->
+<!-- 8. M7 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo" alt="M7">
@@ -222,21 +239,21 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock7"></div>
     <div class="info-box" id="infoBox7">
-        <p>Mecidiyeköy - Mahmutbey hattını sahile indirmek amacıyla projelendirilen Mecidiyeköy - Kabataş uzatmasının ilk etabı olan Mecidiyeköy - Yıldız arası 2 Ocak 2023 tarihinde açıldı Arkeolojik kazılar geriye kalan Beşiktaş ve Kabataş istasyonlarında uzun yıllar süren gecikmelere sebep oldu</p>
+        <p>M7 hattının Kabataş uzatmasının 2027 yılı içinde hizmete alınması beklenmektedir.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- 8. Altunizade-Bosna -->
+<!-- 9. M14 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Istanbul_M14_Line_Symbol.svg" class="logo" alt="M14">
-        <span class="text">Altunizade - Bosna Bulvarı Metrosu</span>
+        <span class="text">Altunizade - Bosna Bulvarı</span>
         <span class="info-symbol" data-target="infoBox6">i</span>
     </div>
     <div class="clock" id="clock6"></div>
     <div class="info-box" id="infoBox6">
-        <p>İstanbul'un 4. Levent - Hisarüstü (M6) hattından sonra ikinci tek tünelli metrosu olacak hattın 2023 yılında açılması hedefleniyordu Lakin zemin zorlukları sebebiyle sürekli ertelendi Şu anda tünel kazıları bitmek üzere olan hattın istasyon inşaatları da devam etmekte</p>
+        <p>M14 hattının inşaatının 2027 sonuna kadar tamamlanması planlanmaktadır.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
@@ -264,7 +281,7 @@ const tarihler = {
     clock2: "29 Ekim 2025",
     clock3: "30 Ocak 2026",
     clock4: "31 Mayıs 2026",
-    clock5: "30 Haziran 2026",
+    clock5: "30 Haziran 2026"
 };
 
 function gunSayaci(clockId, acilisTarihi, mesaj){
@@ -309,10 +326,10 @@ function gunSayaci6(clockId){
 
 function updateAll(){
     gunSayaci("clock1", acilis1, "Akçaray Açıldı 🎉");
-    gunSayaci("clock2", acilis2, "M11 Hattı Açıldı 🎉");
-    gunSayaci("clock3", acilis3, "M5 Hattı Açıldı 🎉");
-    gunSayaci("clock4", acilis4, "M12 Hattı Açıldı 🎉");
-    gunSayaci("clock5", acilis5, "Gebze - Darıca Metro Açıldı 🎉");
+    gunSayaci("clock2", acilis2, "M11 Açıldı 🎉");
+    gunSayaci("clock3", acilis3, "M5 Açıldı 🎉");
+    gunSayaci("clock4", acilis4, "M12 Açıldı 🎉");
+    gunSayaci("clock5", acilis5, "Gebze-Darıca Açıldı 🎉");
     gunSayaci5b("clock5b");
     gunSayaci65("clock65");
     gunSayaci7("clock7");
@@ -322,9 +339,11 @@ setInterval(updateAll, 1000);
 updateAll();
 
 /* Tema toggle */
-document.getElementById("temaToggle").addEventListener("click", ()=>{document.body.classList.toggle("dark-mode");});
+document.getElementById("temaToggle").addEventListener("click", ()=>{
+    document.body.classList.toggle("dark-mode");
+});
 
-/* Info kutuları: animasyonlu aç/kapat */
+/* Info kutuları */
 document.querySelectorAll(".info-symbol").forEach(symbol=>{
     const targetId = symbol.dataset.target;
     const box = document.getElementById(targetId);
