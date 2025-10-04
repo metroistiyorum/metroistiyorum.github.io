@@ -11,6 +11,62 @@ html, body {
     font-family: Arial, sans-serif;
     transition: background 0.3s, color 0.3s;
 }
+
+/* --- Mobil görünüm TAM SAYFA büyütme --- */
+@media (max-width:640px){
+    html, body {
+        font-size: 38px !important;
+    }
+    .wrapper {
+        padding: 0 4vw;
+    }
+    .message {
+        font-size: 2.2em;
+        gap: 2em;
+    }
+    img.logo {
+        height: 10em;
+        max-width: 90vw;
+    }
+    .clock {
+        font-size: 2.4em;
+        margin-top: 16px;
+    }
+    .info-box {
+        font-size: 1.5em;
+        padding: 2em;
+        width: 98vw !important;
+        left: 50% !important;
+        top: 50% !important;
+        max-height: 98vh !important;
+        transform:translate(-50%,-50%) translateY(-20px) !important;
+        z-index: 3001 !important;
+    }
+    .info-box.show {
+        transform:translate(-50%,-50%) translateY(0) !important;
+        opacity:1 !important;
+    }
+    .close-btn {
+        font-size: 1.3em;
+        padding: 1em 2em;
+    }
+    #temaToggle {
+        font-size: 2em;
+        padding: 1em 2em;
+        top: 8px;
+        right: 8px;
+    }
+    .link-box {
+        font-size: 2em;
+        padding: 1em 0;
+    }
+    .sayaç-grubu {
+        margin-bottom: 6em;
+        max-width: 99vw;
+    }
+}
+
+/* Masaüstü ve genel stiller */
 body.dark-mode {background:#000;color:#fff;}
 #temaToggle {
     position: fixed; top:15px; right:15px; padding:10px 15px;
@@ -49,39 +105,6 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     font-size:22px; font-weight:bold; color:purple; cursor:pointer; text-decoration:none; margin:0; padding:10px 0;
 }
 #gelecek{display:none;}
-
-/* --- Mobil görünüm DAHA DA büyütme --- */
-@media (max-width:640px){
-    .message{font-size:38px; gap:22px;} /* mesaj yazısı çok daha büyük */
-    img.logo{height:95px;} /* logo çok daha büyük */
-    .clock{font-size:54px;} /* sayaç çok daha büyük */
-    .info-box{
-        width:96vw !important;
-        left:50% !important;
-        top:50% !important;
-        transform:translate(-50%,-50%) translateY(-20px) !important;
-        max-height:96vh !important;
-        overflow-y:auto !important;
-        z-index:3000 !important;
-        position:fixed !important;
-        opacity:0;
-        font-size:28px; /* info kutusu yazısı çok daha büyük */
-        padding:32px; /* kutu padding çok daha fazla */
-    }
-    .info-box.show{transform:translate(-50%,-50%) translateY(0) !important; opacity:1 !important;}
-    .close-btn{
-        font-size:28px;
-        padding:16px 24px;
-    }
-    #temaToggle{
-        font-size:32px;
-        padding:18px 28px;
-    }
-    .link-box{
-        font-size:32px;
-        padding:18px 0;
-    }
-}
 </style>
 </head>
 <body>
