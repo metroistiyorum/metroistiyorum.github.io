@@ -12,10 +12,12 @@ html, body {
     font-family: Arial, sans-serif;
     transition: background 0.3s, color 0.3s;
 }
+
 body.dark-mode {
     background: #000;
     color: #fff;
 }
+
 #temaToggle {
     position: fixed;
     top: 15px;
@@ -30,6 +32,7 @@ body.dark-mode {
     border-radius: 5px;
     z-index: 2000;
 }
+
 .wrapper {
     margin-top: 50px;
     display: flex;
@@ -39,6 +42,7 @@ body.dark-mode {
     padding: 0 16px;
     box-sizing: border-box;
 }
+
 .sayaç-grubu {
     margin-bottom: 80px;
     max-width: 600px;
@@ -46,25 +50,30 @@ body.dark-mode {
     text-align: left;
     position: relative;
 }
+
 .message {
     display: flex;
     align-items: center;
     gap: 15px;
     font-size: 30px;
 }
+
 img.logo {
     height: 60px;
     object-fit: contain;
     flex-shrink: 0;
 }
+
 #hat5b img.logo {
     border-radius: 8px;
 }
+
 .clock {
     font-size: 40px;
     font-weight: bold;
     margin-top: 10px;
 }
+
 .green { color: #008000; }
 .clock span + span { margin-left: 10px; color: black; }
 body.dark-mode .clock span { color: white; }
@@ -88,7 +97,10 @@ body.dark-mode .clock span + span { color: white; }
     top: 0;
     margin-left: 5px;
 }
+
 .info-symbol:hover { background: #888; color: #fff; }
+
+/* Web sürümü: info kutuları normal */
 .info-box {
     display: none;
     position: absolute;
@@ -100,16 +112,20 @@ body.dark-mode .clock span + span { color: white; }
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 8px;
-    width: 400px;
+    width: 400px;       
     line-height: 1.2;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    max-height: none;
+    overflow: visible;
 }
+
 body.dark-mode .info-box {
     background: #333;
     color: #fff;
     border-color: #555;
 }
+
 .info-box p { margin:0; padding:0; }
 .info-box .close-btn { margin-top:8px; cursor:pointer; background:#eee;border:0;padding:6px;border-radius:6px; }
 
@@ -122,6 +138,7 @@ body.dark-mode .info-box {
     margin: 0;
     padding: 10px 0;
 }
+
 #gelecek { display: none; margin-top: 0; }
 
 /* Web ve mevcut mobil stil */
@@ -129,9 +146,20 @@ body.dark-mode .info-box {
     .message { font-size: 20px; gap:10px; }
     img.logo { height:44px; }
     .clock { font-size: 28px; }
+}
 
-    /* Mobilde bilgi kutularını tamamen gizle */
-    .info-symbol, .info-box { display: none !important; }
+/* Mobilde info kutularını sayfanın tamamını kaplamadan ortala */
+@media (max-width:640px){
+    .info-box {
+        width: 90%;
+        max-width: 400px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-height: 70vh;
+        overflow-y: auto;
+        z-index: 9999;
+    }
 }
 </style>
 </head>
@@ -407,3 +435,4 @@ window.addEventListener("resize", () => {
 </script>
 </body>
 </html>
+
