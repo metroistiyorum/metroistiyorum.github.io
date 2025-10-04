@@ -48,21 +48,35 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 .link-box{
     font-size:22px; font-weight:bold; color:purple; cursor:pointer; text-decoration:none; margin:0; padding:10px 0;
 }
-#gelecek{display:none; margin-top:0;}
+#gelecek{display:none;}
 
-/* --- MOBİLDE BÜYÜTME --- */
+/* --- Mobil görünüm büyütme --- */
 @media (max-width:640px){
-    .message{font-size:26px; gap:12px;}
-    img.logo{height:60px;}
-    .clock{font-size:34px;}
-    .info-box{font-size:18px;}
-    .link-box{font-size:24px;}
-    #temaToggle{font-size:18px; padding:12px 18px;}
+    .message{font-size:24px; gap:12px;} /* mesaj yazısı büyütüldü */
+    img.logo{height:50px;} /* logo biraz büyütüldü */
+    .clock{font-size:32px;} /* sayaç büyütüldü */
     .info-box{
-        width:90vw !important; left:50% !important; top:50% !important; transform:translate(-50%,-50%) translateY(-20px) !important;
-        max-height:90vh !important; overflow-y:auto !important; z-index:3000 !important; position:fixed !important; opacity:0;
+        width:90vw !important;
+        left:50% !important;
+        top:50% !important;
+        transform:translate(-50%,-50%) translateY(-20px) !important;
+        max-height:90vh !important;
+        overflow-y:auto !important;
+        z-index:3000 !important;
+        position:fixed !important;
+        opacity:0;
+        font-size:18px; /* info kutusu yazısı büyütüldü */
+        padding:16px; /* kutu padding artırıldı */
     }
     .info-box.show{transform:translate(-50%,-50%) translateY(0) !important; opacity:1 !important;}
+    .close-btn{
+        font-size:16px;
+        padding:8px 12px;
+    }
+    #temaToggle{
+        font-size:18px;
+        padding:12px 18px;
+    }
 }
 </style>
 </head>
@@ -131,7 +145,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 <div id="gelecek" style="display:none;">
 
 <!-- 5. Gebze-Darıca -->
-<div class="sayaç-grubu" id="hat5">
+<div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Istanbul_Metro_Logo_%28subway_of_the_ministry%29.svg" class="logo" alt="Gebze-Darıca">
         <span class="text">Gebze - Darıca Metro Hattı</span>
@@ -267,18 +281,40 @@ function gunSayaci6(clockId){
 }
 
 function updateAll(){
-    gunSayaci("clock1", acilis1, "Açıldı 🎉");
-    gunSayaci("clock2", acilis2, "Açıldı 🎉");
-    gunSayaci("clock3", acilis3, "Açıldı 🎉");
-    gunSayaci("clock4", acilis4, "Açıldı 🎉");
-    gunSayaci("clock5", acilis5, "Açıldı 🎉");
+    gunSayaci("clock1", acilis1, "Akçaray Açıldı 🎉");
+    gunSayaci("clock2", acilis2, "M11 Hattı Açıldı 🎉");
+    gunSayaci("clock3", acilis3, "M5 Hattı Açıldı 🎉");
+    gunSayaci("clock4", acilis4, "M12 Hattı Açıldı 🎉");
+    gunSayaci("clock5", acilis5, "Gebze - Darıca Metro Açıldı 🎉");
     gunSayaci5b("clock5b");
     gunSayaci65("clock65");
     gunSayaci7("clock7");
     gunSayaci6("clock6");
 }
+setInterval(updateAll, 1000);
 updateAll();
-setInterval(updateAll, 1000*60*60);
+
+/* Tema toggle */
+document.getElementById("temaToggle").addEventListener("click", ()=>{document.body.classList.toggle("dark-mode");});
+
+/* Info kutuları: animasyonlu aç/kapat */
+document.querySelectorAll(".info-symbol").forEach(symbol=>{
+    const targetId = symbol.dataset.target;
+    const box = document.getElementById(targetId);
+    const closeBtn = box.querySelector(".close-btn");
+    symbol.addEventListener("click", e=>{
+        e.stopPropagation();
+        box.classList.toggle("show");
+    });
+    closeBtn.addEventListener("click", e=>{
+        e.stopPropagation();
+        box.classList.remove("show");
+    });
+});
+document.addEventListener("click", e=>{
+    if(e.target.closest(".info-symbol")) return;
+    document.querySelectorAll(".info-box").forEach(b=>b.classList.remove("show"));
+});
 
 function showGelecek(){
     document.getElementById("gelecek").style.display="block";
@@ -286,36 +322,6 @@ function showGelecek(){
     const hat5=document.getElementById("hat5");
     if(hat5) hat5.scrollIntoView({behavior:"smooth",block:"start"});
 }
-
-document.getElementById("temaToggle").addEventListener("click",()=>{
-    document.body.classList.toggle("dark-mode");
-});
-
-document.querySelectorAll(".info-symbol").forEach(symbol=>{
-    symbol.addEventListener("click", e=>{
-        e.stopPropagation();
-        const target = symbol.getAttribute("data-target");
-        const box = document.getElementById(target);
-        if(box){
-            box.classList.toggle("show");
-            if(box.classList.contains("show")){
-                document.body.style.overflow = "hidden";
-            } else {
-                document.body.style.overflow = "auto";
-            }
-        }
-    });
-});
-
-document.querySelectorAll(".info-box .close-btn").forEach(btn=>{
-    btn.addEventListener("click", e=>{
-        e.stopPropagation();
-        const box = btn.closest(".info-box");
-        box.classList.remove("show");
-        document.body.style.overflow = "auto";
-    });
-});
-
 window.addEventListener("resize", ()=>{
     document.getElementById("gelecek").style.display="none";
     document.getElementById("linkGelecek").style.display="block";
@@ -323,5 +329,3 @@ window.addEventListener("resize", ()=>{
 </script>
 </body>
 </html>
-
-
