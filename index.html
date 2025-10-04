@@ -75,14 +75,6 @@ body.dark-mode .info-box {
     color: blue;
     text-decoration: underline;
 }
-
-/* 📱 Mobilde info kutuları tamamen gizle */
-@media (max-width:640px) {
-    .info-symbol,
-    .info-box {
-        display: none !important;
-    }
-}
 </style>
 </head>
 <body>
@@ -145,12 +137,23 @@ function startCountdown(id, targetDate) {
 startCountdown("countdown1", new Date("2025-12-31T00:00:00").getTime());
 startCountdown("countdown2", new Date("2026-06-01T00:00:00").getTime());
 startCountdown("countdown3", new Date("2027-01-15T00:00:00").getTime());
+</script>
 
-// 📱 Ek garanti: mobilde DOM'dan info kutularını tamamen kaldır
+<!-- 📱 SADECE MOBİL İÇİN EK KOD -->
+<style>
+@media (max-width:640px){
+    .info-symbol,
+    .info-box {
+        display: none !important;
+    }
+}
+</style>
+<script>
+// Mobilde DOM’dan info elementlerini tamamen kaldır
 if (window.matchMedia("(max-width:640px)").matches) {
     document.querySelectorAll(".info-symbol, .info-box").forEach(el => el.remove());
 }
 </script>
+
 </body>
 </html>
-
