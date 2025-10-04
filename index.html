@@ -13,8 +13,8 @@ html, body {
     transition: background 0.3s, color 0.3s;
 }
 body.dark-mode {
-    background: black;
-    color: white;
+    background: #000;
+    color: #fff;
 }
 #temaToggle {
     position: fixed;
@@ -121,15 +121,16 @@ body.dark-mode .info-box {
 }
 #gelecek { display: none; margin-top: 0; }
 
+/* Web ve mevcut mobil stil */
 @media (max-width:640px){
-    /* Mobilde bilgi kutularını tamamen gizle */
-    .info-symbol, .info-box {
-        display: none !important;
-    }
-
     .message { font-size: 20px; gap:10px; }
     img.logo { height:44px; }
     .clock { font-size: 28px; }
+
+    /* Mobilde info kutularını tamamen gizle */
+    .info-symbol, .info-box {
+        display: none !important;
+    }
 }
 </style>
 </head>
@@ -137,14 +138,15 @@ body.dark-mode .info-box {
 <button id="temaToggle">Tema Değiştir</button>
 
 <div class="wrapper" id="wrapper">
-    <!-- Örnek Hatlar -->
+
+    <!-- 1. Akçaray -->
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/tr/d/d9/Ak%C3%A7aray_logo.png" class="logo" alt="Akçaray">
             <span class="text">Otogar - Stadyum Uzatması</span>
             <span class="info-symbol" id="info1">i
                 <div class="info-box" id="infoBox1">
-                    <p>Kocaeli Akçaray tramvay hattının Stadyum uzatması hakkında bilgi.</p>
+                    <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına kadar açılması hedefleniyor. Bu etapla beraber sistemin büyüklüğü 18 km ve 27 istasyona ulaşacak.</p>
                     <button class="close-btn">Kapat</button>
                 </div>
             </span>
@@ -152,19 +154,74 @@ body.dark-mode .info-box {
         <div class="clock" id="clock1"></div>
     </div>
 
+    <!-- 2. M11 -->
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Istanbul_M11_Line_Symbol.svg" class="logo" alt="M11">
             <span class="text">Arnavutköy - Halkalı Uzatması</span>
             <span class="info-symbol" id="info2">i
                 <div class="info-box" id="infoBox2">
-                    <p>M11 hattının son etabı hakkında bilgi.</p>
+                    <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyor.</p>
                     <button class="close-btn">Kapat</button>
                 </div>
             </span>
         </div>
         <div class="clock" id="clock2"></div>
     </div>
+
+    <!-- 3. M5 -->
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Istanbul_M5_Line_Symbol.svg" class="logo" alt="M5">
+            <span class="text">Samandıra - Sultanbeyli Uzatması</span>
+            <span class="info-symbol" id="info3">i
+                <div class="info-box" id="infoBox3">
+                    <p>Üsküdar - Samandıra arasında çalışmakta olan hattın 4.4 km ve 3 istasyondan oluşan son etabının ocak ayı bitmeden açılacağı belirtiliyor.</p>
+                    <button class="close-btn">Kapat</button>
+                </div>
+            </span>
+        </div>
+        <div class="clock" id="clock3"></div>
+    </div>
+
+    <!-- 4. M12 -->
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_M12_Line_Symbol.svg" class="logo" alt="M12">
+            <span class="text">Ümraniye - Ataşehir - Göztepe Hattı</span>
+            <span class="info-symbol" id="info4">i
+                <div class="info-box" id="infoBox4">
+                    <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu.</p>
+                    <button class="close-btn">Kapat</button>
+                </div>
+            </span>
+        </div>
+        <div class="clock" id="clock4"></div>
+    </div>
+
+    <!-- Link -->
+    <div class="link-box" id="linkGelecek" onclick="showGelecek()">
+        Uzak geleceği görmek istiyorsan tıkla
+    </div>
+
+    <!-- Gelecek Sayaçlar (başlangıç gizli) -->
+    <div id="gelecek" style="display:none;">
+        <!-- 5. Hat -->
+        <div class="sayaç-grubu" id="hat5">
+            <div class="message">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Istanbul_Metro_Logo_%28subway_of_the_ministry%29.svg" class="logo" alt="Gebze-Darıca">
+                <span class="text">Gebze - Darıca Metro Hattı</span>
+                <span class="info-symbol" id="info5">i
+                    <div class="info-box" id="infoBox5">
+                        <p>Kocaeli'nin ilk metrosu olacak hat 15 km ve 11 istasyondan oluşmakta.</p>
+                        <button class="close-btn">Kapat</button>
+                    </div>
+                </span>
+            </div>
+            <div class="clock" id="clock5"></div>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -192,6 +249,16 @@ document.addEventListener("click", (e) => {
     if(e.target.closest(".info-symbol")) return;
     document.querySelectorAll(".info-box").forEach(b => b.style.display = "none");
 });
+
+// Gelecek link
+function showGelecek(){
+    const gelecek = document.getElementById("gelecek");
+    const link = document.getElementById("linkGelecek");
+    if(gelecek) gelecek.style.display = "block";
+    if(link) link.style.display = "none";
+    const hat5 = document.getElementById("hat5");
+    if(hat5) hat5.scrollIntoView({behavior: "smooth", block: "start"});
+}
 </script>
 
 </body>
