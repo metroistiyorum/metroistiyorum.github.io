@@ -35,7 +35,7 @@ body.dark-mode {background:#000;color:#fff;}
 
 /* ✅ Mobil görünüm zoom */
 body.zoomed {
-    transform: scale(1.8);
+    transform: scale(1.9);
     transform-origin: top left;
     overflow-x:hidden;
 }
@@ -72,14 +72,12 @@ body.zoomed .clock {
     font-size: 50px;
 }
 
-body.zoomed .info-symbol {
-    width: 26px;
-    height: 26px;
-    font-size: 18px;
-}
-
-body.zoomed .link-box {
-    font-size: 26px;
+/* 🔹 Sayaç grupları arasına boşluk (eski haline yakın) */
+.sayaç-grubu {
+    margin-bottom: 80px;
+    max-width:600px;
+    width:100%;
+    text-align:left;
 }
 
 /* 🔹 Mobil modda bilgi kutuları daha büyük ve okunabilir hale gelsin */
@@ -101,8 +99,16 @@ body.zoomed .close-btn {
     border-radius: 8px;
 }
 
-.sayaç-grubu {margin-bottom:80px; max-width:600px; width:100%; text-align:left;}
-.message {display:flex; align-items:center; gap:15px; font-size:30px;}
+/* 🔸 Satırların alta geçmesini engelle */
+.message {
+    display:flex; 
+    align-items:center; 
+    gap:15px; 
+    font-size:30px;
+    flex-wrap:nowrap;
+    white-space:nowrap;
+}
+
 img.logo {height:60px; object-fit:contain; flex-shrink:0;}
 .clock {font-size:40px; font-weight:bold; margin-top:10px;}
 .green{color:#008000;}
