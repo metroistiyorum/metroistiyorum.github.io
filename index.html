@@ -22,29 +22,29 @@ body.dark-mode {background:#000;color:#fff;}
 #mobilToggle {top:60px;}
 
 .wrapper {
-    margin-top:50px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    width:100%;
-    padding:0 16px;
+    margin-top:50px; 
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+    width:100%; 
+    padding:0 16px; 
     box-sizing:border-box;
     transition: all 0.3s ease;
 }
 
-/* ✅ Mobil görünüm: tema bağımsız */
+/* ✅ Mobil görünüm: sol üstten yakınlaştır, sağda 20px boşluk kalacak kadar büyüt */
 body.zoomed {
     overflow-x:hidden;
     margin:0;
     padding:0;
 }
-body.zoomed #temaToggle,
+body.zoomed #temaToggle, 
 body.zoomed #mobilToggle {
     display:none;
 }
 body.zoomed .wrapper {
-    transform: scale(1.15);
-    transform-origin: top left; /* 🔍 Sol üstten yakınlaştırma */
+    transform: scale(1.28);
+    transform-origin: top left;
     align-items:flex-start;
     padding-left:20px;
     margin-top:20px;
@@ -225,6 +225,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
         <button class="close-btn">Kapat</button>
     </div>
 </div>
+
 </div>
 </div>
 
@@ -278,15 +279,16 @@ document.addEventListener("click", function(e){
 });
 function toggleBox(box){ box.classList.contains("show") ? hideBox(box) : showBox(box); }
 function showBox(box){ box.style.display="block"; requestAnimationFrame(()=> box.classList.add("show")); }
-function hideBox(box){ box.classList.remove("show"); box.addEventListener("transitionend",()=> box.style.display="none",{once:true}); }
+function hideBox(box){ box.classList.remove("show"); box.addEventListener("transitionend", ()=> box.style.display="none",{once:true}); }
 
 function showGelecek(){
-  const g = document.getElementById("gelecek");
-  g.style.display = g.style.display === "block" ? "none" : "block";
-  document.getElementById("linkGelecek").textContent = g.style.display === "block" ? "Yakın geleceğe dön" : "Uzak geleceği görmek istiyorsan tıkla";
+    const g = document.getElementById("gelecek");
+    g.style.display = g.style.display === "block" ? "none" : "block";
+    document.getElementById("linkGelecek").innerText = g.style.display === "block" ? "Uzak gelecek gizle" : "Uzak geleceği görmek istiyorsan tıkla";
 }
 </script>
 </body>
 </html>
+
 
 
