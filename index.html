@@ -35,7 +35,7 @@ body.dark-mode {background:#000;color:#fff;}
 
 /* ✅ Mobil görünüm zoom */
 body.zoomed {
-    transform: scale(1.8); /* 🔹 daha büyük hale getirildi */
+    transform: scale(1.8);
     transform-origin: top left;
     overflow-x:hidden;
 }
@@ -51,24 +51,54 @@ body.zoomed .wrapper {
     box-sizing:border-box;
 }
 
-/* 🔹 Mobil sürümde ögeler orantılı olarak büyür */
+body.zoomed #gelecek {
+    margin: 0;
+    padding-left:0;
+    max-width:none;
+    width:100%;
+}
+
+/* 🔹 Mobil sürümde genel metin ve logo boyutları artırıldı */
 body.zoomed .message {
     font-size: 34px;
     gap: 18px;
 }
+
 body.zoomed img.logo {
     height: 75px;
 }
+
 body.zoomed .clock {
     font-size: 50px;
 }
+
 body.zoomed .info-symbol {
     width: 26px;
     height: 26px;
     font-size: 18px;
 }
+
 body.zoomed .link-box {
     font-size: 26px;
+}
+
+/* 🔹 Mobil modda bilgi kutuları daha büyük ve okunabilir hale gelsin */
+body.zoomed .info-box {
+    font-size: 22px;
+    line-height: 1.6;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+body.zoomed .info-box p {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+body.zoomed .close-btn {
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 8px;
 }
 
 .sayaç-grubu {margin-bottom:80px; max-width:600px; width:100%; text-align:left;}
@@ -109,9 +139,17 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 
 .link-box{
     font-size:22px; font-weight:bold; color:purple; cursor:pointer; text-decoration:none; margin:0; padding:10px 0;
+    display:block; text-align:center;
 }
 .link-box:hover{color:darkviolet;}
-#gelecek{display:none;}
+
+#gelecek{
+    display:none;
+    width:100%;
+    max-width:600px;
+    margin:0 auto;
+    text-align:left;
+}
 
 @media (max-width:640px){
     .message{font-size:24px; gap:12px;}
