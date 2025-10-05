@@ -17,11 +17,37 @@ body.dark-mode {background:#000;color:#fff;}
     cursor:pointer; background:#333; color:#fff; border:none;
     font-weight:bold; font-size:16px; border-radius:5px; z-index:2000;
 }
-.wrapper {margin-top:50px; display:flex; flex-direction:column; align-items:center; width:100%; padding:0 16px; box-sizing:border-box;}
-.sayaç-grubu {margin-bottom:80px; max-width:600px; width:100%; text-align:left;}
-.message {display:flex; align-items:center; gap:15px; font-size:30px;}
-img.logo {height:60px; object-fit:contain; flex-shrink:0;}
-.clock {font-size:40px; font-weight:bold; margin-top:10px;}
+.wrapper {
+    margin-top:50px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    padding:0 16px;
+    box-sizing:border-box;
+}
+.sayaç-grubu {
+    margin-bottom:80px;
+    max-width:600px;
+    width:100%;
+    text-align:left;
+}
+.message {
+    display:flex;
+    align-items:center;
+    gap:15px;
+    font-size:30px;
+}
+img.logo {
+    height:60px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+.clock {
+    font-size:40px;
+    font-weight:bold;
+    margin-top:10px;
+}
 .green{color:#008000;} 
 .clock span + span{margin-left:10px; color:black;} 
 body.dark-mode .clock span{color:white;}
@@ -52,7 +78,10 @@ body.dark-mode .clock span + span{color:white;}
 }
 body.dark-mode .info-box{background:#333;color:#fff;border-color:#555;}
 .info-box p{margin:0; padding:0; font-weight:600;}
-.close-btn{margin-top:8px; cursor:pointer; background:#eee; border:1px solid #ccc; padding:6px; border-radius:6px; font-weight:600; display:inline-block;}
+.close-btn{
+    margin-top:8px; cursor:pointer; background:#eee; border:1px solid #ccc; padding:6px; border-radius:6px;
+    font-weight:600; display:inline-block;
+}
 body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 
 .link-box{
@@ -60,13 +89,35 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 }
 #gelecek{display:none;}
 
-/* --- Mobil küçük düzenlemeler (bilgi kutusu yine satır altı küçük kutu kalır) --- */
+/* --- Mobil küçük düzenlemeler --- */
 @media (max-width:640px){
-    .message{font-size:24px; gap:12px;}
-    img.logo{height:50px;}
-    .clock{font-size:32px;}
-    .close-btn{font-size:14px;}
-    #temaToggle{font-size:16px;}
+    .wrapper {
+        align-items: stretch; /* ortalama yerine tam genişlik */
+        padding: 0; /* kenar boşluklarını kaldır */
+    }
+    .sayaç-grubu {
+        max-width: none; /* 600px sınırını kaldır */
+        width: 100%; /* tam genişlik */
+        margin-bottom: 60px;
+        padding: 0 10px; /* köşelere çok yapışmasın diye hafif boşluk */
+        box-sizing: border-box;
+    }
+    .message {
+        font-size: 26px;
+        gap: 10px;
+    }
+    img.logo {
+        height: 56px;
+    }
+    .clock {
+        font-size: 34px;
+    }
+    .close-btn {
+        font-size: 14px;
+    }
+    #temaToggle {
+        font-size: 16px;
+    }
 }
 </style>
 </head>
@@ -125,7 +176,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock4"></div>
     <div class="info-box" id="infoBox4" role="region" aria-label="M12 bilgisi">
-        <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu; İBB hatta çalışmalara yeniden başlayıp 2026 Mayıs ayında açmayı hedefliyo.</p>
+        <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu; İBB hatta çalışmalara yeniden başlayıp 2026 Mayıs ayında açmayı hedefliyor.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
@@ -241,69 +292,31 @@ setInterval(updateAll, 1000);
 updateAll();
 
 // Tema toggle (basit)
-document.getElementById("temaToggle").addEventListener("click", ()=>{ document.body.classList.toggle("dark-mode"); });
-
-// Bilgi kutuları: event delegation kullanarak hem görünür hem gizli alanlardaki öğeleri yakalıyoruz
-document.addEventListener("click", function(e){
-    // info-symbol tıklaması
-    const sym = e.target.closest(".info-symbol");
-    if (sym) {
-        e.stopPropagation();
-        const targetId = sym.getAttribute("data-target");
-        const box = document.getElementById(targetId);
-        if (!box) return;
-        // başka açık kutular varsa kapat
-        document.querySelectorAll(".info-box.show").forEach(b => { if (b !== box) hideBox(b); });
-        toggleBox(box);
-        return;
-    }
-    // kapatma butonu tıklaması
-    const close = e.target.closest(".close-btn");
-    if (close) {
-        e.stopPropagation();
-        const box = close.closest(".info-box");
-        if (box) hideBox(box);
-        return;
-    }
-    // sayfa herhangi bir yerine tıklanırsa açık kutuları kapat
-    if (!e.target.closest(".info-box")) {
-        document.querySelectorAll(".info-box.show").forEach(b => hideBox(b));
-    }
+document.getElementById("temaToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
 });
 
-// göster/kapat fonksiyonları (animasyon uyumlu)
-function toggleBox(box){
-    if (box.classList.contains("show")) hideBox(box); else showBox(box);
-}
-function showBox(box){
-    // display:block -> sonra class show ekle
-    box.style.display = "block";
-    // force reflow/raf to ensure transition
-    requestAnimationFrame(()=> box.classList.add("show"));
-}
-function hideBox(box){
+// Bilgi kutusu açma/kapama
+document.querySelectorAll(".info-symbol").forEach(btn => {
+  btn.addEventListener("click", e => {
+    const target = document.getElementById(btn.dataset.target);
+    target.classList.toggle("show");
+    target.style.display = target.classList.contains("show") ? "block" : "none";
+  });
+});
+document.querySelectorAll(".close-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    const box = e.target.closest(".info-box");
     box.classList.remove("show");
-    // transitionend'i bir kere dinle, sonra display:none yap
-    const handler = (ev) => {
-        // sadece kutunun kök transitionu tamamlandığında (ya da herhangi bir transition) çalışsın
-        box.style.display = "none";
-        box.removeEventListener("transitionend", handler);
-    };
-    box.addEventListener("transitionend", handler);
-}
+    setTimeout(()=>box.style.display="none",280);
+  });
+});
 
-// Uzak geleceği göster butonu
+// Uzak geleceği göster
 function showGelecek(){
-    const g = document.getElementById("gelecek");
-    const link = document.getElementById("linkGelecek");
-    if (g && link) {
-        g.style.display = "block";
-        link.style.display = "none";
-        // info-symbol delegation zaten çalıştığından yeni öğelere ayrıca bağlama gerek yok
-    }
+  document.getElementById("gelecek").style.display = "block";
+  document.getElementById("linkGelecek").style.display = "none";
 }
 </script>
 </body>
 </html>
-
-
