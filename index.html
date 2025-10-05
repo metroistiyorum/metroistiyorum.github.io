@@ -9,7 +9,7 @@ html, body {
     padding:0;
     height:100%;
     font-family: Arial, sans-serif;
-    transition: background 0.3s, color 0.3s, transform 0.4s ease;
+    transition: background 0.3s, color 0.3s, transform 0.6s ease;
 }
 body.dark-mode {background:#000;color:#fff;}
 
@@ -17,6 +17,7 @@ body.dark-mode {background:#000;color:#fff;}
     position: fixed; right:15px; padding:10px 15px;
     cursor:pointer; background:#333; color:#fff; border:none;
     font-weight:bold; font-size:16px; border-radius:5px; z-index:2000;
+    transition: all 0.3s ease;
 }
 #temaToggle {top:15px;}
 #mobilToggle {top:60px;}
@@ -29,19 +30,19 @@ body.dark-mode {background:#000;color:#fff;}
     width:100%; 
     padding:0 16px; 
     box-sizing:border-box;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
-/* ✅ Mobil görünüm: genel zoom */
+/* 🔍 Mobil zoom efekti */
 body.zoomed {
-    transform-origin: top left;
     transform: scale(1.5);
-    transition: transform 0.4s ease;
-    overflow-x:hidden;
+    transform-origin: top left;
+    overflow:hidden;
 }
-body.zoomed #temaToggle, 
-body.zoomed #mobilToggle {
-    display:none;
+body.zoomed .wrapper {
+    align-items:flex-start;
+    margin-top:20px;
+    padding-left:20px;
 }
 
 .sayaç-grubu {margin-bottom:80px; max-width:600px; width:100%; text-align:left;}
@@ -68,7 +69,7 @@ body.dark-mode .clock span + span{color:white;}
     opacity:0;
     max-height:0;
     overflow:hidden;
-    transition: transform 0.28s ease, opacity 0.28s ease, max-height 0.28s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
 }
 .info-box.show{
     transform:translateY(0);
@@ -97,125 +98,120 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 </head>
 <body>
 <button id="temaToggle">Tema Değiştir</button>
-<button id="mobilToggle">Mobil Sürüme Geç</button>
+<button id="mobilToggle">Mobil Sürüm</button>
 
 <div class="wrapper" id="wrapper">
 
-<!-- ✅ Akçaray -->
+<!-- 1. Akçaray -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/tr/d/d9/Ak%C3%A7aray_logo.png" class="logo" alt="Akçaray">
         <span class="text">Otogar - Stadyum Uzatması</span>
-        <span class="info-symbol" data-target="infoBox1" title="Detay">i</span>
+        <span class="info-symbol" data-target="infoBox1">i</span>
     </div>
     <div class="clock" id="clock1"></div>
     <div class="info-box" id="infoBox1">
-        <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına kadar açılması hedefleniyor.</p>
+        <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına kadar açılması hedefleniyor. Bu etapla beraber sistemin büyüklüğü 18 km ve 27 istasyona ulaşacak.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- ✅ M11 -->
+<!-- 2. M11 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Istanbul_M11_Line_Symbol.svg" class="logo" alt="M11">
         <span class="text">Arnavutköy - Halkalı Uzatması</span>
-        <span class="info-symbol" data-target="infoBox2" title="Detay">i</span>
+        <span class="info-symbol" data-target="infoBox2">i</span>
     </div>
     <div class="clock" id="clock2"></div>
     <div class="info-box" id="infoBox2">
-        <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabının Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyor.</p>
+        <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyor. Ulaştırma Bakanlığı 2025 sonu dediğinden beri ek bilgi paylaşmadı.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- ✅ M5 -->
+<!-- 3. M5 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Istanbul_M5_Line_Symbol.svg" class="logo" alt="M5">
         <span class="text">Samandıra - Sultanbeyli Uzatması</span>
-        <span class="info-symbol" data-target="infoBox3" title="Detay">i</span>
+        <span class="info-symbol" data-target="infoBox3">i</span>
     </div>
     <div class="clock" id="clock3"></div>
     <div class="info-box" id="infoBox3">
-        <p>Üsküdar - Samandıra hattının 4.4 km ve 3 istasyondan oluşan uzatması Ocak 2026'da açılacak.</p>
+        <p>Üsküdar - Samandıra arasında çalışmakta olan hattın 4.4 km ve 3 istasyondan oluşan son etabının Ocak 2026 bitmeden açılacağı belirtiliyor. 2023 yılında Çekmeköy - Samandıra arasının açılışına yetişmediği için pas geçilen Sancaktepe Şehir Hastanesi istasyonunun ocak ayında açılıp açılmayacağı hakkında kesin bir bilgilendirme yok.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- ✅ M12 -->
+<!-- 4. M12 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_M12_Line_Symbol.svg" class="logo" alt="M12">
         <span class="text">Ümraniye - Ataşehir - Göztepe Hattı</span>
-        <span class="info-symbol" data-target="infoBox4" title="Detay">i</span>
+        <span class="info-symbol" data-target="infoBox4">i</span>
     </div>
     <div class="clock" id="clock4"></div>
     <div class="info-box" id="infoBox4">
-        <p>13 km ve 11 istasyondan oluşacak hattın 2026 Mayıs ayında açılması hedefleniyor.</p>
+        <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu; İBB hatta çalışmalara yeniden başlayıp 2026 Mayıs ayında açmayı hedefliyor.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<div class="link-box" id="linkGelecek" onclick="showGelecek()">Uzak geleceği görmek istiyorsan tıkla</div>
-
-<div id="gelecek">
-
-<!-- ✅ Gebze-Darıca -->
+<!-- 5. Gebze - Darıca -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Istanbul_Metro_Logo_%28subway_of_the_ministry%29.svg" class="logo" alt="Gebze-Darıca">
         <span class="text">Gebze - Darıca Metro Hattı</span>
-        <span class="info-symbol" data-target="infoBox5" title="Detay">i</span>
+        <span class="info-symbol" data-target="infoBox5">i</span>
     </div>
     <div class="clock" id="clock5"></div>
     <div class="info-box" id="infoBox5">
-        <p>Kocaeli'nin ilk metrosu olacak hat 15 km ve 11 istasyondan oluşmakta. Açılış: Haziran 2026.</p>
+        <p>Kocaeli'nin ilk metrosu olacak hat 15 km ve 11 istasyondan oluşmakta. Ulaştırma Bakanlığı doğrudan açıklama yapmamış olsa da yerel gazetelerin bakanlıktan aldığı bilgiye göre hattın 2026'nın Haziran ayında açılması hedefleniyor.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- ✅ T5 -->
+<!-- 6. T5 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Istanbul_T5_Line_Symbol.svg" class="logo" alt="T5">
         <span class="text">Feshane - Bayrampaşa Uzatması</span>
-        <span class="info-symbol" data-target="infoBox6" title="Detay">i</span>
+        <span class="info-symbol" data-target="infoBox6">i</span>
     </div>
     <div class="clock" id="clock6"></div>
     <div class="info-box" id="infoBox6">
-        <p>3.2 km uzunluğundaki uzatma, 2027’nin ilk yarısında açılacak.</p>
+        <p>Eminönü - Alibeyköy tramvay hattına Feshane istasyonuna 3. peron eklenerek bağlanacak uzatma 3.2 km ve 4 istasyondan oluşmakta. Hat açıldığında Eminönü - Alibeyköy ve Eminönü - Bayrampaşa olmak üzere iki ayrı işletmeye geçilecek.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- ✅ M7 -->
+<!-- 7. M7 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo" alt="M7">
         <span class="text">Yıldız - Kabataş Uzatması</span>
-        <span class="info-symbol" data-target="infoBox7" title="Detay">i</span>
+        <span class="info-symbol" data-target="infoBox7">i</span>
     </div>
     <div class="clock" id="clock7"></div>
     <div class="info-box" id="infoBox7">
-        <p>Beşiktaş ve Kabataş istasyonlarının arkeolojik kazıları 2027 içinde tamamlanacak.</p>
+        <p>Mecidiyeköy - Mahmutbey hattını sahile indirmek amacıyla projelendirilen Mecidiyeköy - Yıldız arası 2 Ocak 2023 tarihinde açıldı. Arkeolojik kazılar geriye kalan Beşiktaş ve Kabataş istasyonlarında uzun yıllar süren gecikmelere sebep oldu.</p>
         <button class="close-btn">Kapat</button>
     </div>
 </div>
 
-<!-- ✅ M14 -->
+<!-- 8. M14 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Istanbul_M14_Line_Symbol.svg" class="logo" alt="M14">
         <span class="text">Altunizade - Bosna Bulvarı Metrosu</span>
-        <span class="info-symbol" data-target="infoBox8" title="Detay">i</span>
+        <span class="info-symbol" data-target="infoBox8">i</span>
     </div>
     <div class="clock" id="clock8"></div>
     <div class="info-box" id="infoBox8">
-        <p>Tek tünelli M14 hattının 2027 yılı içinde tamamlanması bekleniyor.</p>
+        <p>İstanbul'un 4. Levent - Hisarüstü (M6) hattından sonra ikinci tek tünelli metrosu olacak hattın 2023 yılında açılması hedefleniyordu. Lakin zemin zorlukları sebebiyle sürekli ertelendi. Şu anda tünel kazıları bitmek üzere olan hattın istasyon inşaatları da devam etmekte.</p>
         <button class="close-btn">Kapat</button>
     </div>
-</div>
 </div>
 </div>
 
@@ -227,9 +223,9 @@ const clockData = {
   clock3: { type: "date", ts: new Date("2026-01-30T10:00:00").getTime(), label: "30 Ocak 2026" },
   clock4: { type: "date", ts: new Date("2026-05-31T10:00:00").getTime(), label: "31 Mayıs 2026" },
   clock5: { type: "date", ts: new Date("2026-06-30T10:00:00").getTime(), label: "30 Haziran 2026" },
-  clock6: { type: "range", start: new Date("2027-01-01T00:00:00").getTime(), end: new Date("2027-06-30T23:59:59").getTime(), label: "2027 ilk yarı" },
-  clock7: { type: "range", start: new Date("2027-01-01T00:00:00").getTime(), end: new Date("2027-12-31T23:59:59").getTime(), label: "2027 yılı" },
-  clock8: { type: "range", start: new Date("2027-01-01T00:00:00").getTime(), end: new Date("2027-12-31T23:59:59").getTime(), label: "2027 yılı" }
+  clock6: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-06-30").getTime(), label: "2027 İlk Yarısı" },
+  clock7: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027" },
+  clock8: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027" }
 };
 
 function updateAll() {
@@ -242,9 +238,9 @@ function updateAll() {
       const diff = Math.ceil((data.ts - now) / msGün);
       el.innerHTML = diff > 0 ? `<span class="green">${diff} gün</span> <span>${data.label}</span>` : `<span class="green">Açıldı 🎉</span>`;
     } else {
-      const dStart = Math.max(0, Math.ceil((data.start - now) / msGün));
-      const dEnd = Math.max(0, Math.ceil((data.end - now) / msGün));
-      el.innerHTML = (dStart===0 && dEnd===0) ? `<span class="green">Açıldı 🎉</span>` : `<span class="green">${dStart} - ${dEnd} gün</span> <span>${data.label}</span>`;
+      const dStart = Math.ceil((data.start - now) / msGün);
+      const dEnd = Math.ceil((data.end - now) / msGün);
+      el.innerHTML = `<span class="green">${Math.max(0,dStart)} - ${Math.max(0,dEnd)} gün</span> <span>${data.label}</span>`;
     }
   });
 }
@@ -270,11 +266,6 @@ document.addEventListener("click", function(e){
 function toggleBox(box){ box.classList.contains("show") ? hideBox(box) : showBox(box); }
 function showBox(box){ box.style.display="block"; requestAnimationFrame(()=> box.classList.add("show")); }
 function hideBox(box){ box.classList.remove("show"); box.addEventListener("transitionend", ()=> box.style.display="none",{once:true}); }
-
-function showGelecek(){
-    document.getElementById("gelecek").style.display="block";
-    document.getElementById("linkGelecek").style.display="none";
-}
 </script>
 </body>
 </html>
