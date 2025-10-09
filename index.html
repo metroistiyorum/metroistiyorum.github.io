@@ -121,13 +121,26 @@ img.logo[alt="Balat"] {
     border-radius:12px;
 }
 
-/* Sayaç metni - alt satıra kaymayı engelleyen ekleme */
+/* Sayaç metni */
 .clock {font-size:40px; font-weight:bold; margin-top:10px; white-space:nowrap;}
 .green{color:#008000;}
+.red{color:red;}
+.orange{color:orange;}
+.black{color:black;}
+
 .clock span + span{margin-left:10px; color:black;}
 body.dark-mode .clock span{color:white;}
 body.dark-mode .clock .green{color:#008000;}
+body.dark-mode .clock .red{color:#ff4d4d;}
+body.dark-mode .clock .orange{color:orange;}
+body.dark-mode .clock .black{color:white;}
 body.dark-mode .clock span + span{color:white;}
+
+/* Statik durumlar için boşluğu daraltan özel kural */
+.clock.static-status span + span {
+    margin-left: 0.25em;
+}
+
 
 /* Bilgi simgesi */
 .info-symbol{
@@ -136,7 +149,7 @@ body.dark-mode .clock span + span{color:white;}
 }
 .info-symbol:hover{background:#888; color:#fff;}
 
-/* Bilgi kutusu: başlangıçta kapalı, açılırken yumuşak animasyon */
+/* Bilgi kutusu */
 .info-box{
     display:none; margin-top:10px; background:#f0f0f0; color:#000; border:1px solid #ccc;
     padding:12px; border-radius:8px; width:100%; line-height:1.4; font-weight:600;
@@ -147,7 +160,6 @@ body.dark-mode .clock span + span{color:white;}
     overflow:hidden;
     transition: transform 320ms cubic-bezier(.2,.9,.2,1), opacity 320ms ease, max-height 320ms ease;
 }
-/* Gösterildiğinde: hafif yukarıdan gelip opaklaşıyor */
 .info-box.show{
     display:block;
     transform:translateY(0) scale(1);
@@ -159,14 +171,20 @@ body.dark-mode .info-box{background:#333;color:#fff;border-color:#555;}
 .close-btn{margin-top:8px; cursor:pointer; background:#eee; border:1px solid #ccc; padding:6px; border-radius:6px; font-weight:600; display:inline-block;}
 body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 
-/* Link kutusu */
+/* Link kutuları */
 .link-box{
     font-size:22px; font-weight:bold; color:purple; cursor:pointer; text-decoration:none; margin:0; padding:10px 0;
     display:block; text-align:center;
 }
 .link-box:hover{color:darkviolet;}
 
-#gelecek{
+.link-box-red {
+    font-size:22px; font-weight:bold; color:red; cursor:pointer; text-decoration:none; margin:0; padding:10px 0;
+    display:block; text-align:center;
+}
+.link-box-red:hover{color:darkred;}
+
+#gelecek, #belirsiz {
     display:none;
     width:100%;
     max-width:600px;
@@ -195,11 +213,10 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     <span class="text">Yıldıztepe Metro İstasyonu</span>
   </div>
   <div class="clock">
-    <span class="green">Bugün açılıyor !</span>
+    <span class="green">8 Ekim'de açıldı</span>
     <span>(3407 gün sürdü)</span>
   </div>
 </div>
-<!-- 1. Akçaray -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/tr/d/d9/Ak%C3%A7aray_logo.png" class="logo" alt="Akçaray">
@@ -213,7 +230,6 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
 </div>
 
-<!-- 2. M11 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Istanbul_M11_Line_Symbol.svg" class="logo" alt="M11">
@@ -227,7 +243,6 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
 </div>
 
-<!-- 3. M5 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Istanbul_M5_Line_Symbol.svg" class="logo" alt="M5">
@@ -241,7 +256,10 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
 </div>
 
-<!-- 4. M12 -->
+<div class="link-box" onclick="showGelecek()" role="button" tabindex="0">Uzak geleceği görmek istiyorsan tıkla</div>
+
+<div id="gelecek">
+
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_M12_Line_Symbol.svg" class="logo" alt="M12">
@@ -255,11 +273,6 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
 </div>
 
-<div class="link-box" onclick="showGelecek()" role="button" tabindex="0">Uzak geleceği görmek istiyorsan tıkla</div>
-
-<div id="gelecek">
-
-<!-- 5. Gebze-Darıca -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Istanbul_Metro_Logo_%28subway_of_the_ministry%29.svg" class="logo" alt="Gebze-Darıca">
@@ -273,7 +286,6 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
 </div>
 
-<!-- 6. Balat - Şehir Hastanesi Uzatması -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/BursaRay_logo.svg" class="logo" alt="Balat">
@@ -287,7 +299,6 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
 </div>
 
-<!-- 7. T5 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Istanbul_T5_Line_Symbol.svg" class="logo" alt="T5">
@@ -301,7 +312,6 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
 </div>
 
-<!-- 8. M7 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo" alt="M7">
@@ -315,7 +325,6 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
 </div>
 
-<!-- 9. M14 -->
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Istanbul_M14_Line_Symbol.svg" class="logo" alt="M14">
@@ -329,7 +338,6 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
 </div>
 
-<!-- 10. Üçyol - Çamlıkule -->
 <div class="sayaç-grubu">
   <div class="message">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Metro_%C4%B0zmir_logo.svg" class="logo" alt="Üçyol - Çamlıkule">
@@ -338,14 +346,78 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
   </div>
   <div class="clock" id="clock9" aria-live="polite"></div>
   <div class="info-box" id="infoBox9" role="region" aria-hidden="true">
-    <p>.</p>
+    <p>İzmir'in 2. metrosu olacak hat 13 km ve 10 istasyondan oluşup sürücüsüz işletilecektir. Hattın tünel kazılarında ağustos ayı itibariyle %77 ilerleme sağlanmıştır</p>
     <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
   </div>
 </div>
 
-</div>
+<div id="belirsiz-link" class="link-box-red" onclick="showBelirsiz()" role="button" tabindex="0" style="display:none;">Açılış tarihleri belirsiz hatları incele</div>
+
+</div> 
+<div id="belirsiz">
+    
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Istanbul_M4_Line_Symbol.svg" class="logo" alt="M4">
+            <span class="text">Tavşantepe - Kaynarca Uzatması</span>
+            <button class="info-symbol" data-target="infoBox11" aria-expanded="false" aria-controls="infoBox11">i</button>
+        </div>
+        <div class="clock static-status">
+            <span class="orange">%86</span><span class="black">ilerleme ile durdu</span>
+        </div>
+        <div class="info-box" id="infoBox11" role="region" aria-hidden="true">
+            <p>Kadıköy - Sabiha Gökçen Havalimanı (M4) metro hattının bu uzatması için çalışmalar durdurulmuştur. Projenin ne zaman devam edeceği hakkında net bir bilgi bulunmamaktadır.</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
+    </div>
+
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Istanbul_M10_Line_Symbol.svg" class="logo" alt="M10">
+            <span class="text">Pendik Merkez - Fevzi Çakmak Uzatması</span>
+            <button class="info-symbol" data-target="infoBox10" aria-expanded="false" aria-controls="infoBox10">i</button>
+        </div>
+        <div class="clock static-status">
+            <span class="orange">%86</span><span class="black">ilerleme ile durdu</span>
+        </div>
+        <div class="info-box" id="infoBox10" role="region" aria-hidden="true">
+            <p>.</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
+    </div>
+    
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo" alt="M7">
+            <span class="text">Mahmutbey - KSS Hastanesi Uzatması</span>
+            <button class="info-symbol" data-target="infoBox12" aria-expanded="false" aria-controls="infoBox12">i</button>
+        </div>
+        <div class="clock static-status">
+            <span class="orange">%50</span><span class="black">ilerleme ile durdu</span>
+        </div>
+        <div class="info-box" id="infoBox12" role="region" aria-hidden="true">
+            <p>.</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
+    </div>
+    
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Ankaray_logo.svg/2048px-Ankaray_logo.svg.png" class="logo" alt="Ankaray">
+            <span class="text">Dikimevi - Natoyolu Uzatması</span>
+            <button class="info-symbol" data-target="infoBox13" aria-expanded="false" aria-controls="infoBox13">i</button>
+        </div>
+        <div class="clock">
+            <span class="black">Çalışmalar başlamadı</span>
+        </div>
+        <div class="info-box" id="infoBox13" role="region" aria-hidden="true">
+            <p>.</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
+    </div>
 </div>
 
+</div> 
 <script>
 /* Zaman hesaplama */
 const msGün = 1000*60*60*24;
@@ -396,15 +468,13 @@ mobilBtn.addEventListener("click", () => {
   mobilBtn.textContent = pressed ? "Normal Görünüme Dön" : "Mobil Sürüme Geç";
 });
 
-/* Bilgi kutusu aç/kapa mantığı (animasyonlu) */
+/* Bilgi kutusu aç/kapa mantığı */
 document.addEventListener("click", function(e){
     const sym = e.target.closest(".info-symbol");
     if (sym) {
         const targetId = sym.getAttribute("data-target");
         const box = document.getElementById(targetId);
-        // Kapatılmamış diğer kutuları kapat
         document.querySelectorAll(".info-box.show").forEach(b => { if (b !== box) hideBox(b); });
-        // Toggle target
         if (box.classList.contains("show")) {
             hideBox(box);
             sym.setAttribute("aria-expanded", "false");
@@ -419,7 +489,6 @@ document.addEventListener("click", function(e){
         const parent = close.closest(".info-box");
         if (parent) {
             hideBox(parent);
-            // ilgili info-symbol butonunun aria-expanded'ını false yap
             const id = parent.id;
             const btn = document.querySelector(`.info-symbol[data-target="${id}"]`);
             if (btn) btn.setAttribute("aria-expanded", "false");
@@ -429,20 +498,15 @@ document.addEventListener("click", function(e){
 });
 function showBox(box){
     if (!box) return;
-    // set display block immediately so transition can run
     box.style.display = "block";
-    // ensure aria
     box.setAttribute("aria-hidden", "false");
-    // small timeout to ensure the display change is applied before adding class
     requestAnimationFrame(()=> box.classList.add("show"));
 }
 function hideBox(box){
     if (!box) return;
     box.classList.remove("show");
     box.setAttribute("aria-hidden", "true");
-    // after transition end, set display none to remove from flow
     box.addEventListener("transitionend", function onEnd(){
-        // only hide when opacity finished
         if (!box.classList.contains("show")) box.style.display = "none";
         box.removeEventListener("transitionend", onEnd);
     }, {once:true});
@@ -457,6 +521,14 @@ document.querySelectorAll('.link-box').forEach(el => {
         }
     });
 });
+document.querySelectorAll('.link-box-red').forEach(el => {
+    el.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            showBelirsiz();
+        }
+    });
+});
 
 /* Gelecek göster */
 function showGelecek(){
@@ -464,10 +536,25 @@ function showGelecek(){
     if (!g) return;
     g.style.display = "block";
     document.querySelectorAll(".link-box").forEach(lb => lb.style.display = "none");
+    
+    // Kırmızı linki göster
+    const belirsizLink = document.getElementById("belirsiz-link");
+    if(belirsizLink) {
+        belirsizLink.style.display = "block";
+    }
 }
+
+/* Belirsizleri göster */
+function showBelirsiz(){
+    const b = document.getElementById("belirsiz");
+    if (b) b.style.display = "block";
+    
+    const belirsizLink = document.getElementById("belirsiz-link");
+    if(belirsizLink) {
+        belirsizLink.style.display = "none";
+    }
+}
+
 </script>
 </body>
 </html>
-
-
-
