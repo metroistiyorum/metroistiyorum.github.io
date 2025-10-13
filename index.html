@@ -370,6 +370,19 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
   </div>
 </div>
 
+<div class="sayaç-grubu">
+    <div class="message">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Kocaeli_Metro_logo.svg" class="logo" alt="Körfezray">
+        <span class="text">Körfezray (Körfez - Kartepe) Metrosu</span>
+        <button class="info-symbol" data-target="infoBox10" aria-expanded="false" aria-controls="infoBox10">i</button>
+    </div>
+    <div class="clock" id="clock10" aria-live="polite"></div>
+    <div class="info-box" id="infoBox10" role="region" aria-hidden="true">
+        <p>Kocaeli'nin ikinci metrosu olacak hat 26.8 km ve 18 istasyondan oluşmaktadır. Hattın TBM kazıları 6 Eylül 2025 tarihinde başlamıştır. Gebze - Darıca metrosu gibi bu hat da Ulaştırma Bakanlığı tarafından yapılmaktadır</p>
+        <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+    </div>
+</div>
+
 <div id="belirsiz-link" class="link-box-red" onclick="showBelirsiz()" role="button" tabindex="0" style="display:none;">Açılış tarihleri belirsiz hatları incele</div>
 
 </div> 
@@ -434,7 +447,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
-    
+
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Istanbul_M13_Line_Symbol.svg" class="logo" alt="M13">
@@ -449,7 +462,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
-
+    
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Ankaray_logo.svg/2048px-Ankaray_logo.svg.png" class="logo" alt="Ankaray">
@@ -481,7 +494,8 @@ const clockData = {
   clock6: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-06-30").getTime(), label: "2027 ilk yarı" },
   clock7: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027 yılı" },
   clock8: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027 yılı" },
-  clock9: { type: "range", start: new Date("2028-04-01").getTime(), end: new Date("2028-06-30").getTime(), label: "2028 ikinci çeyrek" }
+  clock9: { type: "range", start: new Date("2028-04-01").getTime(), end: new Date("2028-06-30").getTime(), label: "2028 ikinci çeyrek" },
+  clock10: { type: "range", start: new Date("2029-01-01").getTime(), end: new Date("2029-12-31").getTime(), label: "2029 yılı" }
 };
 
 function updateAll() {
@@ -608,3 +622,4 @@ function showBelirsiz(){
 </script>
 </body>
 </html>
+
