@@ -301,6 +301,19 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 
 <div class="sayaç-grubu">
     <div class="message">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Ankara_B1_Banliy%C3%B6_Hatt%C4%B1_Logosu.svg" class="logo" alt="Başkentray">
+        <span class="text">Sincan - Yenikent Uzatması</span>
+        <button class="info-symbol" data-target="infoBox14" aria-expanded="false" aria-controls="infoBox14">i</button>
+    </div>
+    <div class="clock" id="clock14" aria-live="polite"></div>
+    <div class="info-box" id="infoBox14" role="region" aria-hidden="true">
+        <p>Ankara'nın 38 km ve 24 istasyondan oluşan banliyö hattını Yenikent'e uzatmayı amaçlayan proje 10 km ve 3 istasyondan oluşmaktadır. Hattın sinyalizasyon ihalesi henüz gerçekleşmemiştir</p>
+        <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+    </div>
+</div>
+
+<div class="sayaç-grubu">
+    <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Istanbul_T5_Line_Symbol.svg" class="logo" alt="T5">
         <span class="text">Feshane - Bayrampaşa Uzatması</span>
         <button class="info-symbol" data-target="infoBox6" aria-expanded="false" aria-controls="infoBox6">i</button>
@@ -366,7 +379,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <span class="orange">%86</span><span class="black">ilerleme ile durdu</span>
         </div>
         <div class="info-box" id="infoBox11" role="region" aria-hidden="true">
-            <p>Kadıköy - Sabiha Gökçen Havalimanı (M4) metro hattının bu uzatması için çalışmalar durdurulmuştur. Projenin ne zaman devam edeceği hakkında net bir bilgi bulunmamaktadır.</p>
+            <p>Pendik - Fevzi Çakmak uzatmasıyla beraber inşa edilen 1 km ve 1 duraklık genişlemeyi içeren proje M4 hattını Kadıköy - Sabiha Gökçen ve Kadıköy - Kaynarca olmak üzere iki farklı işletmeye bölecektir. Hattın inşaatı mayıs ayında ek borçlanma gereksiniminden dolayı durmuştur</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
@@ -381,7 +394,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <span class="orange">%86</span><span class="black">ilerleme ile durdu</span>
         </div>
         <div class="info-box" id="infoBox10" role="region" aria-hidden="true">
-            <p>.</p>
+            <p>Tavşentepe - Kaynarca uzatması ile beraber inşa edilen 4 km ve 2 istasyondan oluşan proje tamamlandığında M4 hattının mevcut Fevzi Çakmak - Sabiha Gökçen tünellerini kullanarak Pendik - Sabiha Gökçen arasında M10 hattının oluşmasını sağlayacaktır.Hattın inşaatı mayıs ayında ek borçlanma gereksiniminden dolayı durmuştur  </p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
@@ -396,7 +409,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <span class="orange">%50</span><span class="black">ilerleme ile durdu</span>
         </div>
         <div class="info-box" id="infoBox12" role="region" aria-hidden="true">
-            <p>.</p>
+            <p>M7 hattını İstanbul'un doğusuna uzatmayı amaçlayan proje 7 km ve 5 istasyondan oluşmaktadır. Hattının inşaatı şantiye çalışanlarından alınan bilgilere göre durmuştur, İBB hat hakkkında açıklama yapmamıştır </p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
@@ -408,10 +421,10 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <button class="info-symbol" data-target="infoBox13" aria-expanded="false" aria-controls="infoBox13">i</button>
         </div>
         <div class="clock">
-            <span class="black">Çalışmalar başlamadı</span>
+            <span class="black">Şantiye kurulumları başlayacak</span>
         </div>
         <div class="info-box" id="infoBox13" role="region" aria-hidden="true">
-            <p>.</p>
+            <p>Mevcut durumda AŞTİ - Dikimevi arasında çalışmakta olan hattı doğuya Natoyolu'na kadar uzatacak 8.5 km uzunluğunda 7 istasyondan oluşan projedir. İhale kapsamında sinyalizasyon da güncellenerek hattın batısında inşa edilmiş bir duraklık Söğtözü uzatması da işletmeye alınacaktır. Hattın temel atma töreni 13 Haziran 2025 tarihinde gerçekleşmiş olsa da o tarihten beri sahada çalışma görülmemiştir</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
@@ -428,6 +441,7 @@ const clockData = {
   clock4: { type: "date", ts: new Date("2026-05-31").getTime(), label: "31 Mayıs 2026" },
   clock5: { type: "date", ts: new Date("2026-06-30").getTime(), label: "30 Haziran 2026" },
   clock6b: { type: "date", ts: new Date("2026-12-31").getTime(), label: "2026 sonu" },
+  clock14: { type: "date", ts: new Date("2027-01-01").getTime(), label: "2027 başı" },
   clock6: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-06-30").getTime(), label: "2027 ilk yarı" },
   clock7: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027 yılı" },
   clock8: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027 yılı" },
