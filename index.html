@@ -127,6 +127,7 @@ img.logo[alt="Balat"] {
 .red{color:red;}
 .orange{color:orange;}
 .black{color:black;}
+.lime-green{color:#32CD32;} /* Misket limonu yeşili */
 
 .clock span + span{margin-left:10px; color:black;}
 body.dark-mode .clock span{color:white;}
@@ -134,6 +135,7 @@ body.dark-mode .clock .green{color:#008000;}
 body.dark-mode .clock .red{color:#ff4d4d;}
 body.dark-mode .clock .orange{color:orange;}
 body.dark-mode .clock .black{color:white;}
+body.dark-mode .clock .lime-green{color:#32CD32;}
 body.dark-mode .clock span + span{color:white;}
 
 /* Statik durumlar için boşluğu daraltan özel kural */
@@ -183,6 +185,10 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     display:block; text-align:center;
 }
 .link-box-red:hover{color:darkred;}
+
+#belirsiz-link {
+    margin-top: -50px;
+}
 
 #gelecek, #belirsiz {
     display:none;
@@ -268,7 +274,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock4" aria-live="polite"></div>
     <div class="info-box" id="infoBox4" role="region" aria-hidden="true">
-        <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu; İBB hatta çalışmalara yeniden başlayıp 2026 Mayıs ayında açmayı hedefliyor.</p>
+        <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu; İBB hatta çalışmalara yeniden başlayıp 2026 Mayıs ayında açmayı hedefliyor</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
     </div>
 </div>
@@ -294,7 +300,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock6b" aria-live="polite"></div>
     <div class="info-box" id="infoBox6b" role="region" aria-hidden="true">
-        <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı ve şehir hastanesine erişmesini sağlayacak uzatma 4 km ve 3 istasyondan oluşmaktadır. Emek ve Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı.</p>
+        <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı ve şehir hastanesine erişmesini sağlayacak uzatma 4 km ve 3 istasyondan oluşmaktadır. Emek ve Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
     </div>
 </div>
@@ -371,6 +377,21 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     
     <div class="sayaç-grubu">
         <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Istanbul_M1B_Line_Symbol.svg" class="logo" alt="M1B">
+            <span class="text">Kirazlı - Halkalı Üniversite Uzatması</span>
+            <button class="info-symbol" data-target="infoBox15" aria-expanded="false" aria-controls="infoBox15">i</button>
+        </div>
+        <div class="clock static-status">
+            <span class="lime-green">%8</span><span class="black">ilerleme ile devam ediyor</span>
+        </div>
+        <div class="info-box" id="infoBox15" role="region" aria-hidden="true">
+            <p>M1B Yenikapı - Kirazlı hattını batıya doğru uzatacak etap 6.2 km ve 5 istasyondan oluşmaktadır. İhale kapsamında hattın tüm sinyalizasyonu da güncellenecektir. Sahadan gelen görüntülere göre çalışmalar haziran ayında yeniden başlamıştır. İBB çalışmaların yılbaşından sonra hızlancağını belirtmiştir</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
+    </div>
+
+    <div class="sayaç-grubu">
+        <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Istanbul_M4_Line_Symbol.svg" class="logo" alt="M4">
             <span class="text">Tavşantepe - Kaynarca Uzatması</span>
             <button class="info-symbol" data-target="infoBox11" aria-expanded="false" aria-controls="infoBox11">i</button>
@@ -394,7 +415,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <span class="orange">%86</span><span class="black">ilerleme ile durdu</span>
         </div>
         <div class="info-box" id="infoBox10" role="region" aria-hidden="true">
-            <p>Tavşentepe - Kaynarca uzatması ile beraber inşa edilen 4 km ve 2 istasyondan oluşan proje tamamlandığında M4 hattının mevcut Fevzi Çakmak - Sabiha Gökçen tünellerini kullanarak Pendik - Sabiha Gökçen arasında M10 hattının oluşmasını sağlayacaktır.Hattın inşaatı mayıs ayında ek borçlanma gereksiniminden dolayı durmuştur  </p>
+            <p>Tavşantepe - Kaynarca uzatması ile beraber inşa edilen 4 km ve 2 istasyondan oluşan kısım tamamlandığında M4 hattının mevcut Fevzi Çakmak - Sabiha Gökçen tünellerini kullanarak Pendik - Sabiha Gökçen arasında M10 hattını oluşturacaktır. Bu sayede Marmaray ve YHT garından havalimanına doğrudan erişim sağlanacaktır. Hattın inşaatı mayıs ayında ek borçlanma gereksiniminden dolayı durmuştur</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
@@ -409,11 +430,26 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <span class="orange">%50</span><span class="black">ilerleme ile durdu</span>
         </div>
         <div class="info-box" id="infoBox12" role="region" aria-hidden="true">
-            <p>M7 hattını İstanbul'un doğusuna uzatmayı amaçlayan proje 7 km ve 5 istasyondan oluşmaktadır. Hattının inşaatı şantiye çalışanlarından alınan bilgilere göre durmuştur, İBB hat hakkkında açıklama yapmamıştır </p>
+            <p>M7 hattını İstanbul'un doğusuna uzatmayı amaçlayan proje 7 km ve 5 istasyondan oluşmaktadır. Hattının inşaatı şantiye çalışanlarından alınan bilgilere göre durmuştur, İBB hat hakkında açıklama yapmamıştır</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
     
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Istanbul_M13_Line_Symbol.svg" class="logo" alt="M13">
+            <span class="text">Emek - Yenidoğan Metrosu</span>
+            <button class="info-symbol" data-target="infoBox16" aria-expanded="false" aria-controls="infoBox16">i</button>
+        </div>
+        <div class="clock static-status">
+            <span class="orange">%8</span><span class="black">ilerleme ile durdu</span>
+        </div>
+        <div class="info-box" id="infoBox16" role="region" aria-hidden="true">
+            <p>2017 yılında M5 hattının Çekmeköy - Sultanbeyli etabı ile beraber ihale edilen hat kredi alınamadığından dolayı 2024 sonbaharına kadar atıl halde kalmıştır. Bu tarihten sonra Emek istasyonun şaftı açılmaya başlanmış ve TBM girişi yapılacağı söylenmiştir. 2025 yılında sahadan alınan bilgilere göre M5'in Samandıra - Sultanbeyli etabını daha hızlı bitirebilmek için çalışmalar durdurulmuştur</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
+    </div>
+
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Ankaray_logo.svg/2048px-Ankaray_logo.svg.png" class="logo" alt="Ankaray">
