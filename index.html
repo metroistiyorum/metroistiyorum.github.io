@@ -231,7 +231,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clock1" aria-live="polite"></div>
     <div class="info-box" id="infoBox1" role="region" aria-hidden="true">
-        <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına kadar açılması hedefleniyor. Bu etapla beraber sistemin büyüklüğü 18 km ve 27 istasyona ulaşacak</p>
+        <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına yolcu taşyacak şekilde 17.00'da açılması hedefleniyor</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
     </div>
 </div>
@@ -483,8 +483,41 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 <script>
 /* Zaman hesaplama */
 const msGün = 1000*60*60*24;
+
+/* Akçaray için özel saat/dakika/saniye sayacı */
+const akcarayTargetDate = new Date("2025-10-14T17:00:00").getTime();
+const akcarayClock = document.getElementById("clock1");
+let akcarayInterval;
+
+function updateAkcarayCountdown() {
+    const now = new Date().getTime();
+    const distance = akcarayTargetDate - now;
+
+    if (distance < 0) {
+        // Sayaç bittiğinde gösterilecek metin
+        akcarayClock.innerHTML = '<span class="green">14 Ekim\'de açıldı</span><span>(599 gün sürdü)</span>';
+        if (akcarayInterval) {
+             clearInterval(akcarayInterval); // Sayacı durdur
+        }
+        return;
+    }
+
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Sayaç gösterimini "X saat Y dakika Z saniye" formatına çeviriyoruz
+    akcarayClock.innerHTML = `<span class="green">${hours} saat ${minutes} dakika ${seconds} saniye</span>`;
+}
+
+// Sayacı her saniye güncellemek için interval oluştur
+akcarayInterval = setInterval(updateAkcarayCountdown, 1000);
+updateAkcarayCountdown(); // Sayfa ilk yüklendiğinde hemen gösterim için
+
+
+/* Diğer sayaçlar için veri */
 const clockData = {
-  clock1: { type: "date", ts: new Date("2025-10-14").getTime(), label: "14 Ekim 2025" },
+  // clock1, özel sayaç tarafından yönetildiği için buradan kaldırıldı.
   clock2: { type: "date", ts: new Date("2025-10-29").getTime(), label: "29 Ekim 2025" },
   clock3: { type: "date", ts: new Date("2026-01-30").getTime(), label: "30 Ocak 2026" },
   clock4: { type: "date", ts: new Date("2026-05-31").getTime(), label: "31 Mayıs 2026" },
@@ -622,5 +655,3 @@ function showBelirsiz(){
 </script>
 </body>
 </html>
-
-
