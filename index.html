@@ -23,12 +23,12 @@ body.dark-mode {background:#000;color:#fff;}
 #mobilToggle {top:60px;}
 
 .wrapper {
-    margin-top:50px; 
-    display:flex; 
-    flex-direction:column; 
-    align-items:center; 
-    width:100%; 
-    padding:0 16px; 
+    margin-top:50px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    padding:0 16px;
     box-sizing:border-box;
     transition: all 0.3s ease;
 }
@@ -39,7 +39,7 @@ body.zoomed {
     transform-origin: top left;
     overflow-x:hidden;
 }
-body.zoomed #temaToggle, 
+body.zoomed #temaToggle,
 body.zoomed #mobilToggle {
     display:none;
 }
@@ -101,9 +101,9 @@ body.zoomed .close-btn {
 
 /* 🔸 Satırların alta geçmesini engelle */
 .message {
-    display:flex; 
-    align-items:center; 
-    gap:15px; 
+    display:flex;
+    align-items:center;
+    gap:15px;
     font-size:30px;
     flex-wrap:nowrap;
     white-space:nowrap;
@@ -116,9 +116,10 @@ img.logo {
     flex-shrink:0;
 }
 
-/* 🔹 Sadece BursaRay logosuna yumuşatma efekti */
-img.logo[alt="Balat"] {
-    border-radius:12px;
+/* 🔹 Sadece belirli logolara yumuşatma efekti */
+img.logo[alt="Balat"],
+img.logo[alt="Konyaray"] {
+    border-radius:20px;
 }
 
 /* Sayaç metni */
@@ -174,23 +175,22 @@ body.dark-mode .info-box{background:#333;color:#fff;border-color:#555;}
 body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 
 /* Link kutuları */
-.link-box{
-    font-size:22px; font-weight:bold; color:purple; cursor:pointer; text-decoration:none; margin:0; padding:10px 0;
+.link-box, .link-box-red, .link-box-turquoise {
+    font-size:22px; font-weight:bold; cursor:pointer; text-decoration:none; margin:0; padding:10px 0;
     display:block; text-align:center;
+    margin-bottom: 80px;
 }
+
+.link-box { color:purple; }
 .link-box:hover{color:darkviolet;}
 
-.link-box-red {
-    font-size:22px; font-weight:bold; color:red; cursor:pointer; text-decoration:none; margin:0; padding:10px 0;
-    display:block; text-align:center;
-}
+.link-box-red { color:red; }
 .link-box-red:hover{color:darkred;}
 
-#belirsiz-link {
-    margin-top: -50px;
-}
+.link-box-turquoise { color: #20B2AA; }
+.link-box-turquoise:hover{ color: #008B8B; }
 
-#gelecek, #belirsiz {
+#gelecek, #belirsiz, #proje {
     display:none;
     width:100%;
     max-width:600px;
@@ -214,14 +214,14 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 
 <div class="wrapper">
 <div class="sayaç-grubu">
-  <div class="message">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Istanbul_M3_Line_Symbol.svg" class="logo" alt="M3">
-    <span class="text">Yıldıztepe Metro İstasyonu</span>
-  </div>
-  <div class="clock">
-    <span class="green">8 Ekim'de açıldı</span>
-    <span>(3407 gün sürdü)</span>
-  </div>
+    <div class="message">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Istanbul_M3_Line_Symbol.svg" class="logo" alt="M3">
+        <span class="text">Yıldıztepe Metro İstasyonu</span>
+    </div>
+    <div class="clock">
+        <span class="green">8 Ekim'de açıldı</span>
+        <span>(3407 gün sürdü)</span>
+    </div>
 </div>
 <div class="sayaç-grubu">
     <div class="message">
@@ -275,6 +275,19 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     <div class="clock" id="clock4" aria-live="polite"></div>
     <div class="info-box" id="infoBox4" role="region" aria-hidden="true">
         <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu; İBB hatta çalışmalara yeniden başlayıp 2026 Mayıs ayında açmayı hedefliyor</p>
+        <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+    </div>
+</div>
+
+<div class="sayaç-grubu">
+    <div class="message">
+        <img src="https://upload.wikimedia.org/wikipedia/tr/d/d9/Ak%C3%A7aray_logo.png" class="logo" alt="Akçaray">
+        <span class="text">Stadyum - Kartepe Uzatması</span>
+        <button class="info-symbol" data-target="infoBoxKartepe" aria-expanded="false" aria-controls="infoBoxKartepe">i</button>
+    </div>
+    <div class="clock" id="clockKartepe" aria-live="polite"></div>
+    <div class="info-box" id="infoBoxKartepe" role="region" aria-hidden="true">
+        <p>Otogar - Stadyum hattı ihalesine yapılacak iş arttırımı ile inşa edilecek 2 istasyon ve 1.4 km'den oluşan etabın ekim ayından itibaren 8 ay sonra açılması hedeflenmektedir</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
     </div>
 </div>
@@ -358,16 +371,29 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 </div>
 
 <div class="sayaç-grubu">
-  <div class="message">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Metro_%C4%B0zmir_logo.svg" class="logo" alt="Üçyol - Çamlıkule">
-    <span class="text">Üçyol - Çamlıkule Metrosu</span>
-    <button class="info-symbol" data-target="infoBox9" aria-expanded="false" aria-controls="infoBox9">i</button>
-  </div>
-  <div class="clock" id="clock9" aria-live="polite"></div>
-  <div class="info-box" id="infoBox9" role="region" aria-hidden="true">
-    <p>İzmir'in 2. metrosu olacak hat 13 km ve 10 istasyondan oluşup sürücüsüz işletilecektir. Hattın tünel kazılarında ağustos ayı itibariyle %77 ilerleme sağlanmıştır</p>
-    <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
-  </div>
+    <div class="message">
+        <img src="https://i.ibb.co/HTK7Wyg4/Screenshot-20251015-024206-Samsung-Notes.jpg" class="logo" alt="Konyaray">
+        <span class="text">Konyaray Banliyö Hattı</span>
+        <button class="info-symbol" data-target="infoBoxKonyaray" aria-expanded="false" aria-controls="infoBoxKonyaray">i</button>
+    </div>
+    <div class="clock" id="clockKonyaray" aria-live="polite"></div>
+    <div class="info-box" id="infoBoxKonyaray" role="region" aria-hidden="true">
+        <p>Türkiye'nin İzban, Marmaray, Başkentray ve Adaray sonrası 5. banliyö hattı olacak hattın 23 km ve 14 istasyondan oluşması planlanmaktadır. Ekim ayı itibariyle fizikselv ilerleme oranı %80'e ulaşmıştır</p>
+        <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+    </div>
+</div>
+
+<div class="sayaç-grubu">
+    <div class="message">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Metro_%C4%B0zmir_logo.svg" class="logo" alt="Üçyol - Çamlıkule">
+        <span class="text">Üçyol - Çamlıkule Metrosu</span>
+        <button class="info-symbol" data-target="infoBox9" aria-expanded="false" aria-controls="infoBox9">i</button>
+    </div>
+    <div class="clock" id="clock9" aria-live="polite"></div>
+    <div class="info-box" id="infoBox9" role="region" aria-hidden="true">
+        <p>İzmir'in 2. metrosu olacak hat 13 km ve 10 istasyondan oluşup sürücüsüz işletilecektir. Hattın tünel kazılarında ağustos ayı itibariyle %77 ilerleme sağlanmıştır</p>
+        <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+    </div>
 </div>
 
 <div class="sayaç-grubu">
@@ -385,9 +411,9 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
 
 <div id="belirsiz-link" class="link-box-red" onclick="showBelirsiz()" role="button" tabindex="0" style="display:none;">Açılış tarihleri belirsiz hatları incele</div>
 
-</div> 
+</div>
 <div id="belirsiz">
-    
+
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Istanbul_M1B_Line_Symbol.svg" class="logo" alt="M1B">
@@ -422,17 +448,17 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Istanbul_M10_Line_Symbol.svg" class="logo" alt="M10">
             <span class="text">Pendik Merkez - Fevzi Çakmak Uzatması</span>
-            <button class="info-symbol" data-target="infoBox10" aria-expanded="false" aria-controls="infoBox10">i</button>
+            <button class="info-symbol" data-target="infoBox17" aria-expanded="false" aria-controls="infoBox17">i</button>
         </div>
         <div class="clock static-status">
             <span class="orange">%86</span><span class="black">ilerleme ile durdu</span>
         </div>
-        <div class="info-box" id="infoBox10" role="region" aria-hidden="true">
+        <div class="info-box" id="infoBox17" role="region" aria-hidden="true">
             <p>Tavşantepe - Kaynarca uzatması ile beraber inşa edilen 4 km ve 2 istasyondan oluşan kısım tamamlandığında M4 hattının mevcut Fevzi Çakmak - Sabiha Gökçen tünellerini kullanarak Pendik - Sabiha Gökçen arasında M10 hattını oluşturacaktır. Bu sayede Marmaray ve YHT garından havalimanına doğrudan erişim sağlanacaktır. Hattın inşaatı mayıs ayında ek borçlanma gereksiniminden dolayı durmuştur</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
-    
+
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Istanbul_M7_Line_Symbol.svg" class="logo" alt="M7">
@@ -462,7 +488,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
-    
+
     <div class="sayaç-grubu">
         <div class="message">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Ankaray_logo.svg/2048px-Ankaray_logo.svg.png" class="logo" alt="Ankaray">
@@ -477,12 +503,60 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         </div>
     </div>
+    <div id="proje-link" class="link-box-turquoise" onclick="showProje()" role="button" tabindex="0">Proje aşamasındaki hatları incele</div>
 </div>
 
-</div> 
+<div id="proje">
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Istanbul_M20_Line_Symbol.svg" class="logo" alt="M20">
+            <span class="text">Tüyap - Sefaköy - İncirli Metrosu</span>
+            <button class="info-symbol" data-target="infoBoxM20" aria-expanded="false" aria-controls="infoBoxM20">i</button>
+        </div>
+        <div class="clock">
+            <span class="black">Kredi başvurusu onaylanmıyor</span>
+        </div>
+        <div class="info-box" id="infoBoxM20" role="region" aria-hidden="true">
+            <p>.</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
+    </div>
+
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Istanbul_public_transport_-_T_symbol.svg" class="logo" alt="Tramvay">
+            <span class="text">Üsküdar - Kadıköy - Maltepe Tramvayı</span>
+            <button class="info-symbol" data-target="infoBoxTram" aria-expanded="false" aria-controls="infoBoxTram">i</button>
+        </div>
+        <div class="clock">
+            <span class="black">Yatırım programına başvuruldu</span>
+        </div>
+        <div class="info-box" id="infoBoxTram" role="region" aria-hidden="true">
+            <p>Üsküdar ve Kadıköy arasında raylı sistem bağlantısı sağlamak ve Minibüs Caddesi adı verilen güzergahı daha düzenli hale getirmesi hedeflenen hat 21 km ve 33 istasyondan oluşacaktır. Projelendirilmesi 2023'te kamuya duyurulan hat için 2024 yılının sonunda ÇED gerekli değildir kararı alınmıştır</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
+    </div>
+    
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://i.ibb.co/HDJJ0cLW/Untitled-design-20251015-104923-0000.png" class="logo" alt="Trabzon Tramvayı">
+            <span class="text">Trabzon (Stadyum - Havalimanı) Tramvayı</span>
+            <button class="info-symbol" data-target="infoBoxTrabzon" aria-expanded="false" aria-controls="infoBoxTrabzon">i</button>
+        </div>
+        <div class="clock">
+            <span class="black">ÇED raporu alındı</span>
+        </div>
+        <div class="info-box" id="infoBoxTrabzon" role="region" aria-hidden="true">
+            <p>.</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
+    </div>
+</div>
+
+</div>
 <script>
 /* Zaman hesaplama */
-const msGün = 1000*60*60*24;
+const msGün = 1000 * 60 * 60 * 24;
 
 /* Akçaray için özel saat/dakika/saniye sayacı */
 const akcarayTargetDate = new Date("2025-10-14T17:00:00").getTime();
@@ -497,7 +571,7 @@ function updateAkcarayCountdown() {
         // Sayaç bittiğinde gösterilecek metin
         akcarayClock.innerHTML = '<span class="green">14 Ekim\'de açıldı</span><span>(599 gün sürdü)</span>';
         if (akcarayInterval) {
-             clearInterval(akcarayInterval); // Sayacı durdur
+            clearInterval(akcarayInterval); // Sayacı durdur
         }
         return;
     }
@@ -517,35 +591,37 @@ updateAkcarayCountdown(); // Sayfa ilk yüklendiğinde hemen gösterim için
 
 /* Diğer sayaçlar için veri */
 const clockData = {
-  // clock1, özel sayaç tarafından yönetildiği için buradan kaldırıldı.
-  clock2: { type: "date", ts: new Date("2025-10-29").getTime(), label: "29 Ekim 2025" },
-  clock3: { type: "date", ts: new Date("2026-01-30").getTime(), label: "30 Ocak 2026" },
-  clock4: { type: "date", ts: new Date("2026-05-31").getTime(), label: "31 Mayıs 2026" },
-  clock5: { type: "date", ts: new Date("2026-06-30").getTime(), label: "30 Haziran 2026" },
-  clock6b: { type: "date", ts: new Date("2026-12-31").getTime(), label: "2026 sonu" },
-  clock14: { type: "date", ts: new Date("2027-01-01").getTime(), label: "2027 başı" },
-  clock6: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-06-30").getTime(), label: "2027 ilk yarı" },
-  clock7: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027 yılı" },
-  clock8: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027 yılı" },
-  clock9: { type: "range", start: new Date("2028-04-01").getTime(), end: new Date("2028-06-30").getTime(), label: "2028 ikinci çeyrek" },
-  clock10: { type: "range", start: new Date("2029-01-01").getTime(), end: new Date("2029-12-31").getTime(), label: "2029 yılı" }
+    // clock1, özel sayaç tarafından yönetildiği için buradan kaldırıldı.
+    clock2: { type: "date", ts: new Date("2025-10-29").getTime(), label: "29 Ekim 2025" },
+    clock3: { type: "date", ts: new Date("2026-01-30").getTime(), label: "30 Ocak 2026" },
+    clock4: { type: "date", ts: new Date("2026-05-31").getTime(), label: "31 Mayıs 2026" },
+    clockKartepe: { type: "date", ts: new Date("2026-06-30").getTime(), label: "30 Haziran 2026" },
+    clock5: { type: "date", ts: new Date("2026-06-30").getTime(), label: "30 Haziran 2026" },
+    clock6b: { type: "date", ts: new Date("2026-12-31").getTime(), label: "2026 sonu" },
+    clock14: { type: "date", ts: new Date("2027-01-01").getTime(), label: "2027 başı" },
+    clock6: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-06-30").getTime(), label: "2027 ilk yarı" },
+    clock7: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027 yılı" },
+    clock8: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027 yılı" },
+    clockKonyaray: { type: "range", start: new Date("2027-01-01").getTime(), end: new Date("2027-12-31").getTime(), label: "2027 yılı" },
+    clock9: { type: "range", start: new Date("2028-04-01").getTime(), end: new Date("2028-06-30").getTime(), label: "2028 ikinci çeyrek" },
+    clock10: { type: "range", start: new Date("2029-01-01").getTime(), end: new Date("2029-12-31").getTime(), label: "2029 yılı" }
 };
 
 function updateAll() {
-  const now = Date.now();
-  Object.keys(clockData).forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const data = clockData[id];
-    if (data.type === "date") {
-      const diff = Math.ceil((data.ts - now) / msGün);
-      el.innerHTML = diff > 0 ? `<span class="green">${diff} gün</span> <span>${data.label}</span>` : `<span class="green">Açıldı 🎉</span>`;
-    } else {
-      const dStart = Math.max(0, Math.ceil((data.start - now) / msGün));
-      const dEnd = Math.max(0, Math.ceil((data.end - now) / msGün));
-      el.innerHTML = `<span class="green">${dStart} - ${dEnd} gün</span> <span>${data.label}</span>`;
-    }
-  });
+    const now = Date.now();
+    Object.keys(clockData).forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const data = clockData[id];
+        if (data.type === "date") {
+            const diff = Math.ceil((data.ts - now) / msGün);
+            el.innerHTML = diff > 0 ? `<span class="green">${diff} gün</span> <span>${data.label}</span>` : `<span class="green">Açıldı 🎉</span>`;
+        } else {
+            const dStart = Math.max(0, Math.ceil((data.start - now) / msGün));
+            const dEnd = Math.max(0, Math.ceil((data.end - now) / msGün));
+            el.innerHTML = `<span class="green">${dStart} - ${dEnd} gün</span> <span>${data.label}</span>`;
+        }
+    });
 }
 setInterval(updateAll, 60000);
 updateAll();
@@ -554,19 +630,19 @@ updateAll();
 const temaBtn = document.getElementById("temaToggle");
 const mobilBtn = document.getElementById("mobilToggle");
 temaBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  const pressed = document.body.classList.contains("dark-mode");
-  temaBtn.setAttribute("aria-pressed", pressed ? "true" : "false");
+    document.body.classList.toggle("dark-mode");
+    const pressed = document.body.classList.contains("dark-mode");
+    temaBtn.setAttribute("aria-pressed", pressed ? "true" : "false");
 });
 mobilBtn.addEventListener("click", () => {
-  document.body.classList.toggle("zoomed");
-  const pressed = document.body.classList.contains("zoomed");
-  mobilBtn.setAttribute("aria-pressed", pressed ? "true" : "false");
-  mobilBtn.textContent = pressed ? "Normal Görünüme Dön" : "Mobil Sürüme Geç";
+    document.body.classList.toggle("zoomed");
+    const pressed = document.body.classList.contains("zoomed");
+    mobilBtn.setAttribute("aria-pressed", pressed ? "true" : "false");
+    mobilBtn.textContent = pressed ? "Normal Görünüme Dön" : "Mobil Sürüme Geç";
 });
 
 /* Bilgi kutusu aç/kapa mantığı */
-document.addEventListener("click", function(e){
+document.addEventListener("click", function(e) {
     const sym = e.target.closest(".info-symbol");
     if (sym) {
         const targetId = sym.getAttribute("data-target");
@@ -582,7 +658,7 @@ document.addEventListener("click", function(e){
         return;
     }
     const close = e.target.closest(".close-btn");
-    if (close) { 
+    if (close) {
         const parent = close.closest(".info-box");
         if (parent) {
             hideBox(parent);
@@ -590,23 +666,23 @@ document.addEventListener("click", function(e){
             const btn = document.querySelector(`.info-symbol[data-target="${id}"]`);
             if (btn) btn.setAttribute("aria-expanded", "false");
         }
-        return; 
+        return;
     }
 });
-function showBox(box){
+function showBox(box) {
     if (!box) return;
     box.style.display = "block";
     box.setAttribute("aria-hidden", "false");
-    requestAnimationFrame(()=> box.classList.add("show"));
+    requestAnimationFrame(() => box.classList.add("show"));
 }
-function hideBox(box){
+function hideBox(box) {
     if (!box) return;
     box.classList.remove("show");
     box.setAttribute("aria-hidden", "true");
-    box.addEventListener("transitionend", function onEnd(){
+    box.addEventListener("transitionend", function onEnd() {
         if (!box.classList.contains("show")) box.style.display = "none";
         box.removeEventListener("transitionend", onEnd);
-    }, {once:true});
+    }, { once:true });
 }
 
 /* Klavye ile link-box açma için destek */
@@ -626,14 +702,23 @@ document.querySelectorAll('.link-box-red').forEach(el => {
         }
     });
 });
+document.querySelectorAll('.link-box-turquoise').forEach(el => {
+    el.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            showProje();
+        }
+    });
+});
+
 
 /* Gelecek göster */
-function showGelecek(){
+function showGelecek() {
     const g = document.getElementById("gelecek");
     if (!g) return;
     g.style.display = "block";
     document.querySelectorAll(".link-box").forEach(lb => lb.style.display = "none");
-    
+
     // Kırmızı linki göster
     const belirsizLink = document.getElementById("belirsiz-link");
     if(belirsizLink) {
@@ -642,13 +727,24 @@ function showGelecek(){
 }
 
 /* Belirsizleri göster */
-function showBelirsiz(){
+function showBelirsiz() {
     const b = document.getElementById("belirsiz");
     if (b) b.style.display = "block";
-    
+
     const belirsizLink = document.getElementById("belirsiz-link");
     if(belirsizLink) {
         belirsizLink.style.display = "none";
+    }
+}
+
+/* Projeleri göster */
+function showProje() {
+    const p = document.getElementById("proje");
+    if (p) p.style.display = "block";
+
+    const projeLink = document.getElementById("proje-link");
+    if (projeLink) {
+        projeLink.style.display = "none";
     }
 }
 
