@@ -167,12 +167,44 @@ body.dark-mode .clock span + span{color:white;}
     display:block;
     transform:translateY(0) scale(1);
     opacity:1;
-    max-height:600px;
+    max-height:1000px; /* Genişletilmiş max-height */
 }
 body.dark-mode .info-box{background:#333;color:#fff;border-color:#555;}
 .info-box p{margin:0; padding:0; font-weight:600;}
-.close-btn{margin-top:8px; cursor:pointer; background:#eee; border:1px solid #ccc; padding:6px; border-radius:6px; font-weight:600; display:inline-block;}
-body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
+.close-btn, .map-btn {
+    margin-top:8px;
+    cursor:pointer;
+    background:#eee;
+    border:1px solid #ccc;
+    padding:6px;
+    border-radius:6px;
+    font-weight:600;
+    display:inline-block;
+}
+.map-btn { margin-left: 5px; }
+
+body.dark-mode .close-btn, body.dark-mode .map-btn {
+    background:#555;
+    color:#fff;
+    border-color:#888;
+}
+
+/* Harita konteyneri */
+.map-container {
+    margin-top: 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+.map-container.show {
+    max-height: 1000px;
+}
+.map-container img {
+    width: 100%;
+    height: auto;
+    border: 0;
+    border-radius: 8px;
+}
 
 /* Link kutuları */
 .link-box, .link-box-red, .link-box-turquoise {
@@ -203,7 +235,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     .message{font-size:24px; gap:12px;}
     img.logo{height:50px;}
     .clock{font-size:32px;}
-    .close-btn{font-size:14px;}
+    .close-btn, .map-btn {font-size:14px;}
     #temaToggle, #mobilToggle{font-size:16px;}
 }
 </style>
@@ -246,6 +278,10 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     <div class="info-box" id="infoBox2" role="region" aria-hidden="true">
         <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyor. Ulaştırma Bakanlığı 2025 sonu dediğinden beri ek bilgi paylaşmadı</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        <button class="map-btn" id="showMapBtnM11" aria-expanded="false">Haritayı Göster</button>
+        <div class="map-container" id="mapContainerM11">
+            <a href="https://ibb.co/RGLYH48B"><img src="https://i.ibb.co/Y4vPjTgy/66f930a4bf6fc652-w1200xh675.jpg" alt="M11 Halkalı Uzatması Haritası" /></a>
+        </div>
     </div>
 </div>
 
@@ -378,7 +414,7 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
     </div>
     <div class="clock" id="clockKonyaray" aria-live="polite"></div>
     <div class="info-box" id="infoBoxKonyaray" role="region" aria-hidden="true">
-        <p>Türkiye'nin İzban, Marmaray, Başkentray,Adaray ve Gaziray sonrası 6. banliyö hattı olacak hattın 23 km ve 14 istasyondan oluşması planlanmaktadır. Ekim ayı itibariyle fiziksel ilerleme oranı %80'e ulaşmıştır</p>
+        <p>Türkiye'nin İzban, Marmaray, Başkentray, Adaray ve Gaziray sonrası 6. banliyö hattı olacak hattın 23 km ve 14 istasyondan oluşması planlanmaktadır. Ekim ayı itibariyle fiziksel ilerleme oranı %80'e ulaşmıştır</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
     </div>
 </div>
@@ -426,6 +462,10 @@ body.dark-mode .close-btn{background:#555; color:#fff; border-color:#888;}
         <div class="info-box" id="infoBox15" role="region" aria-hidden="true">
             <p>M1B Yenikapı - Kirazlı hattını batıya doğru uzatacak etap 6.2 km ve 5 istasyondan oluşmaktadır. İhale kapsamında hattın tüm sinyalizasyonu da güncellenecektir. Sahadan gelen görüntülere göre çalışmalar haziran ayında yeniden başlamıştır. İBB çalışmaların yılbaşından sonra hızlancağını belirtmiştir</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+            <button class="map-btn" id="showMapBtnM1B" aria-expanded="false">Haritayı Göster</button>
+            <div class="map-container" id="mapContainerM1B">
+                <a href="https://ibb.co/VWn8wg98"><img src="https://i.ibb.co/GvYjHWpj/Kirazli-Halkali-hale-5-96ff7713f7.jpg" alt="M1B Kirazlı Halkalı Uzatması Haritası" /></a>
+            </div>
         </div>
     </div>
 
@@ -606,12 +646,16 @@ function updateAkcarayCountdown() {
         return;
     }
 
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Sayaç gösterimini "X saat Y dakika Z saniye" formatına çeviriyoruz
-    akcarayClock.innerHTML = `<span class="green">${hours} saat ${minutes} dakika ${seconds} saniye</span>`;
+    if (days > 0) {
+         akcarayClock.innerHTML = `<span class="green">${days} gün ${hours} saat</span>`;
+    } else {
+         akcarayClock.innerHTML = `<span class="green">${hours} saat ${minutes} dakika ${seconds} saniye</span>`;
+    }
 }
 
 // Sayacı her saniye güncellemek için interval oluştur
@@ -699,6 +743,32 @@ document.addEventListener("click", function(e) {
         return;
     }
 });
+
+/* Harita Göster/Gizle fonksiyonu */
+function setupMapToggle(buttonId, containerId) {
+    const showMapButton = document.getElementById(buttonId);
+    const mapContainer = document.getElementById(containerId);
+
+    if (showMapButton && mapContainer) {
+        showMapButton.addEventListener("click", () => {
+            const isExpanded = showMapButton.getAttribute("aria-expanded") === "true";
+            mapContainer.classList.toggle("show");
+            if (!isExpanded) {
+                showMapButton.textContent = "Haritayı Gizle";
+                showMapButton.setAttribute("aria-expanded", "true");
+            } else {
+                showMapButton.textContent = "Haritayı Göster";
+                showMapButton.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+}
+
+// M11 ve M1B için harita açma/kapama butonlarını ayarla
+setupMapToggle("showMapBtnM11", "mapContainerM11");
+setupMapToggle("showMapBtnM1B", "mapContainerM1B");
+
+
 function showBox(box) {
     if (!box) return;
     box.style.display = "block";
@@ -709,6 +779,18 @@ function hideBox(box) {
     if (!box) return;
     box.classList.remove("show");
     box.setAttribute("aria-hidden", "true");
+    
+    // Harita varsa onu da gizle
+    const map = box.querySelector('.map-container');
+    if (map && map.classList.contains('show')) {
+        map.classList.remove('show');
+        const mapBtn = box.querySelector('.map-btn');
+        if(mapBtn) {
+            mapBtn.textContent = "Haritayı Göster";
+            mapBtn.setAttribute("aria-expanded", "false");
+        }
+    }
+    
     box.addEventListener("transitionend", function onEnd() {
         if (!box.classList.contains("show")) box.style.display = "none";
         box.removeEventListener("transitionend", onEnd);
@@ -716,31 +798,14 @@ function hideBox(box) {
 }
 
 /* Klavye ile link-box açma için destek */
-document.querySelectorAll('.link-box').forEach(el => {
+document.querySelectorAll('.link-box, .link-box-red, .link-box-turquoise').forEach(el => {
     el.addEventListener('keydown', (ev) => {
         if (ev.key === 'Enter' || ev.key === ' ') {
             ev.preventDefault();
-            showGelecek();
+            el.click(); // Tıklama olayını tetikle
         }
     });
 });
-document.querySelectorAll('.link-box-red').forEach(el => {
-    el.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Enter' || ev.key === ' ') {
-            ev.preventDefault();
-            showBelirsiz();
-        }
-    });
-});
-document.querySelectorAll('.link-box-turquoise').forEach(el => {
-    el.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Enter' || ev.key === ' ') {
-            ev.preventDefault();
-            showProje();
-        }
-    });
-});
-
 
 /* Gelecek göster */
 function showGelecek() {
@@ -748,8 +813,6 @@ function showGelecek() {
     if (!g) return;
     g.style.display = "block";
     document.querySelectorAll(".link-box").forEach(lb => lb.style.display = "none");
-
-    // Kırmızı linki göster
     const belirsizLink = document.getElementById("belirsiz-link");
     if(belirsizLink) {
         belirsizLink.style.display = "block";
@@ -760,7 +823,6 @@ function showGelecek() {
 function showBelirsiz() {
     const b = document.getElementById("belirsiz");
     if (b) b.style.display = "block";
-
     const belirsizLink = document.getElementById("belirsiz-link");
     if(belirsizLink) {
         belirsizLink.style.display = "none";
@@ -771,7 +833,6 @@ function showBelirsiz() {
 function showProje() {
     const p = document.getElementById("proje");
     if (p) p.style.display = "block";
-
     const projeLink = document.getElementById("proje-link");
     if (projeLink) {
         projeLink.style.display = "none";
