@@ -280,7 +280,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnM11" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerM11">
-            <a href="https://ibb.co/RGLYH48B"><img src="https://i.ibb.co/Y4vPjTgy/66f930a4bf6fc652-w1200xh675.jpg" alt="M11 Halkalı Uzatması Haritası" /></a>
+            <a href="https://freeimage.host/i/KvJCGNn" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KvJCGNn.jpg" alt="M11 Halkalı Uzatması Haritası" /></a>
         </div>
     </div>
 </div>
@@ -312,6 +312,10 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     <div class="info-box" id="infoBox4" role="region" aria-hidden="true">
         <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu; İBB hatta çalışmalara yeniden başlayıp 2026 Mayıs ayında açmayı hedefliyor</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        <button class="map-btn" id="showMapBtnM12" aria-expanded="false">Haritayı Göster</button>
+        <div class="map-container" id="mapContainerM12">
+            <a href="https://freeimage.host/i/KvHs0yF" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KvHs0yF.jpg" alt="M12 Göztepe Ataşehir Ümraniye Metrosu Haritası" /></a>
+        </div>
     </div>
 </div>
 
@@ -377,6 +381,10 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     <div class="info-box" id="infoBox6" role="region" aria-hidden="true">
         <p>Eminönü - Alibeyköy tramvay hattına Feshane istasyonuna 3. peron eklenerek bağlanacak uzatma 3.2 km ve 4 istasyondan oluşmakta. Hat açıldığında Eminönü - Alibeyköy ve Eminönü - Bayrampaşa olmak üzere iki ayrı işletmeye geçilecek</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        <button class="map-btn" id="showMapBtnT5" aria-expanded="false">Haritayı Göster</button>
+        <div class="map-container" id="mapContainerT5">
+            <a href="https://freeimage.host/i/KvJo7YN" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KvJo7YN.jpg" alt="T5 Eyüpsultan Bayrampaşa Uzatması Haritası" /></a>
+        </div>
     </div>
 </div>
 
@@ -464,7 +472,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
             <button class="map-btn" id="showMapBtnM1B" aria-expanded="false">Haritayı Göster</button>
             <div class="map-container" id="mapContainerM1B">
-                <a href="https://ibb.co/VWn8wg98"><img src="https://i.ibb.co/GvYjHWpj/Kirazli-Halkali-hale-5-96ff7713f7.jpg" alt="M1B Kirazlı Halkalı Uzatması Haritası" /></a>
+                <a href="https://freeimage.host/i/KvJxaKx" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KvJxaKx.jpg" alt="M1B Kirazlı Halkalı Uzatması Haritası" /></a>
             </div>
         </div>
     </div>
@@ -574,6 +582,10 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
         <div class="info-box" id="infoBoxTram" role="region" aria-hidden="true">
             <p>Üsküdar ve Kadıköy arasında raylı sistem bağlantısı sağlamak ve Minibüs Caddesi adı verilen güzergahı daha düzenli hale getirmesi hedeflenen hat 21 km ve 33 istasyondan oluşacaktır. Projelendirilmesi 2023'te kamuya duyurulan hat için 2024 yılının sonunda ÇED gerekli değildir kararı alınmıştır</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+            <button class="map-btn" id="showMapBtnTram" aria-expanded="false">Haritayı Göster</button>
+            <div class="map-container" id="mapContainerTram">
+                <a href="https://freeimage.host/i/Kv9bP1f" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/Kv9bP1f.jpg" alt="Üsküdar Kadıköy Maltepe Tramvayı Haritası" /></a>
+            </div>
         </div>
     </div>
     
@@ -764,9 +776,12 @@ function setupMapToggle(buttonId, containerId) {
     }
 }
 
-// M11 ve M1B için harita açma/kapama butonlarını ayarla
+// Harita açma/kapama butonlarını ayarla
 setupMapToggle("showMapBtnM11", "mapContainerM11");
 setupMapToggle("showMapBtnM1B", "mapContainerM1B");
+setupMapToggle("showMapBtnT5", "mapContainerT5");
+setupMapToggle("showMapBtnM12", "mapContainerM12");
+setupMapToggle("showMapBtnTram", "mapContainerTram");
 
 
 function showBox(box) {
