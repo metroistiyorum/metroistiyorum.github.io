@@ -355,6 +355,10 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     <div class="info-box" id="infoBox6b" role="region" aria-hidden="true">
         <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı ve şehir hastanesine erişmesini sağlayacak uzatma 4 km ve 3 istasyondan oluşmaktadır. Emek ve Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        <button class="map-btn" id="showMapBtnBursa" aria-expanded="false">Haritayı Göster</button>
+        <div class="map-container" id="mapContainerBursa">
+             <a href="https://freeimage.host/i/KSJZjhN" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KSJZjhN.png" alt="Bursa Metro Şehir Hastanesi Uzatması Haritası" /></a>
+        </div>
     </div>
 </div>
 
@@ -368,6 +372,10 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     <div class="info-box" id="infoBox14" role="region" aria-hidden="true">
         <p>Ankara'nın 38 km ve 24 istasyondan oluşan banliyö hattını Yenikent'e uzatmayı amaçlayan proje 10 km ve 3 istasyondan oluşmaktadır. Hattın sinyalizasyon ihalesi henüz gerçekleşmemiştir</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        <button class="map-btn" id="showMapBtnBaskentray" aria-expanded="false">Haritayı Göster</button>
+        <div class="map-container" id="mapContainerBaskentray">
+             <a href="https://freeimage.host/i/KSdT16P" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KSdT16P.png" alt="Başkentray Sincan Yenikent Uzatması Haritası" /></a>
+        </div>
     </div>
 </div>
 
@@ -411,6 +419,10 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     <div class="info-box" id="infoBox8" role="region" aria-hidden="true">
         <p>İstanbul'un 4. Levent - Hisarüstü (M6) hattından sonra ikinci tek tünelli metrosu olacak hattın 2023 yılında açılması hedefleniyordu. Lakin zemin zorlukları sebebiyle sürekli ertelendi. Şu anda tünel kazıları bitmek üzere olan hattın istasyon inşaatları da devam etmekte</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        <button class="map-btn" id="showMapBtnM14" aria-expanded="false">Haritayı Göster</button>
+        <div class="map-container" id="mapContainerM14">
+             <a href="https://freeimage.host/i/KSdjgBS" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KSdjgBS.png" alt="Altunizade Bosna Bulvarı Metrosu Haritası" /></a>
+        </div>
     </div>
 </div>
 
@@ -538,6 +550,10 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
         <div class="info-box" id="infoBox16" role="region" aria-hidden="true">
             <p>2017 yılında M5 hattının Çekmeköy - Sultanbeyli etabı ile beraber ihale edilen hat kredi alınamadığından dolayı 2024 sonbaharına kadar atıl halde kalmıştır. Bu tarihten sonra Emek istasyonun şaftı açılmaya başlanmış ve TBM girişi yapılacağı söylenmiştir. 2025 yılında sahadan alınan bilgilere göre M5'in Samandıra - Sultanbeyli etabını daha hızlı bitirebilmek için çalışmalar durdurulmuştur</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+             <button class="map-btn" id="showMapBtnM13" aria-expanded="false">Haritayı Göster</button>
+            <div class="map-container" id="mapContainerM13">
+                 <a href="https://freeimage.host/i/KSJFp44" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KSJFp44.jpg" alt="Emek - Yenidoğan Metrosu Haritası" /></a>
+            </div>
         </div>
     </div>
 
@@ -571,6 +587,10 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
         <div class="info-box" id="infoBoxM20" role="region" aria-hidden="true">
             <p>.</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+            <button class="map-btn" id="showMapBtnM20" aria-expanded="false">Haritayı Göster</button>
+            <div class="map-container" id="mapContainerM20">
+                 <a href="https://freeimage.host/i/KS9rW4p" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KS9rW4p.md.jpg" alt="Tüyap - Sefaköy - İncirli Metrosu Haritası" /></a>
+            </div>
         </div>
     </div>
 
@@ -792,6 +812,11 @@ setupMapToggle("showMapBtnM12", "mapContainerM12");
 setupMapToggle("showMapBtnTram", "mapContainerTram");
 setupMapToggle("showMapBtnTrabzon", "mapContainerTrabzon");
 setupMapToggle("showMapBtnKorfezray", "mapContainerKorfezray");
+setupMapToggle("showMapBtnM20", "mapContainerM20"); 
+setupMapToggle("showMapBtnM13", "mapContainerM13"); 
+setupMapToggle("showMapBtnBursa", "mapContainerBursa"); 
+setupMapToggle("showMapBtnBaskentray", "mapContainerBaskentray"); 
+setupMapToggle("showMapBtnM14", "mapContainerM14"); // M14 için eklendi
 
 
 function showBox(box) {
@@ -867,4 +892,3 @@ function showProje() {
 </script>
 </body>
 </html>
-
