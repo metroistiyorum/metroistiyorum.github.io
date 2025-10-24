@@ -276,7 +276,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock2" aria-live="polite"></div>
     <div class="info-box" id="infoBox2" role="region" aria-hidden="true">
-        <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyor. Ulaştırma Bakanlığı 2025 sonu dediğinden beri ek bilgi paylaşmadı</p>
+        <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyordu lâkin kasım ayına ertelendi. Ulaştırma Bakanlığı 2025 sonu dediğinden beri ek bilgi paylaşmadı</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnM11" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerM11">
@@ -555,6 +555,10 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
         <div class="info-box" id="infoBox12" role="region" aria-hidden="true">
             <p>M7 hattını İstanbul'un batısına uzatmayı amaçlayan proje 7 km ve 5 istasyondan oluşmaktadır. Hattının inşaatı şantiye çalışanlarından alınan bilgilere göre durmuştur, İBB hat hakkında açıklama yapmamıştır</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+            <button class="map-btn" id="showMapBtnM7Ext" aria-expanded="false">Haritayı Göster</button>
+             <div class="map-container" id="mapContainerM7Ext">
+                 <a href="https://freeimage.host/i/KUptEKX" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KUptEKX.png" alt="Mahmutbey KSS Hastanesi Uzatması Haritası" /></a>
+            </div>
         </div>
     </div>
 
@@ -659,11 +663,15 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <button class="info-symbol" data-target="infoBoxSakarya" aria-expanded="false" aria-controls="infoBoxSakarya">i</button>
         </div>
         <div class="clock">
-            <span class="black">Etüt süreci tamamlandı</span>
+            <span class="black">ÇED raporu onaylandı</span>
         </div>
         <div class="info-box" id="infoBoxSakarya" role="region" aria-hidden="true">
-            <p>S</p>
+            <p>17 km ve 18 istasyondan oluşacak tramvay hattının inşaat ihalesine 2025 yılı bitmeden çıkılması hedefleniyor. Hattın Adaray banliyö treni ve metrobüs hattı ile aktarma sağlaması planlanıyor </p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+            <button class="map-btn" id="showMapBtnSakarya" aria-expanded="false">Haritayı Göster</button>
+            <div class="map-container" id="mapContainerSakarya">
+                 <a href="https://freeimage.host/i/KgyNsUJ" target="_blank" rel="noopener noreferrer"><img src="https://iili.io/KgyNsUJ.png" alt="Sakarya Tramvayı Haritası" /></a>
+            </div>
         </div>
     </div>
     
@@ -677,7 +685,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <span class="black">Proje revize ediliyor</span>
         </div>
         <div class="info-box" id="infoBoxM7Ankara" role="region" aria-hidden="true">
-            <p>.</p>
+            <p>Ulaştırma bakanlığına ait projenin bu yıl içinde revizyonlarının tamamlanıp 2026 yılında inşaat ihalesine çıkılması hedefleniyor</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
             <button class="map-btn" id="showMapBtnM7Ankara" aria-expanded="false">Haritayı Göster</button>
              <div class="map-container" id="mapContainerM7Ankara">
@@ -730,8 +738,8 @@ updateAkcarayCountdown(); // Sayfa ilk yüklendiğinde hemen gösterim için
 /* Diğer sayaçlar için veri */
 const clockData = {
     // clock1, özel sayaç tarafından yönetildiği için buradan kaldırıldı.
-    clock2: { type: "date", ts: new Date("2025-10-29").getTime(), label: "29 Ekim 2025" },
-    clock3: { type: "date", ts: new Date("2026-01-30").getTime(), label: "30 Ocak 2026" },
+    clock2: { type: "date", ts: new Date("2025-11-30").getTime(), label: "30 Kasım 2025" },
+    clock3: { type: "date", ts: new Date("2026-01-31").getTime(), label: "31 Ocak 2026" },
     clock4: { type: "date", ts: new Date("2026-05-31").getTime(), label: "31 Mayıs 2026" },
     clockKartepe: { type: "date", ts: new Date("2026-06-30").getTime(), label: "30 Haziran 2026" },
     clock5: { type: "date", ts: new Date("2026-06-30").getTime(), label: "30 Haziran 2026" },
@@ -845,8 +853,10 @@ setupMapToggle("showMapBtnKonyaray", "mapContainerKonyaray");
 setupMapToggle("showMapBtnGebze", "mapContainerGebze");
 setupMapToggle("showMapBtnM7Ankara", "mapContainerM7Ankara"); 
 setupMapToggle("showMapBtnM5", "mapContainerM5"); 
-setupMapToggle("showMapBtnM4", "mapContainerM4"); // M4 için eklendi
-setupMapToggle("showMapBtnM10", "mapContainerM10"); // M10 için eklendi
+setupMapToggle("showMapBtnM4", "mapContainerM4"); 
+setupMapToggle("showMapBtnM10", "mapContainerM10"); 
+setupMapToggle("showMapBtnM7Ext", "mapContainerM7Ext");
+setupMapToggle("showMapBtnSakarya", "mapContainerSakarya"); 
 
 
 function showBox(box) {
