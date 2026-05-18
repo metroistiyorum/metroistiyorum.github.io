@@ -14,13 +14,14 @@ html, body {
 }
 body.dark-mode {background:#000;color:#fff;}
 
-#temaToggle, #mobilToggle {
+#temaToggle, #mobilToggle, #acilis2025Toggle {
     position: fixed; right:15px; padding:10px 15px;
     cursor:pointer; background:#333; color:#fff; border:none;
     font-weight:bold; font-size:16px; border-radius:5px; z-index:2000;
 }
 #temaToggle {top:15px;}
 #mobilToggle {top:60px;}
+#acilis2025Toggle {top:105px;}
 
 .wrapper {
     margin-top:50px;
@@ -40,7 +41,8 @@ body.zoomed {
     overflow-x:hidden;
 }
 body.zoomed #temaToggle,
-body.zoomed #mobilToggle {
+body.zoomed #mobilToggle,
+body.zoomed #acilis2025Toggle {
     display:none;
 }
 body.zoomed .wrapper {
@@ -51,7 +53,7 @@ body.zoomed .wrapper {
     box-sizing:border-box;
 }
 
-body.zoomed #gelecek {
+body.zoomed #gelecek, body.zoomed #acilis2025 {
     margin: 0;
     padding-left:0;
     max-width:none;
@@ -222,7 +224,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
 .link-box-turquoise { color: #20B2AA; }
 .link-box-turquoise:hover{ color: #008B8B; }
 
-#gelecek, #belirsiz, #proje {
+#gelecek, #belirsiz, #proje, #acilis2025 {
     display:none;
     width:100%;
     max-width:600px;
@@ -236,47 +238,55 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     img.logo{height:50px;}
     .clock{font-size:32px;}
     .close-btn, .map-btn {font-size:14px;}
-    #temaToggle, #mobilToggle{font-size:16px;}
+    #temaToggle, #mobilToggle, #acilis2025Toggle {font-size:16px;}
 }
 </style>
 </head>
 <body>
 <button id="temaToggle" aria-pressed="false">Tema Değiştir</button>
 <button id="mobilToggle" aria-pressed="false">Mobil Sürüme Geç</button>
+<button id="acilis2025Toggle" aria-expanded="false">2025 Açılışlarını Görüntüle</button>
 
 <div class="wrapper">
-<div class="sayaç-grubu">
-    <div class="message">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Istanbul_M3_Line_Symbol.svg" class="logo" alt="M3">
-        <span class="text">Yıldıztepe Metro İstasyonu</span>
+
+<div id="acilis2025">
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Istanbul_M3_Line_Symbol.svg" class="logo" alt="M3">
+            <span class="text">Yıldıztepe Metro İstasyonu</span>
+        </div>
+        <div class="clock">
+            <span class="green">8 Ekim'de açıldı</span>
+            <span>(3407 gün sürdü)</span>
+        </div>
     </div>
-    <div class="clock">
-        <span class="green">8 Ekim'de açıldı</span>
-        <span>(3407 gün sürdü)</span>
-    </div>
-</div>
-<div class="sayaç-grubu">
-    <div class="message">
-        <img src="https://upload.wikimedia.org/wikipedia/tr/d/d9/Ak%C3%A7aray_logo.png" class="logo" alt="Akçaray">
-        <span class="text">Otogar - Stadyum Uzatması</span>
-        <button class="info-symbol" data-target="infoBox1" aria-expanded="false" aria-controls="infoBox1">i</button>
-    </div>
-    <div class="clock" id="clock1" aria-live="polite"></div>
-    <div class="info-box" id="infoBox1" role="region" aria-hidden="true">
-        <p>Kocaeli Akçaray tramvay hattının 3.8 km ve 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına yolcu taşıyacak şekilde 17.00'da açılması hedefleniyor</p>
-        <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+    <div class="sayaç-grubu">
+        <div class="message">
+            <img src="https://upload.wikimedia.org/wikipedia/tr/d/d9/Ak%C3%A7aray_logo.png" class="logo" alt="Akçaray">
+            <span class="text">Otogar - Stadyum Uzatması</span>
+            <button class="info-symbol" data-target="infoBox1" aria-expanded="false" aria-controls="infoBox1">i</button>
+        </div>
+        <div class="clock" id="clock1" aria-live="polite"></div>
+        <div class="info-box" id="infoBox1" role="region" aria-hidden="true">
+            <p>Kocaeli Akçaray tramvay hattının 3.8 km and 6 istasyondan oluşan Stadyum uzatmasının 14 Ekim 2025 tarihindeki Türkiye - Gürcistan maçına yolcu taşıyacak şekilde 17.00'da açılması hedefleniyor</p>
+            <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
+        </div>
     </div>
 </div>
 
 <div class="sayaç-grubu">
     <div class="message">
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Istanbul_M5_Line_Symbol.svg" class="logo" alt="M5">
-        <span class="text">Samandıra - Sultanbeyli Uzatması</span>
+        <span class="text" style="display: flex; flex-direction: column; line-height: 1.2;">
+            <span>Samandıra - Sultanbeyli Uzatması</span>
+            <span style="font-size: 22px;">&amp; Sancaktepe Şehir Hastanesi İstasyonu</span>
+        </span>
         <button class="info-symbol" data-target="infoBox3" aria-expanded="false" aria-controls="infoBox3">i</button>
     </div>
     <div class="clock" id="clock3" aria-live="polite"></div>
     <div class="info-box" id="infoBox3" role="region" aria-hidden="true">
-        <p>Üsküdar - Samandıra arasında çalışmakta olan hattın 4.4 km ve 3 istasyondan oluşan son etabının Ocak 2026 bitmeden açılacağı belirtiliyor. 2023 yılında Çekmeköy - Samandıra arasının açılışına yetişmediği için pas geçilen Sancaktepe Şehir Hastanesi istasyonunun ocak ayında açılıp açılmayacağı hakkında kesin bir bilgilendirme yok</p>
+        <p>M5 Çekmeköy-Sultanbeyli uzatmasının 6.5 km and 4 istasyondan oluşan ilk etabı 16 Mart 2024 tarihinde hizmete girmişti. 4.4 km and 4 istasyondan oluşan ikinci ve son etabın 22 Mayıs 2026 tarihinde açılması hedefleniyor.<br><br>Proje 3 Mart 2017 tarihinde ihale edilmesine rağmen ödemelerinin yapılmaması sebebiyle %4 oranında duran inşaat 2019 sonunda yeniden başlayabilmiştir. Mevcut İBB yönetimi hat için farklı bankalardan olmak üzere 300 milyon euro'nun üstünde dış kredi bulmuştur
+        </p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnM5" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerM5">
@@ -293,7 +303,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock2" aria-live="polite"></div>
     <div class="info-box" id="infoBox2" role="region" aria-hidden="true">
-        <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km ve 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyordu lâkin sinyalizasyon tamamlanamadığı için 2026 yılına ertelendi</p>
+        <p>69 km uzunluğundaki Gayrettepe - İstanbul Havalimanı - Halkalı metro hattının son etabı olan 17.5 km and 5 istasyonluk kesiminin sahadan duyumlara göre Cumhuriyet Bayramı'na yetiştirilmesi hedefleniyordu lâkin sinyalizasyon tamamlanamadığı için 2026 yılına ertelendi</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnM11" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerM11">
@@ -314,7 +324,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock4" aria-live="polite"></div>
     <div class="info-box" id="infoBox4" role="region" aria-hidden="true">
-        <p>13 km ve 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu; İBB hatta çalışmalara yeniden başlayıp 2026 Mayıs ayında açmayı hedefliyor</p>
+        <p>13 km and 11 istasyondan oluşacak İstanbul'un 4. sürücüsüz metrosunun açılış hedefi 2025 sonuydu. Ancak ek borçlanma ihtiyacı nedeniyle çalışmalar durdu; İBB hatta çalışmalara yeniden başlayıp 2026 Mayıs ayında açmayı hedefliyor</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnM12" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerM12">
@@ -331,7 +341,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clockKartepe" aria-live="polite"></div>
     <div class="info-box" id="infoBoxKartepe" role="region" aria-hidden="true">
-        <p>Otogar - Stadyum hattı ihalesine yapılacak iş arttırımı ile inşa edilecek 2 istasyon ve 1.4 km'den oluşan etabın ekim ayından itibaren 8 ay sonra açılması hedeflenmektedir</p>
+        <p>Otogar - Stadyum hattı ihalesine yapılacak iş arttırımı ile inşa edilecek 2 istasyon and 1.4 km'den oluşan etabın ekim ayından itibaren 8 ay sonra açılması hedeflenmektedir</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
     </div>
 </div>
@@ -344,7 +354,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock5" aria-live="polite"></div>
     <div class="info-box" id="infoBox5" role="region" aria-hidden="true">
-        <p>Kocaeli'nin ilk metrosu olacak hat 15 km ve 11 istasyondan oluşmakta. Ulaştırma Bakanlığı doğrudan açıklama yapmamış olsa da yerel gazetelerin bakanlıktan aldığı bilgiye göre hattın 2026'nın Haziran ayında açılması hedefleniyor</p>
+        <p>Kocaeli'nin ilk metrosu olacak hat 15 km and 11 istasyondan oluşmakta. Ulaştırma Bakanlığı doğrudan açıklama yapmamış olsa da yerel gazetelerin bakanlıktan aldığı bilgiye göre hattın 2026'nın Haziran ayında açılması hedefleniyor</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnGebze" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerGebze">
@@ -361,7 +371,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock6b" aria-live="polite"></div>
     <div class="info-box" id="infoBox6b" role="region" aria-hidden="true">
-        <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı ve şehir hastanesine erişmesini sağlayacak uzatma 4 km ve 3 istasyondan oluşmaktadır. Emek ve Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı</p>
+        <p>Bursa'nın iki metro hattından biri olan 19 km uzunluğundaki Arabayatağı - Balat işletmesinin YHT garı and şehir hastanesine erişmesini sağlayacak uzatma 4 km and 3 istasyondan oluşmaktadır. Emek and Balat arasındaki 1 km'lik kısım 28 Mart 2024 tarihinde açıldı</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnBursa" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerBursa">
@@ -378,7 +388,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock14" aria-live="polite"></div>
     <div class="info-box" id="infoBox14" role="region" aria-hidden="true">
-        <p>Ankara'nın 38 km ve 24 istasyondan oluşan banliyö hattını Yenikent'e uzatmayı amaçlayan proje 10 km ve 3 istasyondan oluşmaktadır. Hattın sinyalizasyon ihalesi henüz gerçekleşmemiştir</p>
+        <p>Ankara'nın 38 km and 24 istasyondan oluşan banliyö hattını Yenikent'e uzatmayı amaçlayan proje 10 km and 3 istasyondan oluşmaktadır. Hattın sinyalizasyon ihalesi henüz gerçekleşmemiştir</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnBaskentray" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerBaskentray">
@@ -395,7 +405,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock6" aria-live="polite"></div>
     <div class="info-box" id="infoBox6" role="region" aria-hidden="true">
-        <p>Eminönü - Alibeyköy tramvay hattına Feshane istasyonuna 3. peron eklenerek bağlanacak uzatma 3.2 km ve 4 istasyondan oluşmakta. Hat açıldığında Eminönü - Alibeyköy ve Eminönü - Bayrampaşa olmak üzere iki ayrı işletmeye geçilecek</p>
+        <p>Eminönü - Alibeyköy tramvay hattına Feshane istasyonuna 3. peron eklenerek bağlanacak uzatma 3.2 km and 4 istasyondan oluşmakta. Hat açıldığında Eminönü - Alibeyköy and Eminönü - Bayrampaşa olmak üzere iki ayrı işletmeye geçilecek</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnT5" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerT5">
@@ -412,7 +422,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock7" aria-live="polite"></div>
     <div class="info-box" id="infoBox7" role="region" aria-hidden="true">
-        <p>Mecidiyeköy - Mahmutbey hattını sahile indirmek amacıyla projelendirilen Mecidiyeköy - Yıldız arası 2 Ocak 2023 tarihinde açıldı. Arkeolojik kazılar geriye kalan Beşiktaş ve Kabataş istasyonlarında uzun yıllar süren gecikmelere sebep oldu</p>
+        <p>Mecidiyeköy - Mahmutbey hattını sahile indirmek amacıyla projelendirilen Mecidiyeköy - Yıldız arası 2 Ocak 2023 tarihinde açıldı. Arkeolojik kazılar geriye kalan Beşiktaş and Kabataş istasyonlarında uzun yıllar süren gecikmelere sebep oldu</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnM7Kabatas" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerM7Kabatas">
@@ -446,7 +456,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clockKonyaray" aria-live="polite"></div>
     <div class="info-box" id="infoBoxKonyaray" role="region" aria-hidden="true">
-        <p>Türkiye'nin İzban, Marmaray, Başkentray, Adaray ve Gaziray sonrası 6. banliyö hattı olacak hattın 23 km ve 14 istasyondan oluşması planlanmaktadır. Ekim ayı itibariyle fiziksel ilerleme oranı %80'e ulaşmıştır</p>
+        <p>Türkiye'nin İzban, Marmaray, Başkentray, Adaray and Gaziray sonrası 6. banliyö hattı olacak hattın 23 km and 14 istasyondan oluşması planlanmaktadır. Ekim ayı itibariyle fiziksel ilerleme oranı %80'e ulaşmıştır</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnKonyaray" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerKonyaray">
@@ -463,7 +473,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock9" aria-live="polite"></div>
     <div class="info-box" id="infoBox9" role="region" aria-hidden="true">
-        <p>İzmir'in 2. metrosu olacak hat 13 km ve 10 istasyondan oluşup sürücüsüz işletilecektir. Hattın tünel kazılarında ağustos ayı itibariyle %77 ilerleme sağlanmıştır</p>
+        <p>İzmir'in 2. metrosu olacak hat 13 km and 10 istasyondan oluşup sürücüsüz işletilecektir. Hattın tünel kazılarında ağustos ayı itibariyle %77 ilerleme sağlanmıştır</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnIzmir" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerIzmir">
@@ -480,7 +490,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
     </div>
     <div class="clock" id="clock10" aria-live="polite"></div>
     <div class="info-box" id="infoBox10" role="region" aria-hidden="true">
-        <p>Kocaeli'nin ikinci metrosu olacak hat 26.8 km ve 18 istasyondan oluşmaktadır. Hattın TBM kazıları 6 Eylül 2025 tarihinde başlamıştır. Gebze - Darıca metrosu gibi bu hat da Ulaştırma Bakanlığı tarafından yapılmaktadır</p>
+        <p>Kocaeli'nin ikinci metrosu olacak hat 26.8 km and 18 istasyondan oluşmaktadır. Hattın TBM kazıları 6 Eylül 2025 tarihinde başlamıştır. Gebze - Darıca metrosu gibi bu hat da Ulaştırma Bakanlığı tarafından yapılmaktadır</p>
         <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
         <button class="map-btn" id="showMapBtnKorfezray" aria-expanded="false">Haritayı Göster</button>
         <div class="map-container" id="mapContainerKorfezray">
@@ -504,7 +514,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <span class="lime-green">%8</span><span class="black">ilerleme ile devam ediyor</span>
         </div>
         <div class="info-box" id="infoBox15" role="region" aria-hidden="true">
-            <p>M1B Yenikapı - Kirazlı hattını batıya doğru uzatacak etap 6.2 km ve 5 istasyondan oluşmaktadır. İhale kapsamında hattın tüm sinyalizasyonu da güncellenecektir. Sahadan gelen görüntülere göre çalışmalar haziran ayında yeniden başlamıştır. İBB çalışmaların yılbaşından sonra hızlanacağını belirtmiştir</p>
+            <p>M1B Yenikapı - Kirazlı hattını batıya doğru uzatacak etap 6.2 km and 5 istasyondan oluşmaktadır. İhale kapsamında hattın tüm sinyalizasyonu da güncellenecektir. Sahadan gelen görüntülere göre çalışmalar haziran ayında yeniden başlamıştır. İBB çalışmaların yılbaşından sonra hızlanacağını belirtmiştir</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
             <button class="map-btn" id="showMapBtnM1B" aria-expanded="false">Haritayı Göster</button>
             <div class="map-container" id="mapContainerM1B">
@@ -523,7 +533,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <span class="orange">%86</span><span class="black">ilerleme ile durdu</span>
         </div>
         <div class="info-box" id="infoBox11" role="region" aria-hidden="true">
-            <p>Pendik - Fevzi Çakmak uzatmasıyla beraber inşa edilen 1 km ve 1 duraklık genişlemeyi içeren proje M4 hattını Kadıköy - Sabiha Gökçen ve Kadıköy - Kaynarca olmak üzere iki farklı işletmeye bölecektir. Hattın inşaatı mayıs ayında ek borçlanma gereksiniminden dolayı durmuştur</p>
+            <p>Pendik - Fevzi Çakmak uzatmasıyla beraber inşa edilen 1 km and 1 duraklık genişlemeyi içeren proje M4 hattını Kadıköy - Sabiha Gökçen and Kadıköy - Kaynarca olmak üzere iki farklı işletmeye bölecektir. Hattın inşaatı mayıs ayında ek borçlanma gereksiniminden dolayı durmuştur</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
             <button class="map-btn" id="showMapBtnM4" aria-expanded="false">Haritayı Göster</button>
             <div class="map-container" id="mapContainerM4">
@@ -542,7 +552,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <span class="orange">%86</span><span class="black">ilerleme ile durdu</span>
         </div>
         <div class="info-box" id="infoBox17" role="region" aria-hidden="true">
-            <p>Tavşantepe - Kaynarca uzatması ile beraber inşa edilen 4 km ve 2 istasyondan oluşan kısım tamamlandığında M4 hattının mevcut Fevzi Çakmak - Sabiha Gökçen tünellerini kullanarak Pendik - Sabiha Gökçen arasında M10 hattını oluşturacaktır. Bu sayede Marmaray ve YHT garından havalimanına doğrudan erişim sağlanacaktır. Hattın inşaatı mayıs ayında ek borçlanma gereksiniminden dolayı durmuştur</p>
+            <p>Tavşantepe - Kaynarca uzatması ile beraber inşa edilen 4 km and 2 istasyondan oluşan kısım tamamlandığında M4 hattının mevcut Fevzi Çakmak - Sabiha Gökçen tünellerini kullanarak Pendik - Sabiha Gökçen arasında M10 hattını oluşturacaktır. Bu sayede Marmaray and YHT garından havalimanına doğrudan erişim sağlanacaktır. Hattın inşaatı mayıs ayında ek borçlanma gereksiniminden dolayı durmuştur</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
             <button class="map-btn" id="showMapBtnM10" aria-expanded="false">Haritayı Göster</button>
             <div class="map-container" id="mapContainerM10">
@@ -561,7 +571,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <span class="orange">%50</span><span class="black">ilerleme ile durdu</span>
         </div>
         <div class="info-box" id="infoBox12" role="region" aria-hidden="true">
-            <p>M7 hattını İstanbul'un batısına uzatmayı amaçlayan proje 7 km ve 5 istasyondan oluşmaktadır. Temeli 2021 yılında atılan hattın inşaatı şantiye çalışanlarından alınan bilgilere göre tünel kazılarının tamamlanması ile 2025'in yaz aylarında durmuştur. İBB hat hakkında bu tarihten beri açıklama yapmamıştır</p>
+            <p>M7 hattını İstanbul'un batısına uzatmayı amaçlayan proje 7 km and 5 istasyondan oluşmaktadır. Temeli 2021 yılında atılan hattın inşaatı şantiye çalışanlarından alınan bilgilere göre tünel kazılarının tamamlanması ile 2025'in yaz aylarında durmuştur. İBB hat hakkında bu tarihten beri açıklama yapmamıştır</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
             <button class="map-btn" id="showMapBtnM7Ext" aria-expanded="false">Haritayı Göster</button>
              <div class="map-container" id="mapContainerM7Ext">
@@ -580,7 +590,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <span class="orange">%8</span><span class="black">ilerleme ile durdu</span>
         </div>
         <div class="info-box" id="infoBox16" role="region" aria-hidden="true">
-            <p>2017 yılında M5 hattının Çekmeköy - Sultanbeyli etabı ile beraber ihale edilen hat kredi alınamadığından dolayı 2024 sonbaharına kadar atıl halde kalmıştır. Bu tarihten sonra Emek istasyonun şaftı açılmaya başlanmış ve TBM girişi yapılacağı söylenmiştir. 2025 yılında sahadan alınan bilgilere göre M5'in Samandıra - Sultanbeyli etabını daha hızlı bitirebilmek için çalışmalar durdurulmuştur</p>
+            <p>2017 yılında M5 hattının Çekmeköy - Sultanbeyli etabı ile beraber ihale edilen hat kredi alınamadığından dolayı 2024 sonbaharına kadar atıl halde kalmıştır. Bu tarihten sonra Emek istasyonun şaftı açılmaya başlanmış and TBM girişi yapılacağı söylenmiştir. 2025 yılında sahadan alınan bilgilere göre M5'in Samandıra - Sultanbeyli etabını daha hızlı bitirebilmek için çalışmalar durdurulmuştur</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
              <button class="map-btn" id="showMapBtnM13" aria-expanded="false">Haritayı Göster</button>
             <div class="map-container" id="mapContainerM13">
@@ -640,7 +650,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <span class="black">Yatırım programına başvuruldu</span>
         </div>
         <div class="info-box" id="infoBoxTram" role="region" aria-hidden="true">
-            <p>Üsküdar ve Kadıköy arasında raylı sistem bağlantısı sağlamak ve Minibüs Caddesi adı verilen güzergahı daha düzenli hale getirmesi hedeflenen hat 21 km ve 33 istasyondan oluşacaktır. Projelendirilmesi 2023'te kamuya duyurulan hat için 2024 yılının sonunda ÇED gerekli değildir kararı alınmıştır</p>
+            <p>Üsküdar and Kadıköy arasında raylı sistem bağlantısı sağlamak and Minibüs Caddesi adı verilen güzergahı daha düzenli hale getirmesi hedefleneyen hat 21 km and 33 istasyondan oluşacaktır. Projelendirilmesi 2023'te kamuya duyurulan hat için 2024 yılının sonunda ÇED gerekli değildir kararı alınmıştır</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
             <button class="map-btn" id="showMapBtnTram" aria-expanded="false">Haritayı Göster</button>
             <div class="map-container" id="mapContainerTram">
@@ -659,7 +669,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <span class="black">ÇED raporu onaylandı</span>
         </div>
         <div class="info-box" id="infoBoxTrabzon" role="region" aria-hidden="true">
-            <p>15 km ve 16 istasyondan oluşacak tramvayın ilk halinde tamamen hemzemin olarak planlanmıştı, 8 ay süren ÇED süreci sonrası hattın büyük kısmı viyadük üstüne ve yer altına alındı. İnşaat ihalesinin ne zaman gerçekleşeceği konusunda henüz bir bilgilendirme yok</p>
+            <p>15 km and 16 istasyondan oluşacak tramvayın ilk halinde tamamen hemzemin olarak planlanmıştı, 8 ay süren ÇED süreci sonrası hattın büyük kısmı viyadük üstüne and yer altına alındı. İnşaat ihalesinin ne zaman gerçekleşeceği konusunda henüz bir bilgilendirme yok</p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
             <button class="map-btn" id="showMapBtnTrabzon" aria-expanded="false">Haritayı Göster</button>
             <div class="map-container" id="mapContainerTrabzon">
@@ -678,7 +688,7 @@ body.dark-mode .close-btn, body.dark-mode .map-btn {
             <span class="black">İhale hazırlığında</span>
         </div>
         <div class="info-box" id="infoBoxSakarya" role="region" aria-hidden="true">
-            <p>17 km ve 18 istasyondan oluşacak tramvayın şehrin metrobüs ve banliyö hatları ile de aktarma imkanı vermesi planlanıyor. 2025 yılı bitmeden inşaat ihalesi ile beraber iş başlangıcının da yapılacağı belirtiliyor </p>
+            <p>17 km and 18 istasyondan oluşacak tramvayın şehrin metrobüs and banliyö hatları ile de aktarma imkanı vermesi planlanıyor. 2025 yılı bitmeden inşaat ihalesi ile beraber iş başlangıcının da yapılacağı belirtiliyor </p>
             <button class="close-btn" aria-label="Kapat bilgi kutusunu">Kapat</button>
             <button class="map-btn" id="showMapBtnSakarya" aria-expanded="false">Haritayı Göster</button>
             <div class="map-container" id="mapContainerSakarya">
@@ -736,7 +746,7 @@ function updateAkcarayCountdown() {
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     if (days > 0) {
-         akcarayClock.innerHTML = `<span class="green">${days} gün ${hours} saat</span>`;
+         akcarayClock.innerHTML = `<span class="green">${days} gün ${hours} saat ${minutes} dakika ${seconds} saniye</span>`;
     } else {
          akcarayClock.innerHTML = `<span class="green">${hours} saat ${minutes} dakika ${seconds} saniye</span>`;
     }
@@ -746,12 +756,41 @@ function updateAkcarayCountdown() {
 akcarayInterval = setInterval(updateAkcarayCountdown, 1000);
 updateAkcarayCountdown(); // Sayfa ilk yüklendiğinde hemen gösterim için
 
+/* M5 Sultanbeyli Uzatması için özel saat/dakika/saniye sayacı */
+// Hedef tarih: 22 Mayıs 2026 Cuma 11:00
+const m5TargetDate = new Date("2026-05-22T11:00:00").getTime();
+const m5Clock = document.getElementById("clock3");
+let m5Interval;
+
+function updateM5Countdown() {
+    const now = new Date().getTime();
+    const distance = m5TargetDate - now;
+
+    if (distance < 0) {
+        m5Clock.innerHTML = '<span class="green">22 Mayıs\'ta açıldı</span>';
+        if (m5Interval) clearInterval(m5Interval);
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if (days > 0) {
+         m5Clock.innerHTML = `<span class="green">${days} gün ${hours} saat ${minutes} dakika ${seconds} saniye </span>`;
+    } else {
+         m5Clock.innerHTML = `<span class="green">${hours} saat ${minutes} dakika ${seconds} saniye</span>`;
+    }
+}
+m5Interval = setInterval(updateM5Countdown, 1000);
+updateM5Countdown();
+
 
 /* Diğer sayaçlar için veri */
 const clockData = {
-    // clock1, özel sayaç tarafından yönetildiği için buradan kaldırıldı.
-    clock2: { type: "date", ts: new Date("2026-05-31").getTime(), label: "Mayıs 2026" },
-    clock3: { type: "date", ts: new Date("2026-05-19").getTime(), label: "Mayıs 2026" },
+    // clock1 ve clock3 özel sayaçlar tarafından yönetildiği için buradan kaldırıldı.
+    clock2: { type: "date", ts: new Date("2026-05-31").getTime(), label: "Mayıs 2026", suffix: " (en az)" },
     clock4: { type: "date", ts: new Date("2026-12-31").getTime(), label: "2026 sonu" },
     clockKartepe: { type: "date", ts: new Date("2026-06-30").getTime(), label: "Haziran 2026" },
     clock5: { type: "date", ts: new Date("2026-10-29").getTime(), label: "29 Ekim 2026" },
@@ -771,13 +810,15 @@ function updateAll() {
         const el = document.getElementById(id);
         if (!el) return;
         const data = clockData[id];
+        const prefix = data.prefix || "";
+        const suffix = data.suffix || "";
         if (data.type === "date") {
             const diff = Math.ceil((data.ts - now) / msGün);
-            el.innerHTML = diff > 0 ? `<span class="green">${diff} gün</span> <span>${data.label}</span>` : `<span class="green">Açıldı 🎉</span>`;
+            el.innerHTML = diff > 0 ? `<span class="green">${prefix}${diff} gün${suffix}</span> <span>${data.label}</span>` : `<span class="green">Açıldı 🎉</span>`;
         } else {
             const dStart = Math.max(0, Math.ceil((data.start - now) / msGün));
             const dEnd = Math.max(0, Math.ceil((data.end - now) / msGün));
-            el.innerHTML = `<span class="green">${dStart} - ${dEnd} gün</span> <span>${data.label}</span>`;
+            el.innerHTML = `<span class="green">${prefix}${dStart} - ${dEnd} gün${suffix}</span> <span>${data.label}</span>`;
         }
     });
 }
@@ -797,6 +838,30 @@ mobilBtn.addEventListener("click", () => {
     const pressed = document.body.classList.contains("zoomed");
     mobilBtn.setAttribute("aria-pressed", pressed ? "true" : "false");
     mobilBtn.textContent = pressed ? "Normal Görünüme Dön" : "Mobil Sürüme Geç";
+});
+
+/* 2025 Açılışları Toggle */
+const acilisBtn = document.getElementById("acilis2025Toggle");
+acilisBtn.addEventListener("click", () => {
+    const sec = document.getElementById("acilis2025");
+    const elementsToHide = document.querySelectorAll(".wrapper > .sayaç-grubu, .wrapper > .link-box, #gelecek, #belirsiz, #proje");
+    
+    if (!sec.style.display || sec.style.display === "none") {
+        sec.style.display = "block";
+        // Diğer her şeyi gizle
+        elementsToHide.forEach(el => el.style.display = "none");
+        
+        acilisBtn.setAttribute("aria-expanded", "true");
+        acilisBtn.textContent = "2025 Açılışlarını Gizle";
+    } else {
+        sec.style.display = "none";
+        // Sadece ana ekrandaki öğeleri geri getir
+        document.querySelectorAll(".wrapper > .sayaç-grubu").forEach(el => el.style.display = "block");
+        document.querySelectorAll(".wrapper > .link-box").forEach(el => el.style.display = "block");
+        
+        acilisBtn.setAttribute("aria-expanded", "false");
+        acilisBtn.textContent = "2025 Açılışlarını Görüntüle";
+    }
 });
 
 /* Bilgi kutusu aç/kapa mantığı */
@@ -947,4 +1012,3 @@ function showProje() {
 </script>
 </body>
 </html>
-
