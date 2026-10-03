@@ -62,179 +62,6 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
 .ok-btn.dondur svg { transform: rotate(180deg); }
 .detay-kutu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; opacity: 0; }
 .detay-kutu.acik { max-height: 200px; opacity: 1; margin-top: 5px; }
-/* ========================================================
-   SADECE MOBİL İÇİN EK CSS (Masaüstünü kesinlikle etkilemez)
-   ======================================================== */
-@media screen and (max-width: 768px) {
-    /* Gövde kilitlerini aç ve dikey akış sağla */
-    body {
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        display: block !important;
-        padding: 24px 12px 60px 12px !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Ana taşıyıcıyı merkeze al, mobilde sola yatay kaymayı nötrle */
-    .sayfa-icerik {
-        width: 100% !important;
-        max-width: 380px !important;
-        margin: 0 auto !important;
-        transform: none !important;
-        transition: none !important;
-        gap: 14px !important;
-    }
-    .sayfa-icerik.sola-kay,
-    .sayfa-icerik.daha-sola-kay,
-    .sayfa-icerik.en-sola-kay,
-    .sayfa-icerik.balon-kay {
-        transform: none !important;
-    }
-
-    /* Butonları dikey ekrana tam oturt */
-    .hat-butonu {
-        width: 100% !important;
-        font-size: 15px !important;
-        padding: 8px 14px 8px 18px !important;
-    }
-    .hat-butonu img {
-        width: 36px !important;
-        height: 36px !important;
-        flex-shrink: 0 !important;
-    }
-
-    /* Mobilde alt menüleri sağa fırlatmak yerine dikey akordeon yap */
-    .alt-kollar,
-    .ibb-alt-kollar,
-    .bakanlik-alt-kollar,
-    .tcdd-alt-kollar,
-    .metro-ist-alt-kollar,
-    .en-alt-kollar,
-    .proje-alt-kollar {
-        position: static !important;
-        transform: none !important;
-        margin: 10px 0 0 10px !important;
-        padding-left: 12px !important;
-        border-left: 2px solid #b0b0b0 !important;
-        gap: 8px !important;
-        display: none !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        pointer-events: auto !important;
-    }
-
-    /* Açılan kolları görünür kıl */
-    .alt-kollar.acik,
-    .ibb-alt-kollar.acik,
-    .bakanlik-alt-kollar.acik,
-    .tcdd-alt-kollar.acik,
-    .metro-ist-alt-kollar.acik,
-    .en-alt-kollar.acik,
-    .proje-alt-kollar.acik {
-        display: flex !important;
-    }
-
-    /* Masaüstü yatay bağlantı çizgilerini mobilde gizle */
-    .alt-kollar::before, .alt-kollar::after,
-    .ibb-alt-kollar::before, .ibb-alt-kollar::after,
-    .bakanlik-alt-kollar::before, .bakanlik-alt-kollar::after,
-    .tcdd-alt-kollar::before, .tcdd-alt-kollar::after,
-    .metro-ist-alt-kollar::before, .metro-ist-alt-kollar::after,
-    .en-alt-kollar::before, .en-alt-kollar::after,
-    .proje-alt-kollar::before, .proje-alt-kollar::after,
-    .alt-buton-wrapper::before,
-    .bilgi-balonu::before {
-        display: none !important;
-    }
-
-    /* İnşaat bilgi balonlarını buton altına tam genişlikte yerleştir */
-    .bilgi-balonu {
-        position: static !important;
-        transform: none !important;
-        width: 100% !important;
-        margin: 10px 0 0 0 !important;
-        box-sizing: border-box !important;
-        display: none !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        pointer-events: auto !important;
-        padding: 12px !important;
-        gap: 10px !important;
-    }
-    .bilgi-balonu.acik {
-        display: flex !important;
-    }
-    .ilerleme-halkasi {
-        width: 65px !important;
-        height: 65px !important;
-    }
-    .ilerleme-ic {
-        width: 48px !important;
-        height: 48px !important;
-        font-size: 14px !important;
-    }
-    .bilgi-ust-metin {
-        font-size: 13px !important;
-    }
-
-    /* --- HARİTA MODAL MOBİL DÜZENİ --- */
-    .harita-sol-kapsayici {
-        top: 10px !important;
-        left: 10px !important;
-        right: 10px !important;
-        width: auto !important;
-        gap: 8px !important;
-        max-height: 45vh !important;
-    }
-
-    .harita-sol-panel {
-        width: 100% !important;
-        max-height: 28vh !important;
-        padding: 12px 14px !important;
-        border-radius: 12px !important;
-    }
-    .sol-panel-baslik {
-        font-size: 16px !important;
-        margin-bottom: 8px !important;
-    }
-    .sol-panel-bilgi-satir {
-        padding: 6px 0 !important;
-        font-size: 13px !important;
-    }
-
-    .tarihce-kutusu {
-        width: 100% !important;
-        padding: 10px 14px !important;
-        border-radius: 12px !important;
-    }
-    .tarihce-kutusu.genis {
-        width: 100% !important;
-    }
-    .tarihce-kutusu.genis .tarihce-icerik {
-        max-height: 180px !important;
-        overflow-y: auto !important;
-    }
-
-    /* Sağ paneli alt kata taşıyarak ortadaki haritayı serbest bırak */
-    .harita-sag-panel {
-        top: auto !important;
-        bottom: 60px !important;
-        left: 10px !important;
-        right: 10px !important;
-        width: auto !important;
-        max-height: 22vh !important;
-        padding: 12px !important;
-        border-radius: 12px !important;
-    }
-
-    #kapatBtn {
-        bottom: 12px !important;
-        padding: 8px 22px !important;
-        font-size: 13px !important;
-    }
-}
 </style></head><body>
 
 <div id="haritaModal"><div id="haritaKonteyner">
@@ -256,59 +83,59 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
     <div class="insa-wrapper">
         <div class="hat-butonu" onclick="isletmeKollariAcKapa()">
             <span id="t_baslikIsletme"></span>
-            <img id="hatLogosu" referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Istanbul_M1A_Line_Symbol.svg" alt="Metro Logosu">
+            <img id="hatLogosu" src="./img/Istanbul_M1A_Line_Symbol.svg" alt="Metro Logosu">
         </div>
         <div class="alt-kollar" id="isletmeAltKollar">
             <div class="alt-buton-wrapper">
                 <div class="hat-butonu alt-buton" onclick="metroIstKollariAcKapa()">
                     <span id="t_baslikMetroIst"></span>
-                    <img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Logo-istanbul-buyuksehir-belediyesi.svg" alt="İBB Logosu" style="transform: scale(1.7);">
+                    <img src="./img/logo-istanbul-buyuksehir-belediyesi.png" alt="İBB Logosu" style="transform: scale(1.7);">
                 </div>
                 <div class="metro-ist-alt-kollar" id="metroIstAltKollar">
                     <!-- METRO HATLARI -->
                     <div class="alt-buton-wrapper">
                         <div class="hat-butonu alt-buton" onclick="metroHatKollariAcKapa()">
                             <span id="t_altBaslikMetro"></span>
-                            <img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Istanbul_public_transport_-_M_symbol.svg" alt="Metro Logosu">
+                            <img src="./img/Untitled%20design%20(29).png" alt="Metro Logosu">
                         </div>
                         <div class="en-alt-kollar" id="metroHatKollari">
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M1A', '#E32726')"><span id="t_m1a"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Istanbul_M1A_Line_Symbol.svg" alt="M1A Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M1B', '#E32726')"><span id="t_m1b"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/8/86/Istanbul_M1B_Line_Symbol.svg" alt="M1B Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M2', '#009A4C')"><span id="t_m2"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Istanbul_M2_Line_Symbol.svg" alt="M2 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M3', '#00A8E1')"><span id="t_m3"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/5/52/Istanbul_M3_Line_Symbol.svg" alt="M3 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M4', '#E91E76')"><span id="t_m4"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/5/57/Istanbul_M4_Line_Symbol.svg" alt="M4 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M5', '#80287f')"><span id="t_m5"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Istanbul_M5_Line_Symbol.svg" alt="M5 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M6', '#C6A582')"><span id="t_m6"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Istanbul_M6_Line_Symbol.svg" alt="M6 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M7', '#FFB6C1')"><span id="t_m7"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/0/03/Istanbul_M7_Line_Symbol.svg" alt="M7 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M8', '#000080')"><span id="t_m8"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/6/60/Istanbul_M8_Line_Symbol.svg" alt="M8 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M9', '#FFD700')"><span id="t_m9"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Istanbul_M9_Line_Symbol.svg" alt="M9 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M1A', '#E32726')"><span id="t_m1a"></span><img src="./img/Istanbul_M1A_Line_Symbol.svg" alt="M1A Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M1B', '#E32726')"><span id="t_m1b"></span><img src="./img/Istanbul_M1B_Line_Symbol.svg" alt="M1B Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M2', '#009A4C')"><span id="t_m2"></span><img src="./img/Istanbul_M2_Line_Symbol.svg" alt="M2 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M3', '#00A8E1')"><span id="t_m3"></span><img src="./img/Istanbul_M3_Line_Symbol.svg" alt="M3 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M4', '#E91E76')"><span id="t_m4"></span><img src="./img/Istanbul_M4_Line_Symbol.svg" alt="M4 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M5', '#80287f')"><span id="t_m5"></span><img src="./img/Istanbul_M5_Line_Symbol.svg" alt="M5 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M6', '#C6A582')"><span id="t_m6"></span><img src="./img/Istanbul_M6_Line_Symbol.svg" alt="M6 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M7', '#FFB6C1')"><span id="t_m7"></span><img src="./img/Istanbul_M7_Line_Symbol.svg" alt="M7 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M8', '#000080')"><span id="t_m8"></span><img src="./img/Istanbul_M8_Line_Symbol.svg" alt="M8 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M9', '#FFD700')"><span id="t_m9"></span><img src="./img/Istanbul_M9_Line_Symbol.svg" alt="M9 Logosu"></div></div>
                         </div>
                     </div>
                     <!-- TRAMVAY HATLARI -->
                     <div class="alt-buton-wrapper">
                         <div class="hat-butonu alt-buton" onclick="tramvayHatKollariAcKapa()">
                             <span id="t_altBaslikTramvay"></span>
-                            <img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Istanbul_public_transport_-_T_symbol.svg" alt="Tramvay Logosu">
+                            <img src="./img/Untitled%20design%20(30).png" alt="Tramvay Logosu">
                         </div>
                         <div class="en-alt-kollar" id="tramvayHatKollari">
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T1', '#004f7d')"><span id="t_t1"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/8/87/Istanbul_T1_Line_Symbol.svg" alt="T1 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T2', '#92aaa0')"><span id="t_t2"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/6/64/Istanbul_T2_Line_Symbol.svg" alt="T2 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T3', '#a86528')"><span id="t_t3"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/1/14/Istanbul_T3_Line_Symbol.svg" alt="T3 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T4', '#f47e46')"><span id="t_t4"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/1/18/Istanbul_T4_Line_Symbol.svg" alt="T4 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T5', '#7c72b3')"><span id="t_t5"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/6/61/Istanbul_T5_Line_Symbol.svg" alt="T5 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T1', '#004f7d')"><span id="t_t1"></span><img src="./img/Istanbul_T1_Line_Symbol.svg" alt="T1 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T2', '#92aaa0')"><span id="t_t2"></span><img src="./img/Istanbul_T2_Line_Symbol.svg" alt="T2 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T3', '#a86528')"><span id="t_t3"></span><img src="./img/Istanbul_T3_Line_Symbol.svg" alt="T3 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T4', '#f47e46')"><span id="t_t4"></span><img src="./img/Istanbul_T4_Line_Symbol.svg" alt="T4 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T5', '#7c72b3')"><span id="t_t5"></span><img src="./img/Istanbul_T5_Line_Symbol.svg" alt="T5 Logosu"></div></div>
                         </div>
                     </div>
                     <!-- FÜNİKÜLER HATLARI -->
                     <div class="alt-buton-wrapper">
                         <div class="hat-butonu alt-buton" onclick="funikulerHatKollariAcKapa()">
                             <span id="t_altBaslikFunikuler"></span>
-                            <img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Istanbul_public_transport_-_F_symbol.svg" alt="Füniküler Logosu">
+                            <img src="./img/Untitled%20design%20(31).png" alt="Füniküler Logosu">
                         </div>
                         <div class="en-alt-kollar" id="funikulerHatKollari">
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'F1', '#7c7358')"><span id="t_f1"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_F1_Line_Symbol.svg" alt="F1 Logosu"></div></div> 
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'F2', '#7c7358')"><span id="t_f2"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Istanbul_F2_Line_Symbol.svg" alt="F2 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'F3', '#7c7358')"><span id="t_f3"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Istanbul_F3_Line_Symbol.svg" alt="F3 Logosu"></div></div>
-                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'F4', '#7c7358')"><span id="t_f4"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Istanbul_F4_Line_Symbol.svg" alt="F4 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'F1', '#7c7358')"><span id="t_f1"></span><img src="./img/Istanbul_F1_Line_Symbol.svg" alt="F1 Logosu"></div></div> 
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'F2', '#7c7358')"><span id="t_f2"></span><img src="./img/Istanbul_F2_Line_Symbol.svg" alt="F2 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'F3', '#7c7358')"><span id="t_f3"></span><img src="./img/Istanbul_F3_Line_Symbol.svg" alt="F3 Logosu"></div></div>
+                            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'F4', '#7c7358')"><span id="t_f4"></span><img src="./img/Istanbul_F4_Line_Symbol.svg" alt="F4 Logosu"></div></div>
                         </div>
                     </div>
                 </div>
@@ -317,13 +144,13 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
             <div class="alt-buton-wrapper">
                 <div class="hat-butonu alt-buton" onclick="tcddKollariAcKapa()">
                     <span id="t_baslikTcdd"></span>
-                    <img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/9/91/TCDD_Logo.svg" alt="TCDD Logosu" style="border-radius: 0;">
+                    <img src="./img/T%C3%BCrkiye_Cumhuriyeti_Devlet_Demiryollar%C4%B1_logo.png" alt="TCDD Logosu" style="border-radius: 0;">
                 </div>
                 <div class="tcdd-alt-kollar" id="tcddAltKollar">
-                    <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'B1', '#65656a')"><span id="t_marmaray"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Istanbul_B1_Line_Symbol.svg" alt="B1 Logosu"></div></div>
-                    <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'B2', '#76777a')"><span id="t_halkaliBahcesehir"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Istanbul_B2_Line_Symbol.svg" alt="B2 Logosu"></div></div>
-                    <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'U3', '#e47a7b')"><span id="t_u3"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Istanbul_U3_Line_Symbol_Coral.svg" alt="U3 Logosu"></div></div>
-                    <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M11', '#ab548f')"><span id="t_m11"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/6/67/Istanbul_M11_Line_Symbol.svg" alt="M11 Logosu"></div></div>
+                    <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'B1', '#65656a')"><span id="t_marmaray"></span><img src="./img/Istanbul_B1_Line_Symbol.svg" alt="B1 Logosu"></div></div>
+                    <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'B2', '#76777a')"><span id="t_halkaliBahcesehir"></span><img src="./img/Istanbul_B2_Line_Symbol.svg" alt="B2 Logosu"></div></div>
+                    <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'U3', '#e47a7b')"><span id="t_u3"></span><img src="./img/Istanbul_U3_Line_Symbol_Coral%20(1).svg" alt="U3 Logosu"></div></div>
+                    <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M11', '#ab548f')"><span id="t_m11"></span><img src="./img/Istanbul_M11_Line_Symbol.svg" alt="M11 Logosu"></div></div>
                 </div>
             </div>
         </div>
@@ -333,27 +160,27 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
     <div class="insa-wrapper">
         <div class="hat-butonu" onclick="kollariAcKapa()">
             <span id="t_baslikInsa"></span>
-            <img id="hatLogosuInsa" referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/5/52/Istanbul_M12_Line_Symbol.svg" alt="İnşa Halindeki Metro Logosu">
+            <img id="hatLogosuInsa" src="./img/Istanbul_M12_Line_Symbol%20(1).svg" alt="İnşa Halindeki Metro Logosu">
         </div>
         <div class="alt-kollar" id="altKollar">
             <div class="alt-buton-wrapper">
                 <div class="hat-butonu alt-buton" onclick="ibbKollariAcKapa()">
                     <span id="t_baslikIbb"></span>
-                    <img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Logo-istanbul-buyuksehir-belediyesi.svg" alt="İBB Logosu" style="transform: scale(1.7);">
+                    <img src="./img/logo-istanbul-buyuksehir-belediyesi.png" alt="İBB Logosu" style="transform: scale(1.7);">
                 </div>
                 <div class="ibb-alt-kollar" id="ibbAltKollar">
                     <div class="alt-buton-wrapper">
-                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m7KssBilgi')"><span id="t_m7Kss"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/0/03/Istanbul_M7_Line_Symbol.svg" alt="M7 Logosu"></div>
+                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m7KssBilgi')"><span id="t_m7Kss"></span><img src="./img/Istanbul_M7_Line_Symbol.svg" alt="M7 Logosu"></div>
                         <div class="bilgi-balonu" id="m7KssBilgi">
                             <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#FFB6C1 54.4%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #FFB6C1;">%54.4</div></div></div>
                             <div class="bilgi-metin-alani">
                                 <div class="bilgi-ust-metin">İlk TBM Atakent Mahallesi - Mahmutbey arası kazısını bitirdi. Atakent - KSS Hastanesi ve Mahmutbey'de bulunan NATM tünellerini kalıcı beton kaplama işi devam ediyor<div style="margin-top: 8px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: flex-end;"><span style="color: #FFB6C1; cursor: pointer; text-decoration: underline; font-size: 13px;" onclick="haritaAc(event, 'M7_Kss', '#FFB6C1')">Güzergahı Göster</span></div></div>
-                                <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color: #27ae60;">2028</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color: #e67e22;">2029 ilk yarı</span></div></div>
+                                <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color: #27ae60;">2028 yılı</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color: #e67e22;">2029 ilk yarı</span></div></div>
                             </div>
                         </div>
                     </div>
                     <div class="alt-buton-wrapper">
-                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m7KabatasBilgi')"><span id="t_m7Kabatas"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/0/03/Istanbul_M7_Line_Symbol.svg" alt="M7 Logosu"></div>
+                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m7KabatasBilgi')"><span id="t_m7Kabatas"></span><img src="./img/Istanbul_M7_Line_Symbol.svg" alt="M7 Logosu"></div>
                         <div class="bilgi-balonu" id="m7KabatasBilgi">
                             <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#FFB6C1 68.1%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #FFB6C1;">%68.1</div></div></div>
                             <div class="bilgi-metin-alani">
@@ -363,17 +190,17 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
                         </div>
                     </div>
                     <div class="alt-buton-wrapper">
-                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m12Bilgi')"><span id="t_m12"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/5/52/Istanbul_M12_Line_Symbol.svg" alt="M12 Logosu"></div>
+                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m12Bilgi')"><span id="t_m12"></span><img src="./img/Istanbul_M12_Line_Symbol%20(1).svg" alt="M12 Logosu"></div>
                         <div class="bilgi-balonu" id="m12Bilgi">
                             <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#c9d200 94.7%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #c9d200;">%94.7</div></div></div>
                             <div class="bilgi-metin-alani">
                                 <div class="bilgi-ust-metin">Haziran ayında başlayan sürüş ve paks testleri devam etmektedir. İstasyonlarda asma tavan ve fayans döşeme gibi ince işler yapılırken istasyon üstünde şantiye alanları kaldırılmaktadır<div style="margin-top: 8px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: space-between;"><span>13 km &nbsp;|&nbsp; 11 istasyon</span><span style="color: #c9d200; cursor: pointer; text-decoration: underline; font-size: 13px;" onclick="haritaAc(event, 'M12', '#c9d200')">Güzergahı Göster</span></div></div>
-                                <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color: #27ae60;">19 Aralık</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color: #e67e22;">2027 ilk çeyrek</span></div></div>
+                                <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color: #27ae60;">29 Ekim</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color: #e67e22;">2027 ilk çeyrek</span></div></div>
                             </div>
                         </div>
                     </div>
                     <div class="alt-buton-wrapper">
-                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m10Bilgi')"><span id="t_m10"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/6/67/Istanbul_M10_Line_Symbol.svg" alt="M10 Logosu"></div>
+                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m10Bilgi')"><span id="t_m10"></span><img src="./img/Istanbul_M10_Line_Symbol.svg" alt="M10 Logosu"></div>
                         <div class="bilgi-balonu" id="m10Bilgi">
                             <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#4da93e 89%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #4da93e;">%89</div></div></div>
                             <div class="bilgi-metin-alani">
@@ -383,32 +210,32 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
                         </div>
                     </div>
                     <div class="alt-buton-wrapper">
-                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m1bHalkaliBilgi')"><span id="t_m1bHalkali"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/8/86/Istanbul_M1B_Line_Symbol.svg" alt="M1B Logosu"></div>
+                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m1bHalkaliBilgi')"><span id="t_m1bHalkali"></span><img src="./img/Istanbul_M1B_Line_Symbol.svg" alt="M1B Logosu"></div>
                         <div class="bilgi-balonu" id="m1bHalkaliBilgi">
                             <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#ee2229 24%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #ee2229;">%24</div></div></div>
                             <div class="bilgi-metin-alani">
                                 <div class="bilgi-ust-metin">Barbaros ve Malazgirt istasyonlarında peron imalatları devam ederken Fatih istasyonunda TBM kazılarının başlaması için hazırlıklar yapılmaktadır. Halkalı Üniversite istasyonunda da hafriyat çalışmalarına başlanmıştır<div style="margin-top: 8px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: space-between;"><span>6.2 km &nbsp;|&nbsp; 5 istasyon</span><span style="color: #E32726; cursor: pointer; text-decoration: underline; font-size: 13px;" onclick="haritaAc(event, 'M1B_Halkali', '#E32726')">Güzergahı Göster</span></div></div>
-                                <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color:#27ae60 ;">2028</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color: #e67e22;">2029</span></div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alt-buton-wrapper">
-                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m13Bilgi')"><span id="t_m13"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Istanbul_M13_Line_Symbol.svg" alt="M13 Logosu"></div>
-                        <div class="bilgi-balonu" id="m13Bilgi">
-                            <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#ff4b58 8%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #ff4b58;">%8</div></div></div>
-                            <div class="bilgi-metin-alani">
-                                <div class="bilgi-ust-metin">M5 Sarıgazi İstasyonu kapsamında inşa edilen peron yapıları ve Emek istasyonunda kazılmış aç kapa yapısı haricinde hatta çalışma gözlenmemektedir<div style="margin-top: 8px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: space-between;"><span>6.7 km &nbsp;|&nbsp; 5 istasyon</span><span style="color: #ff4b58; cursor: pointer; text-decoration: underline; font-size: 13px;" onclick="haritaAc(event, 'M13', '#ff4b58')">Güzergahı Göster</span></div></div>
                                 <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color: #555;">Belirsiz</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color: #555;">Belirsiz</span></div></div>
                             </div>
                         </div>
                     </div>
                     <div class="alt-buton-wrapper">
-                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('t7FeshaneBilgi')"><span id="t_t7Feshane"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Istanbul_T7_Line_Symbol.svg" alt="T7 Logosu"></div>
+                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m13Bilgi')"><span id="t_m13"></span><img src="./img/Istanbul_M13_Line_Symbol.svg" alt="M13 Logosu"></div>
+                        <div class="bilgi-balonu" id="m13Bilgi">
+                            <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#ff4b58 8%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #ff4b58;">%8</div></div></div>
+                            <div class="bilgi-metin-alani">
+                                <div class="bilgi-ust-metin">M5 Sarıgazi İstasyonu kapsamında inşa edilen peron yapıları ve Emek istasyonunda kazılmuış aç kapa yapısı haricinde hatta çalışma gözlenmemektedir<div style="margin-top: 8px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: space-between;"><span>6.7 km &nbsp;|&nbsp; 5 istasyon</span><span style="color: #ff4b58; cursor: pointer; text-decoration: underline; font-size: 13px;" onclick="haritaAc(event, 'M13', '#ff4b58')">Güzergahı Göster</span></div></div>
+                                <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color: #555;">Belirsiz</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color: #555;">Belirsiz</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alt-buton-wrapper">
+                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('t7FeshaneBilgi')"><span id="t_t7Feshane"></span><img src="./img/Istanbul_T7_Line_Symbol.svg" alt="T7 Logosu"></div>
                         <div class="bilgi-balonu" id="t7FeshaneBilgi">
                             <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#c5d5a8 38%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #c5d5a8;">%38</div></div></div>
                             <div class="bilgi-metin-alani">
                                 <div class="bilgi-ust-metin">Hattın yer altında bulunan Bayrampaşa ve Meydan istasyonlarında kazılar tamamlanmış, ağustos ayı itibari ile kaba inşaata başlanmıştır. 4 etap halinde inşa edilecek hemzemin kısımlar için Eyüpsultan Bulvarı'nda yol kapaması yapılarak altyapı deplasesine başlanmıştır<div style="margin-top: 8px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: space-between;"><span>3.2 km &nbsp;|&nbsp; 5 istasyon</span><span style="color: #c5d5a8; cursor: pointer; text-decoration: underline; font-size: 13px;" onclick="haritaAc(event, 'T7', '#c5d5a8')">Güzergahı Göster</span></div></div>
-                                <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color:#27ae60 ;">2027</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color:#e67e22 ;">2028</span></div></div>
+                                <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color: #555;">Belirsiz</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color: #555;">Belirsiz</span></div></div>
                             </div>
                         </div>
                     </div>
@@ -418,11 +245,11 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
             <div class="alt-buton-wrapper">
                 <div class="hat-butonu alt-buton" onclick="bakanlikKollariAcKapa()">
                     <span id="t_baslikBakanlik"></span>
-                    <img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/a/af/T.C._Ula%C5%9Ft%C4%B1rma_ve_Altyap%C4%B1_Bakanl%C4%B1%C4%9F%C4%B1_logo.svg" alt="Bakanlık Logosu" style="border-radius: 0;">
+                    <img src="./img/T%C3%BCrkiye_Cumhuriyeti_Ula%C5%9Ft%C4%B1rma%2C_Denizcilik_ve_Haberle%C5%9Fme_Bakanl%C4%B1%C4%9F%C4%B1_logo.png" alt="Bakanlık Logosu" style="border-radius: 0;">
                 </div>
                 <div class="bakanlik-alt-kollar" id="bakanlikAltKollar">
                     <div class="alt-buton-wrapper">
-                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m14AltunizadeBilgi')"><span id="t_m14Altunizade"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_M14_Line_Symbol.svg" alt="M14 Logosu"></div>
+                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m14AltunizadeBilgi')"><span id="t_m14Altunizade"></span><img src="./img/Istanbul_M14_Line_Symbol.svg" alt="M14 Logosu"></div>
                         <div class="bilgi-balonu" id="m14AltunizadeBilgi">
                             <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#ce863f 76.2%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #ce863f;">%76.2</div></div></div>
                             <div class="bilgi-metin-alani">
@@ -432,7 +259,7 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
                         </div>
                     </div>
                     <div class="alt-buton-wrapper">
-                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m14UmraniyeBilgi')"><span id="t_m14Umraniye"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Istanbul_M14_Line_Symbol.svg" alt="M14 Logosu"></div>
+                        <div class="hat-butonu alt-buton" onclick="balonAcKapa('m14UmraniyeBilgi')"><span id="t_m14Umraniye"></span><img src="./img/Istanbul_M14_Line_Symbol.svg" alt="M14 Logosu"></div>
                         <div class="bilgi-balonu" id="m14UmraniyeBilgi">
                             <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#ce863f 0%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #ce863f;">%0</div></div></div>
                             <div class="bilgi-metin-alani">
@@ -450,25 +277,61 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
     <div class="insa-wrapper">
         <div class="hat-butonu" onclick="projeKollariAcKapa()">
             <span id="t_baslikProje"></span>
-            <img id="hatLogosuProje" referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Istanbul_M20_Line_Symbol.svg" alt="Proje Hatları Logosu">
+            <img id="hatLogosuProje" src="./img/Istanbul_M20_Line_Symbol.svg" alt="Proje Hatları Logosu">
         </div>
         <div class="alt-kollar proje-alt-kollar" id="projeAltKollar">
-            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'm7Esenyurt', '#FFB6C1')"><span id="t_m7Esenyurt"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/0/03/Istanbul_M7_Line_Symbol.svg" alt="M7 Logosu"></div></div>
-            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton"><span id="t_m20"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Istanbul_M20_Line_Symbol.svg" alt="M20 Logosu"></div></div>
-            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M34', '#376b8c')"><span id="t_m34"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/2/23/Istanbul_M34_Line_Symbol.svg" alt="M34 Logosu"></div></div>
-            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M', '#34495e')"><span id="t_M"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Istanbul_public_transport_-_M_symbol.svg" alt="Metro Logosu"></div></div>
-            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T', '#7b42f5')"><span id="t_T"></span><img referrerpolicy="no-referrer" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Istanbul_public_transport_-_T_symbol.svg" alt="Tramvay Logosu"></div></div>
+            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'm7Esenyurt', '#FFB6C1')"><span id="t_m7Esenyurt"></span><img src="./img/Istanbul_M7_Line_Symbol.svg" alt="M7 Logosu"></div></div>
+            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton"><span id="t_m20"></span><img src="./img/Istanbul_M20_Line_Symbol.svg" alt="M20 Logosu"></div></div>
+            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M34', '#376b8c')"><span id="t_m34"></span><img src="./img/Istanbul_M34_Line_Symbol.svg" alt="M34 Logosu"></div></div>
+            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'M', '#34495e')"><span id="t_M"></span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Istanbul_public_transport_-_M_symbol.svg" alt="Metro Logosu"></div></div>
+            <div class="alt-buton-wrapper"><div class="hat-butonu alt-buton" onclick="haritaAc(event, 'T', '#7b42f5')"><span id="t_T"></span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Istanbul_public_transport_-_T_symbol.svg" alt="Tramvay Logosu"></div></div>
         </div>
     </div>
 </div>
 <script>
 const setAnim = (id, arr) => {
     let el = document.getElementById(id), i = 0;
-    if(el) setInterval(() => { el.style.opacity = 0; setTimeout(() => { i = (i + 1) % arr.length; el.src = arr[i]; el.style.opacity = 1; }, 300); }, 3000);
+    if(el) setInterval(() => { 
+        el.style.opacity = 0; 
+        setTimeout(() => { 
+            i = (i + 1) % arr.length; 
+            el.src = arr[i]; 
+            el.style.opacity = 1; 
+        }, 300); 
+    }, 3000);
 };
-setAnim("hatLogosu", ["Istanbul_M1A_Line_Symbol.svg.png", "Istanbul_M1B_Line_Symbol.svg.png", "Istanbul_M2_Line_Symbol.svg.png", "Istanbul_M3_Line_Symbol.svg.png", "Istanbul_M4_Line_Symbol.svg.png", "Istanbul_M5_Line_Symbol.svg.png", "Istanbul_M6_Line_Symbol.svg.png", "Istanbul_M7_Line_Symbol.svg.png", "Istanbul_M8_Line_Symbol.svg.png", "Istanbul_M9_Line_Symbol.svg.png", "Istanbul_M11_Line_Symbol.svg.png"]);
-setAnim("hatLogosuInsa", ["Istanbul_M12_Line_Symbol.svg.png", "https://commons.wikimedia.org/wiki/Special:FilePath/Istanbul_M14_Line_Symbol.svg", "Istanbul_M10_Line_Symbol.svg.png", "Istanbul_M1B_Line_Symbol.svg.png"]);
-setAnim("hatLogosuProje", ["Istanbul_M7_Line_Symbol.svg.png", "https://commons.wikimedia.org/wiki/Special:FilePath/Istanbul_M20_Line_Symbol.svg", "https://commons.wikimedia.org/wiki/Special:FilePath/Istanbul_M34_Line_Symbol.svg", "https://commons.wikimedia.org/wiki/Special:FilePath/Istanbul_public_transport_-_M_symbol.svg", "https://commons.wikimedia.org/wiki/Special:FilePath/Istanbul_public_transport_-_T_symbol.svg"]);
+
+// İşletmedeki Hatlar Logoları
+setAnim("hatLogosu", [
+    "./img/Istanbul_M1A_Line_Symbol.svg",
+    "./img/Istanbul_M1B_Line_Symbol.svg",
+    "./img/Istanbul_M2_Line_Symbol.svg",
+    "./img/Istanbul_M3_Line_Symbol.svg",
+    "./img/Istanbul_M4_Line_Symbol.svg",
+    "./img/Istanbul_M5_Line_Symbol.svg",
+    "./img/Istanbul_M6_Line_Symbol.svg",
+    "./img/Istanbul_M7_Line_Symbol.svg",
+    "./img/Istanbul_M8_Line_Symbol.svg",
+    "./img/Istanbul_M9_Line_Symbol.svg",
+    "./img/Istanbul_M11_Line_Symbol.svg"
+]);
+
+// İnşa Halindeki Hatlar Logoları
+setAnim("hatLogosuInsa", [
+    "./img/Istanbul_M12_Line_Symbol%20(1).svg",
+    "./img/Istanbul_M14_Line_Symbol.svg",
+    "./img/Istanbul_M10_Line_Symbol.svg",
+    "./img/Istanbul_M1B_Line_Symbol.svg"
+]);
+
+// Proje Aşamasındaki Hatlar Logoları
+setAnim("hatLogosuProje", [
+    "./img/Istanbul_M7_Line_Symbol.svg",
+    "./img/Istanbul_M20_Line_Symbol.svg",
+    "./img/Istanbul_M34_Line_Symbol.svg",
+    "./img/Untitled%20design%20(29).png",
+    "./img/Untitled%20design%20(30).png"
+]);
 
 const balonListesi = ["m7KssBilgi", "m7KabatasBilgi", "m12Bilgi", "m10Bilgi", "m1bHalkaliBilgi", "m13Bilgi", "t7FeshaneBilgi", "m14AltunizadeBilgi", "m14UmraniyeBilgi"];
 const kl = id => document.getElementById(id);
@@ -480,15 +343,6 @@ const tC = (id, c) => kl(id)?.classList.toggle(c);
 
 function sayfayiKaydir() {
     let si = kl("sayfaIcerik");
-    if (!si) return;
-    
-    // Yalnızca mobilde yatay kaymayı devre dışı bırak
-    if (window.innerWidth <= 768) {
-        si.classList.remove("sola-kay", "daha-sola-kay", "en-sola-kay", "balon-kay");
-        return;
-    }
-
-    // Masaüstü orijinal kodu:
     si.classList.remove("sola-kay", "daha-sola-kay", "en-sola-kay", "balon-kay");
     if (balonListesi.some(id => hC(id, "acik"))) si.classList.add("balon-kay");
     else if (hC("metroHatKollari", "acik") || hC("tramvayHatKollari", "acik") || hC("funikulerHatKollari", "acik")) si.classList.add("en-sola-kay");
@@ -787,7 +641,7 @@ const tumHatlarVerisi = { "type": "FeatureCollection", "features": [
     { "type": "Feature", "properties": { "colour": "#c5d5a8", "ref": "T7", "name": "Feshane - Bayrampaşa Meydan" }, "geometry": { "type": "LineString", "coordinates": [[28.9377817,41.0455255],[28.9377261,41.0457719],[28.9376851,41.0459531],[28.9376548,41.0460737],[28.937615,41.0462221],[28.9375898,41.0463358],[28.9375187,41.0465195],[28.9374408,41.046595],[28.9373309,41.0466238],[28.9371027,41.0465888],[28.9367221,41.0462965],[28.9364977,41.0461684],[28.9360295,41.0460456],[28.9356611,41.0459886],[28.9353756,41.0460355],[28.9350593,41.0461698],[28.9348409,41.046225],[28.9345956,41.0461583],[28.9341433,41.0459598],[28.9338625,41.0458714],[28.9335815,41.0458945],[28.9331725,41.0460766],[28.9329212,41.0461828],[28.9325934,41.0462747],[28.9322986,41.04621],[28.9318915,41.0458604],[28.9313314,41.04542],[28.9308513,41.045026],[28.9304202,41.0446736],[28.9297342,41.0440629],[28.929366,41.0436791],[28.9290521,41.0432851],[28.9287009,41.0428513],[28.9281557,41.0419927],[28.9275267,41.0408154],[28.9273074,41.0404022],[28.9271454,41.0401057],[28.9269714,41.0398511],[28.9250299,41.0368722],[28.9244532,41.0362005],[28.9236351,41.0357109],[28.92279,41.0352052],[28.9220342,41.0345893],[28.9215531,41.0341913],[28.9210322,41.0337485],[28.9205367,41.0334318],[28.9198081,41.0333261],[28.9186825,41.0333708],[28.9175319,41.0332452],[28.9150083,41.0328874],[28.9142679,41.033011],[28.9132742,41.0334722],[28.9129046,41.03365]] } },
     { "type": "Feature", "properties": { "colour": "#34495e", "ref": "M", "name": "Ümraniye - Beykoz" }, "geometry": { "type": "LineString", "coordinates": [[29.084378,41.0253394],[29.0832721,41.0259872],[29.0822834,41.0266398],[29.0817947,41.0270254],[29.0813966,41.0274537],[29.0811077,41.0279167],[29.0808642,41.0283797],[29.0807143,41.0286836],[29.0805983,41.0289961],[29.0801001,41.0308118],[29.079691,41.0325782],[29.0794001,41.0342739],[29.0790703,41.0358095],[29.0787888,41.0374606],[29.0781538,41.0407069],[29.0778848,41.0424878],[29.0776505,41.0431369],[29.0772124,41.0438628],[29.0765997,41.0449561],[29.0764054,41.0459141],[29.0763203,41.047244],[29.0764203,41.0489683],[29.0764951,41.050439],[29.0764226,41.0518669],[29.0763737,41.0523823],[29.0762341,41.0528593],[29.0750321,41.0548183],[29.0737103,41.0566435],[29.0725773,41.0575755],[29.0714367,41.0583197],[29.0705452,41.0591066],[29.0696419,41.0605267],[29.0695746,41.0608398],[29.0695639,41.0611529],[29.0697042,41.0617607],[29.0702044,41.0625731],[29.0704641,41.0629046],[29.0707577,41.0632189],[29.0731267,41.0649403],[29.0742425,41.0658592],[29.0748589,41.0667099],[29.0754786,41.06771],[29.0756675,41.0680818],[29.0757488,41.0683662],[29.0757262,41.0688205],[29.0755678,41.0692982],[29.0742767,41.0723375],[29.0740226,41.0736651],[29.073918,41.0749701],[29.0740525,41.0760572],[29.0742467,41.0769415],[29.0747996,41.0780849],[29.0753675,41.0790706],[29.0764722,41.0801101],[29.0776478,41.0811496],[29.0815617,41.083401],[29.0847546,41.0852512],[29.0922047,41.0893915],[29.0935749,41.0904488],[29.0940539,41.0909969],[29.0944472,41.091532],[29.09577,41.0940347],[29.0961365,41.0953248],[29.0962467,41.0961544],[29.0963844,41.0972187],[29.0964034,41.0979515],[29.0963386,41.0988519],[29.0959183,41.1005411],[29.0955098,41.1016696],[29.0944288,41.1048796],[29.0943256,41.1070826],[29.0944225,41.1086705],[29.094691,41.1101809],[29.0956538,41.1131319],[29.0962837,41.1148025],[29.0969431,41.1161644],[29.0975949,41.1174836],[29.0979419,41.1184927],[29.0982152,41.1195889],[29.0988959,41.1222896],[29.0991132,41.1240126],[29.0988145,41.1250527],[29.0983546,41.1259138],[29.0978816,41.1267948],[29.0947446,41.1316264],[29.0929684,41.1338503],[29.0922608,41.1344869],[29.0913948,41.1350893],[29.0904402,41.1357632],[29.0889626,41.1369042],[29.0874533,41.1382435],[29.0866456,41.1393577],[29.0859738,41.1404719],[29.0855619,41.1413103],[29.0853312,41.1421488],[29.0852341,41.1433361],[29.0853761,41.1444783],[29.0863255,41.1470218]] } },
     { "type": "Feature", "properties": { "colour": "#7b42f5", "ref": "T", "name": "Üsküdar - Cevizli" }, "geometry": { "type": "LineString", "coordinates": [[29.0153345,41.0257912],[29.015461,41.025379],[29.0155729,41.0247838],[29.0156386,41.0242074],[29.0156688,41.0239613],[29.0157239,41.0235097],[29.0157756,41.0230871],[29.0158621,41.0225338],[29.0159086,41.0224007],[29.0159904,41.0222444],[29.0160918,41.0221212],[29.0162276,41.0220382],[29.0165738,41.0218102],[29.0166785,41.0217091],[29.017124,41.0210696],[29.0173597,41.0207478],[29.0174814,41.0206448],[29.0180167,41.0201969],[29.0184051,41.0198946],[29.0190103,41.0194633],[29.0197156,41.0189631],[29.0205868,41.018369],[29.021061,41.0180376],[29.0216262,41.0176642],[29.0221957,41.0174046],[29.0231117,41.0170212],[29.0236158,41.0168533],[29.0242902,41.0166649],[29.0251174,41.0164372],[29.0252911,41.0163288],[29.0253909,41.0162111],[29.0254358,41.0161293],[29.0254292,41.0159552],[29.0249644,41.0153771],[29.0246986,41.0150135],[29.0245281,41.0148116],[29.0244389,41.0146957],[29.0242764,41.0144848],[29.0235587,41.0135366],[29.0235034,41.0134796],[29.0234247,41.0134384],[29.0226895,41.0132486],[29.0221826,41.0131362],[29.0218124,41.0130944],[29.0213075,41.0130713],[29.0207902,41.013048],[29.020428,41.0130362],[29.0202959,41.0129842],[29.0202099,41.0129008],[29.0201551,41.0127688],[29.0201524,41.0126477],[29.0200914,41.0124815],[29.0199177,41.0122591],[29.0196678,41.0120207],[29.0196241,41.0118821],[29.0196387,41.0117248],[29.0197182,41.0113961],[29.0198277,41.0109221],[29.0199348,41.0104419],[29.0199979,41.0100542],[29.0200356,41.0099],[29.0201489,41.0094563],[29.0202052,41.0091919],[29.0202971,41.0088208],[29.0203407,41.0083392],[29.020341,41.0079387],[29.0203616,41.0076851],[29.0203731,41.0075513],[29.0203963,41.0074118],[29.0204901,41.0071364],[29.0206973,41.0064995],[29.020938,41.0059111],[29.0210954,41.0055696],[29.0212181,41.0053],[29.021349,41.0050339],[29.0215035,41.0047554],[29.0215723,41.0046186],[29.0216414,41.0044812],[29.0217414,41.0042769],[29.0218881,41.0039347],[29.0220238,41.0036149],[29.0221371,41.0033539],[29.0222514,41.0031124],[29.0223518,41.002881],[29.022542,41.0024178],[29.0229795,41.0013187],[29.0234466,41.0002114],[29.0236012,40.9998168],[29.0236387,40.9996816],[29.0241826,40.9974144],[29.0242401,40.997205],[29.0243598,40.9967211],[29.0244455,40.9963757],[29.0244704,40.9955892],[29.0244932,40.9950578],[29.0245036,40.9945384],[29.0245225,40.9938687],[29.0245543,40.9931378],[29.0245455,40.9929397],[29.0245267,40.9927498],[29.0243292,40.9924243],[29.0242163,40.99225],[29.0241097,40.9920857],[29.0240542,40.9919026],[29.0240354,40.9917753],[29.0240501,40.9916485],[29.0240966,40.9915727],[29.0242379,40.9914583],[29.0244658,40.9913663],[29.0287608,40.9906192],[29.0290101,40.9905904],[29.0291955,40.9906089],[29.0293911,40.9906754],[29.0299079,40.9908518],[29.0312653,40.991393],[29.0324241,40.9917205],[29.033099,40.9918671],[29.033668,40.9920812],[29.0341484,40.9922754],[29.0348059,40.9925825],[29.0352684,40.9929341],[29.0355577,40.9931315],[29.036081,40.9934854],[29.0367758,40.993914],[29.0372514,40.9941897],[29.0373838,40.9942373],[29.0375341,40.9942512],[29.0376137,40.9942235],[29.0376887,40.9941958],[29.0377612,40.9941344],[29.0379931,40.9937744],[29.03855,40.9929255],[29.0388356,40.9924762],[29.0389635,40.9922607],[29.0394511,40.9914531],[29.039644,40.9911475],[29.0397207,40.9910452],[29.0399184,40.9907752],[29.0400625,40.9906516],[29.0405171,40.9902582],[29.0409221,40.9899166],[29.0412584,40.9896371],[29.0416561,40.9893972],[29.0425372,40.988812],[29.0428179,40.9886614],[29.0435785,40.9882485],[29.0439249,40.9880545],[29.0445487,40.9877526],[29.0452941,40.9874056],[29.046161,40.9870041],[29.0470877,40.9865435],[29.0478577,40.9861459],[29.0481511,40.986018],[29.0485854,40.9858473],[29.049123,40.9856341],[29.0498839,40.985365],[29.0502576,40.9852546],[29.0506108,40.9851474],[29.0512975,40.9849867],[29.0515323,40.984945],[29.0524471,40.9847909],[29.053228,40.9846685],[29.053404,40.9846533],[29.0540507,40.9846406],[29.0552562,40.9846023],[29.056415,40.9845566],[29.0571334,40.9844924],[29.0575432,40.9844283],[29.0579922,40.9843339],[29.0585366,40.9842087],[29.0590699,40.9840684],[29.0606371,40.9837248],[29.0620603,40.9834087],[29.0623065,40.9833477],[29.0639531,40.9829993],[29.0650707,40.9827685],[29.065933,40.9826113],[29.0661639,40.9825455],[29.0677077,40.9820284],[29.0690133,40.9816053],[29.0697913,40.9814249],[29.0709832,40.9811202],[29.0716346,40.9809728],[29.0728315,40.9807124],[29.0742595,40.980445],[29.0744991,40.9804019],[29.0750218,40.9802719],[29.0751832,40.9802789],[29.0755459,40.9802362],[29.0762837,40.9801782],[29.0764427,40.9801496],[29.0766119,40.9801019],[29.0767766,40.9800177],[29.0768929,40.9799234],[29.0771198,40.9796603],[29.0774725,40.9792416],[29.07783,40.9788391],[29.0781195,40.9784473],[29.0783925,40.9780339],[29.0785995,40.9776974],[29.0789291,40.9772703],[29.0795031,40.9765197],[29.0797311,40.9760671],[29.0800032,40.9755705],[29.0801191,40.9754223],[29.0807511,40.9749026],[29.0810974,40.9746323],[29.0815917,40.974224],[29.0818526,40.973947],[29.0823082,40.9734286],[29.0829694,40.9726761],[29.0830986,40.9724767],[29.083413,40.9718035],[29.0835083,40.9715995],[29.0837939,40.9710082],[29.0840335,40.9705477],[29.084187,40.9702326],[29.0843034,40.970076],[29.0847724,40.9694646],[29.0849989,40.9691732],[29.0852751,40.9687575],[29.0855779,40.9683264],[29.0859746,40.9678283],[29.0862729,40.9674432],[29.0870056,40.9663587],[29.0874545,40.9656391],[29.087994,40.9650422],[29.0884493,40.9645456],[29.0887286,40.964225],[29.0893469,40.9635522],[29.089592,40.9633509],[29.089821,40.9631931],[29.0906918,40.962693],[29.0908869,40.9625816],[29.0911724,40.9624186],[29.0913595,40.9623132],[29.0921207,40.9618847],[29.0925359,40.9616461],[29.092688,40.961541],[29.0929957,40.9612481],[29.0935989,40.9606533],[29.0939172,40.9603493],[29.0943494,40.9599292],[29.0948112,40.9594356],[29.0951775,40.9590347],[29.0952351,40.9589619],[29.0952518,40.9588299],[29.0952171,40.9585188],[29.0952321,40.9583898],[29.0953293,40.9582957],[29.0954781,40.958202],[29.0961915,40.9578784],[29.0970923,40.9574658],[29.097377,40.9573007],[29.0982297,40.9568408],[29.0989829,40.9564412],[29.0993825,40.9561696],[29.099753,40.9559177],[29.1000461,40.9557029],[29.1002214,40.9555745],[29.1003787,40.9554592],[29.1004735,40.9553698],[29.1005504,40.9552413],[29.1005855,40.9550488],[29.1005913,40.9548391],[29.1005805,40.9542526],[29.1005462,40.9534799],[29.1005414,40.9532405],[29.1006249,40.9530573],[29.1009846,40.952615],[29.1016477,40.9518614],[29.1021393,40.9514128],[29.1025877,40.9510867],[29.1028591,40.9509478],[29.1037576,40.9505096],[29.1039554,40.9504131],[29.1041866,40.9503004],[29.104435,40.9501441],[29.1048199,40.9498223],[29.1053522,40.9494037],[29.1054834,40.9493086],[29.1059686,40.9489807],[29.1062088,40.948697],[29.1063281,40.9485248],[29.1065488,40.9482018],[29.1070135,40.9475409],[29.1071501,40.9474031],[29.1074856,40.9472079],[29.1080321,40.9469078],[29.108533,40.9466615],[29.1087694,40.946589],[29.1093501,40.9464227],[29.1101062,40.9462248],[29.1104393,40.9460866],[29.1107912,40.9458837],[29.1111161,40.9456795],[29.1115107,40.9453441],[29.1117886,40.9450247],[29.1121311,40.9445944],[29.1124589,40.9443289],[29.1126909,40.9441403],[29.1127958,40.9440551],[29.1135734,40.9432927],[29.1140739,40.9428064],[29.1148114,40.9420947],[29.1156206,40.9413364],[29.1163776,40.9406332],[29.1169056,40.9401365],[29.1173971,40.9396783],[29.1181679,40.9389739],[29.1189592,40.9382402],[29.1191285,40.9381209],[29.119346,40.9380452],[29.1204002,40.9378266],[29.1207016,40.9377482],[29.1209422,40.9376512],[29.1211707,40.9375226],[29.1215413,40.9372491],[29.1220128,40.9369013],[29.1220747,40.9368556],[29.1224395,40.9365865],[29.1229707,40.9361298],[29.1233381,40.9358098],[29.1239798,40.9353238],[29.1246991,40.9348433],[29.1256945,40.9341875],[29.1258882,40.9340111],[29.1264014,40.9334548],[29.1268948,40.9329202],[29.1273495,40.9324637],[29.1278396,40.9319195],[29.1285229,40.9311235],[29.1286146,40.9309087],[29.1288954,40.930105],[29.1291625,40.9292748],[29.1292812,40.9286653],[29.129399,40.9280192],[29.1294423,40.927782],[29.1294623,40.9276723],[29.129559,40.927186],[29.1297225,40.926341],[29.1297935,40.9260507],[29.1299249,40.9258621],[29.1302652,40.9253428],[29.1306067,40.9250615],[29.1311858,40.9247268],[29.1320084,40.9243012],[29.1326138,40.9239996],[29.1334451,40.9234477],[29.1351962,40.922199],[29.1354632,40.9220307],[29.1359408,40.9217456],[29.1368122,40.9211262],[29.1372148,40.9208453],[29.1374484,40.9206822],[29.1379089,40.9203642],[29.1384271,40.9200663],[29.1388867,40.9198614],[29.1400256,40.9193367],[29.1408428,40.9189317],[29.1410904,40.918809],[29.1418697,40.9184302],[29.1431979,40.917818],[29.1443833,40.9172104],[29.1452664,40.9167781],[29.1461124,40.9163889],[29.1462802,40.9163076],[29.1468754,40.9160193],[29.1480332,40.9154808],[29.1486869,40.9151796],[29.1489151,40.9151368],[29.1491876,40.9151238],[29.1509157,40.9151946],[29.1528018,40.9154744],[29.1547012,40.9157284],[29.1558595,40.9159602],[29.1562215,40.9161134],[29.157157,40.9165672],[29.1590831,40.9175516],[29.1593505,40.9176247],[29.1598694,40.9176839],[29.1611683,40.9178411],[29.1614633,40.9178781],[29.162262,40.9179852],[29.1624799,40.9180144],[29.1639567,40.9181963],[29.1654007,40.9183573],[29.1660998,40.9184394],[29.1664011,40.9184747],[29.1667495,40.9185156],[29.1673054,40.9185809]] } },
-
+{ "type": "Feature", "properties": { "colour": "#65656a", "ref": "B1", "name": "Marmaray (Halkalı - Gebze)" }, "geometry": { "type": "LineString", "coordinates": [[28.7668604,41.0194996],[28.7668524,41.0184381],[28.7668444,41.0173713],[28.7668431,41.0172022],[28.7668235,41.0170128],[28.7667817,41.0167136],[28.7667566,41.0165801],[28.7667409,41.0164031],[28.7667369,41.016005],[28.766735,41.0159145],[28.7667317,41.0153878],[28.7667317,41.0148681],[28.766752,41.014647],[28.7668012,41.0143641],[28.7668759,41.0140946],[28.7669768,41.0138281],[28.7671,41.0135783],[28.7672455,41.0133365],[28.7673471,41.0132],[28.7674333,41.0130901],[28.7675424,41.0129759],[28.7676342,41.0128855],[28.7677419,41.0127869],[28.7679173,41.0126407],[28.7681402,41.012478],[28.7683748,41.0123311],[28.7686075,41.0121985],[28.7688814,41.012065],[28.7691482,41.0119557],[28.7694333,41.0118632],[28.7697007,41.0117945],[28.7699976,41.0117332],[28.7702953,41.011681],[28.7712455,41.0115068],[28.7717122,41.0113993],[28.772099,41.0112635],[28.77242,41.0111296],[28.7726842,41.0110127],[28.7730047,41.0108111],[28.7732714,41.0106438],[28.7735452,41.0104295],[28.7737949,41.0102003],[28.7740208,41.0099469],[28.7742673,41.0096238],[28.7744431,41.0093068],[28.7745853,41.0089827],[28.7746696,41.0086714],[28.774724,41.0081848],[28.7746927,41.0077863],[28.7745963,41.0074625],[28.7744857,41.0071814],[28.7742512,41.0066727],[28.7739784,41.0061388],[28.7737225,41.0056957],[28.7734589,41.0052977],[28.7733229,41.0050989],[28.7731269,41.0048699],[28.7728259,41.0045974],[28.7723598,41.0042338],[28.7714573,41.0036449],[28.7703681,41.0029342],[28.7698481,41.0024971],[28.7693224,41.0020158],[28.7688212,41.0014198],[28.7684598,41.0009381],[28.7682097,41.0004618],[28.76799,41.0000302],[28.7677995,40.9994515],[28.7676639,40.9988914],[28.767593,40.9983053],[28.767587,40.9976843],[28.7676284,40.9971271],[28.7677798,40.996498],[28.7680698,40.9956012],[28.7683199,40.9951231],[28.7686693,40.9945602],[28.7690748,40.9940355],[28.7695683,40.9934905],[28.7713257,40.991929],[28.7715787,40.9916842],[28.7717857,40.9914471],[28.7720207,40.991141],[28.7723104,40.9906755],[28.772485,40.9903493],[28.772614,40.9900502],[28.7727807,40.9895298],[28.773056,40.9885491],[28.7732529,40.9875314],[28.77331,40.9871833],[28.7733609,40.9870025],[28.773502,40.9866235],[28.773732,40.9862123],[28.7740758,40.9858045],[28.7755307,40.9842654],[28.7758214,40.9838758],[28.7760833,40.9833745],[28.7762118,40.9830082],[28.7762725,40.9825466],[28.7762457,40.9819878],[28.7761492,40.9816212],[28.7760076,40.9812593],[28.7755398,40.9802984],[28.7753788,40.9798287],[28.775307,40.9793291],[28.775303,40.9789545],[28.7753513,40.9785902],[28.7754478,40.9782751],[28.7755901,40.9779553],[28.7757846,40.9776101],[28.7759481,40.977377],[28.7761304,40.9771745],[28.7763866,40.9769296],[28.7766293,40.9767321],[28.7769337,40.9765103],[28.7772073,40.9763564],[28.7775023,40.9762015],[28.7777974,40.9760648],[28.7781152,40.9759494],[28.7784262,40.975839],[28.7805623,40.975175],[28.7834697,40.9742524],[28.7860294,40.9735022],[28.7876456,40.9729697],[28.7893092,40.9724162],[28.7894893,40.9723474],[28.7905781,40.9718901],[28.7911405,40.9716728],[28.7921812,40.9713196],[28.7926514,40.97116],[28.7931178,40.9709964],[28.7937655,40.9707097],[28.7941886,40.9704498],[28.7946031,40.9701632],[28.7950751,40.969823],[28.7954815,40.969498],[28.7963757,40.9686042],[28.7970755,40.9678693],[28.7979546,40.9669239],[28.7987364,40.9660732],[28.7990796,40.9657649],[28.7994664,40.9655146],[28.7999656,40.9652454],[28.8004323,40.9650411],[28.8008724,40.9648918],[28.8013479,40.96476],[28.8020156,40.9646362],[28.8024013,40.964594],[28.8036199,40.9644977],[28.803909,40.9644729],[28.8061849,40.9642786],[28.8099259,40.9639592],[28.8173514,40.9633009],[28.817651,40.9632744],[28.8187649,40.9631676],[28.8190255,40.963143],[28.8211123,40.9629694],[28.8221555,40.962895],[28.8233187,40.9628606],[28.8248804,40.9627331],[28.8270487,40.962517],[28.8273648,40.9624855],[28.8283574,40.9623944],[28.8291688,40.9623965],[28.8300076,40.9624555],[28.8305366,40.9625204],[28.8314455,40.9626713],[28.8321692,40.9628412],[28.8330125,40.9630938],[28.8337957,40.9633611],[28.8345507,40.9636643],[28.8351911,40.9639692],[28.8355628,40.9641647],[28.8359166,40.9643735],[28.8364826,40.9648858],[28.8372396,40.9655489],[28.8376842,40.9659329],[28.8380114,40.9662084],[28.8385398,40.966656],[28.8386847,40.9668525],[28.8390173,40.9672819],[28.8392962,40.9677517],[28.8400681,40.9695317],[28.840231,40.969885],[28.8423512,40.9743538],[28.8426651,40.9749026],[28.8429614,40.975338],[28.8433088,40.9758128],[28.8437553,40.976321],[28.8439545,40.9765448],[28.8445104,40.9770106],[28.844933,40.977378],[28.84529,40.977663],[28.845548,40.977846],[28.845892,40.9780635],[28.846235,40.978283],[28.84681,40.978608],[28.847241,40.97883],[28.8478042,40.9790842],[28.8482976,40.9792953],[28.8489575,40.9795418],[28.8497481,40.9797955],[28.8502507,40.9799497],[28.8507912,40.9800724],[28.8516291,40.9802118],[28.8524795,40.980298],[28.8530292,40.9803331],[28.8534921,40.9803424],[28.8539547,40.9803435],[28.8544857,40.9803299],[28.8546708,40.9803273],[28.8550195,40.9803274],[28.8562255,40.9802954],[28.8578063,40.9802099],[28.8583059,40.9801872],[28.8586,40.9801775],[28.860791,40.9800813],[28.8630508,40.9799931],[28.8635583,40.9799721],[28.8681679,40.9798346],[28.8688127,40.9798804],[28.8695073,40.9799862],[28.870205,40.9800849],[28.870776,40.9801839],[28.8724034,40.9804407],[28.8738971,40.9806776],[28.8751409,40.980818],[28.8756116,40.9808918],[28.878745,40.981416],[28.8795358,40.9815475],[28.8810217,40.9818034],[28.8825847,40.9820401],[28.8831588,40.9821204],[28.8836775,40.9822094],[28.8838843,40.9822621],[28.8843185,40.982343],[28.8848531,40.9824088],[28.8852179,40.9824329],[28.8857265,40.9824422],[28.8896695,40.9824908],[28.8901894,40.9824987],[28.8907998,40.982508],[28.8930033,40.9824566],[28.8933785,40.9824553],[28.8951602,40.982483],[28.8958721,40.9824723],[28.8972562,40.9824431],[28.8981219,40.9824142],[28.8984237,40.9824113],[28.8987603,40.9824571],[28.8990134,40.9825102],[28.8992296,40.9825557],[28.8998233,40.9827196],[28.9003153,40.9828493],[28.9007996,40.9829802],[28.9011766,40.9830929],[28.9014495,40.9831863],[28.9020402,40.983434],[28.902288,40.9835595],[28.90262,40.9837423],[28.9029749,40.9839757],[28.9033858,40.9842794],[28.9037418,40.9845663],[28.9041691,40.9849279],[28.9044822,40.9852034],[28.9053777,40.9859358],[28.9065194,40.9868766],[28.9074819,40.9875812],[28.9077001,40.9877729],[28.907957,40.9880442],[28.9083432,40.9885034],[28.9083961,40.9885599],[28.9085112,40.988695],[28.9089347,40.989208],[28.9092254,40.9895725],[28.9097865,40.9902427],[28.9099486,40.9904357],[28.9105523,40.9911364],[28.9108453,40.9914363],[28.9110697,40.9916366],[28.9114646,40.9919711],[28.9118766,40.9922265],[28.9122542,40.9924394],[28.9126893,40.992629],[28.913063,40.9927604],[28.9133743,40.9928479],[28.9136529,40.9929056],[28.9140794,40.9929639],[28.9143616,40.9929849],[28.9147107,40.9929976],[28.9151096,40.9929843],[28.9153576,40.9929604],[28.9155851,40.9929311],[28.9169682,40.9927446],[28.9181951,40.992528],[28.9194696,40.9922578],[28.919771,40.992185],[28.9206873,40.9919521],[28.9209294,40.991889],[28.921132,40.9918528],[28.9213541,40.991823],[28.9217936,40.9917798],[28.9220753,40.9917758],[28.9223856,40.9917914],[28.9226365,40.9918206],[28.9228603,40.9918619],[28.9232076,40.9919527],[28.9236512,40.9921014],[28.9240154,40.9922567],[28.9255451,40.9931488],[28.9305993,40.9955872],[28.9309955,40.9958485],[28.9313568,40.9961325],[28.9315759,40.9963586],[28.9317801,40.9966021],[28.9320327,40.9970411],[28.932894,40.9990537],[28.9333983,40.9997784],[28.9339669,41.0003898],[28.9345166,41.0007825],[28.9357125,41.0014094],[28.9369754,41.0019708],[28.9388163,41.0026164],[28.9404491,41.003044],[28.9456594,41.0041321],[28.9499714,41.0049695],[28.9515587,41.0052765],[28.957805,41.006528],[28.9587471,41.0067766],[28.9599092,41.0072099],[28.9606355,41.0076599],[28.961212,41.0080608],[28.9657714,41.0113151],[28.9661501,41.0115359],[28.9673968,41.0120281],[28.9687156,41.0124207],[28.9697585,41.0126875],[28.9712126,41.0129963],[28.974274,41.0134193],[28.9772977,41.0138182],[28.9790417,41.0140483],[28.9800871,41.014279],[28.9811141,41.01459],[28.9817003,41.0148299],[28.9822577,41.0151029],[28.9853671,41.0169129],[28.9857293,41.0170975],[28.9869937,41.0175286],[29.0069346,41.0242113],[29.0086355,41.024748],[29.0109431,41.0254204],[29.0117347,41.0255825],[29.0132642,41.0258396],[29.0151778,41.026174],[29.0159449,41.0262625],[29.0165394,41.0262782],[29.0185731,41.0262179],[29.0186451,41.0262143],[29.0204648,41.0261497],[29.0214616,41.0261159],[29.0228198,41.0259424],[29.0234234,41.0258082],[29.0248058,41.0253272],[29.0253506,41.0250418],[29.0258682,41.0246753],[29.0266651,41.0240052],[29.0270591,41.0236256],[29.0273558,41.0232619],[29.0277607,41.022671],[29.027958,41.0221556],[29.028233,41.0211198],[29.028332,41.020564],[29.0284472,41.0197285],[29.0288225,41.0165455],[29.0288832,41.0160427],[29.0292931,41.0131485],[29.0306605,41.0074576],[29.0313336,41.0051039],[29.0314528,41.0043887],[29.0314789,41.0039204],[29.0311129,41.0026556],[29.0305435,41.0010765],[29.0302662,41.000277],[29.0300014,40.9995132],[29.0299515,40.9993389],[29.0298864,40.9989564],[29.0298671,40.9986464],[29.0298736,40.9984731],[29.029883,40.9983857],[29.0298932,40.99832],[29.0298982,40.9982877],[29.029911,40.9982112],[29.0299217,40.9981594],[29.0299335,40.9981065],[29.0299438,40.9980635],[29.0299554,40.9980227],[29.0299705,40.9979727],[29.029986,40.9979297],[29.0299994,40.9978921],[29.0300246,40.9978259],[29.0300479,40.9977621],[29.030079,40.9976873],[29.0301201,40.9976021],[29.0301501,40.9975443],[29.0301758,40.9974969],[29.0301989,40.9974565],[29.0302443,40.9973804],[29.0302902,40.9973074],[29.0303456,40.9972192],[29.0303926,40.9971493],[29.0304416,40.9970804],[29.0308648,40.9965046],[29.0312056,40.9960438],[29.0313708,40.99582],[29.0318068,40.9952191],[29.0319913,40.9949579],[29.0321234,40.9947796],[29.0321771,40.99471],[29.0322365,40.9946392],[29.032289,40.9945803],[29.032345,40.9945212],[29.0324194,40.9944468],[29.0324876,40.9943794],[29.0325304,40.9943407],[29.03259,40.9942881],[29.0326598,40.9942315],[29.0327365,40.9941723],[29.0327866,40.9941364],[29.0328388,40.9941005],[29.0328912,40.9940671],[29.0329454,40.9940334],[29.0329921,40.9940051],[29.0330508,40.9939698],[29.0331132,40.9939338],[29.033157,40.9939094],[29.0331919,40.9938903],[29.0336899,40.9936265],[29.0338683,40.9935339],[29.0339599,40.9934857],[29.0340406,40.9934413],[29.0341666,40.9933706],[29.0342482,40.9933247],[29.034343,40.9932729],[29.0345281,40.9931726],[29.0346465,40.9931089],[29.0347516,40.9930526],[29.0348408,40.993007],[29.0349088,40.9929731],[29.0350885,40.9928909],[29.0353057,40.9928081],[29.0355667,40.992706],[29.0358661,40.9925725],[29.0361751,40.9924119],[29.0365308,40.9921926],[29.0368681,40.9919533],[29.0371754,40.9916974],[29.0374806,40.9914091],[29.0377837,40.9910915],[29.0380826,40.9907493],[29.0383281,40.9904525],[29.038782,40.9899079],[29.03903,40.9895886],[29.0390936,40.9895027],[29.0391515,40.989422],[29.0392868,40.9892343],[29.0394669,40.9889911],[29.0396762,40.9887195],[29.0400107,40.988291],[29.0404139,40.9877879],[29.0411178,40.9869371],[29.0412214,40.9868135],[29.0413585,40.9866435],[29.0415319,40.9864131],[29.0417224,40.986122],[29.0418347,40.9859262],[29.041951,40.9856758],[29.0420479,40.9854262],[29.0425707,40.9839519],[29.04261,40.9838398],[29.0428754,40.983092],[29.0431553,40.9822866],[29.0432373,40.982084],[29.0433119,40.9819359],[29.043395,40.981791],[29.0434823,40.9816657],[29.0435844,40.981533],[29.0436794,40.9814233],[29.0437689,40.9813306],[29.0438762,40.9812313],[29.0440124,40.9811174],[29.0441336,40.9810235],[29.0443109,40.9809034],[29.0444924,40.9807951],[29.0446814,40.9806974],[29.0448506,40.9806183],[29.0453748,40.9803859],[29.0469262,40.9796878],[29.047413,40.9794779],[29.0482118,40.9791402],[29.0488908,40.978848],[29.0494218,40.9786058],[29.0501125,40.9782804],[29.0504768,40.9781195],[29.0507748,40.9780092],[29.0510929,40.9779182],[29.0514184,40.9778482],[29.0517814,40.9777992],[29.0521238,40.9777763],[29.0526104,40.9777527],[29.0530674,40.9777493],[29.0535418,40.9777886],[29.0538006,40.9778238],[29.0600951,40.9788105],[29.0604971,40.9788804],[29.0613938,40.9790493],[29.062364,40.9792293],[29.0631274,40.9793458],[29.0640502,40.9794734],[29.0645659,40.9795161],[29.0649359,40.9795125],[29.0653313,40.9794795],[29.0657906,40.9794073],[29.0662578,40.9792948],[29.0667282,40.97915],[29.0672035,40.9789502],[29.0676348,40.9787222],[29.0680919,40.9784396],[29.0687456,40.9779893],[29.0697299,40.9773034],[29.0704056,40.9768453],[29.0709965,40.9764505],[29.0711794,40.9763267],[29.07231,40.9755378],[29.0746206,40.9739661],[29.0750942,40.9736376],[29.0754473,40.9733542],[29.0758319,40.972913],[29.0761977,40.9722561],[29.0764605,40.9716866],[29.0768075,40.9708262],[29.0771873,40.9698277],[29.0774546,40.9691699],[29.0777535,40.9686418],[29.0782057,40.9679954],[29.0786591,40.9673542],[29.0789599,40.9668183],[29.0790858,40.9663837],[29.0791106,40.9659531],[29.0790683,40.965589],[29.0789243,40.9650074],[29.0787969,40.9645501],[29.0787006,40.9641735],[29.0786574,40.9639809],[29.0786316,40.9636829],[29.0786701,40.9632695],[29.0787783,40.9628917],[29.0789128,40.9626038],[29.0790855,40.9623371],[29.0792408,40.9621494],[29.0793252,40.9620603],[29.0794319,40.9619572],[29.0794928,40.9619021],[29.0800745,40.9614905],[29.0805499,40.9612654],[29.0811937,40.9610657],[29.082149,40.9608977],[29.0828469,40.9607896],[29.0836502,40.9606704],[29.0844454,40.9605413],[29.0852933,40.9603838],[29.0860393,40.9602349],[29.0871703,40.9600335],[29.0877007,40.959943],[29.0883172,40.9598054],[29.0889659,40.959559],[29.0894393,40.959286],[29.0898369,40.9589725],[29.0903,40.9584254],[29.0904636,40.9581327],[29.0906478,40.9575977],[29.0910396,40.9562673],[29.0913859,40.9556864],[29.0919268,40.955169],[29.0924689,40.9548307],[29.0933374,40.9544933],[29.0949224,40.9539874],[29.0963897,40.9535148],[29.0971384,40.9531469],[29.0978851,40.9525377],[29.0983151,40.9520182],[29.0983927,40.9518302],[29.0998342,40.9500141],[29.1008553,40.9487404],[29.1015695,40.9479965],[29.1023512,40.947258],[29.1032891,40.9466206],[29.1044435,40.9462489],[29.1053736,40.9461787],[29.1071718,40.9462051],[29.1090022,40.9462535],[29.1102207,40.9459634],[29.1112215,40.9453594],[29.112059,40.9441903],[29.1121666,40.9433614],[29.1119678,40.9413983],[29.112365,40.9401963],[29.1134284,40.9387563],[29.1141689,40.937807],[29.1154618,40.9362829],[29.1183548,40.9327445],[29.1226345,40.9283984],[29.1241938,40.9267447],[29.1258398,40.9251713],[29.1272335,40.9237957],[29.1273385,40.9236955],[29.1282629,40.9229895],[29.1292498,40.9224823],[29.131471,40.9215444],[29.1332522,40.9207651],[29.1351301,40.9200035],[29.1371101,40.9191507],[29.141851,40.9171531],[29.1487733,40.914222],[29.1489492,40.9141456],[29.1521792,40.9127819],[29.1534481,40.9122304],[29.1545382,40.9116122],[29.1554881,40.9106726],[29.1566787,40.9090666],[29.1574827,40.9082214],[29.1622224,40.905064],[29.1628978,40.9045665],[29.1644302,40.9032089],[29.1666737,40.9010879],[29.1674053,40.9003463],[29.1681572,40.8996488],[29.1696692,40.8983181],[29.1709589,40.8973018],[29.172684,40.8962132],[29.1736384,40.8954973],[29.1747286,40.8944432],[29.1757131,40.8933183],[29.1761351,40.8926103],[29.1773991,40.890305],[29.1784045,40.8887717],[29.1792148,40.8880969],[29.1797157,40.8878472],[29.1805331,40.8875991],[29.1814029,40.8874972],[29.1822819,40.8875434],[29.1831432,40.887728],[29.18393,40.8880465],[29.1850311,40.888734],[29.1856941,40.8891297],[29.1861139,40.8893435],[29.1869273,40.8896279],[29.1880769,40.8897422],[29.1885256,40.8897053],[29.1892306,40.8895628],[29.1899538,40.8892671],[29.1910295,40.888644],[29.1914992,40.8883469],[29.1923961,40.8878078],[29.1931076,40.8874886],[29.1942608,40.8872596],[29.196305,40.8870994],[29.1973293,40.8868595],[29.199034,40.8860675],[29.2017047,40.8852657],[29.2030297,40.8849962],[29.2038535,40.8850147],[29.2046002,40.8851414],[29.2064225,40.8856121],[29.2074201,40.8856404],[29.2084162,40.885482],[29.2092606,40.8851237],[29.2117865,40.8837683],[29.2131538,40.8831755],[29.2151985,40.8823921],[29.2172166,40.8818556],[29.2242839,40.8803798],[29.2262633,40.8799664],[29.2274586,40.8798529],[29.2283132,40.8799186],[29.22948,40.8800717],[29.2304562,40.8801779],[29.2317343,40.8802722],[29.234363,40.8804338],[29.2364048,40.8804582],[29.2374282,40.880356],[29.2382534,40.8801531],[29.2392287,40.8797017],[29.2423998,40.8774364],[29.2439234,40.8763754],[29.2450979,40.8757429],[29.2509645,40.8738192],[29.2527066,40.8732097],[29.2539732,40.8725556],[29.255905,40.8713257],[29.2572331,40.8705334],[29.2596658,40.8690776],[29.260036,40.8688568],[29.263353,40.866841],[29.2650871,40.8660377],[29.2694201,40.8645063],[29.2703866,40.8640442],[29.2712629,40.8634273],[29.271487,40.863253],[29.272152,40.8626857],[29.2723726,40.8623961],[29.2725559,40.8621558],[29.2732063,40.8610961],[29.2741064,40.8598034],[29.2748254,40.8591026],[29.275783,40.8583412],[29.2771943,40.8575544],[29.2784102,40.8571544],[29.2800245,40.856818],[29.2810224,40.8567482],[29.2836318,40.8567994],[29.2855918,40.8568981],[29.2864343,40.8568473],[29.2879807,40.8564679],[29.2885,40.8562885],[29.2887441,40.8561913],[29.2896223,40.8557413],[29.2910028,40.854761],[29.2923212,40.8532609],[29.293968,40.8512511],[29.2950633,40.8499534],[29.2961996,40.8485923],[29.2973514,40.8476163],[29.2985141,40.8468163],[29.2999701,40.8456483],[29.3016703,40.8443542],[29.3031454,40.8431529],[29.3035354,40.8428955],[29.3038669,40.8426936],[29.3070421,40.8409163],[29.3116938,40.8374557],[29.3139156,40.8357589],[29.3160715,40.8341629],[29.3172495,40.8333832],[29.3207891,40.8310234],[29.3233168,40.8291982],[29.3249077,40.8280238],[29.3264567,40.8267771],[29.3276308,40.8253491],[29.3281512,40.8241237],[29.328674,40.8222448],[29.3291059,40.821351],[29.3294902,40.8208102],[29.3301182,40.8200783],[29.3388321,40.8132503],[29.3397391,40.8126362],[29.3413991,40.8118889],[29.344226,40.810996],[29.3453607,40.8107123],[29.3473611,40.8104792],[29.3504218,40.8101493],[29.3594043,40.8084622],[29.3597014,40.8084013],[29.3641082,40.8075304],[29.366131,40.8071386],[29.3678052,40.8066904],[29.3697978,40.8058781],[29.3712627,40.8050351],[29.3800571,40.7992059],[29.3826018,40.7975192],[29.3907228,40.7920941],[29.3943574,40.7896834],[29.3961015,40.7886533],[29.3980762,40.7879056],[29.4032003,40.7862795],[29.4069202,40.7850704],[29.4077965,40.7847922],[29.4093664,40.784302],[29.4107357,40.7838747]] } },
 
     { "type": "Feature", "properties": { "name": "Feshane", "@relations": [{"reltags": {"ref": "T7"}}] }, "geometry": { "type": "Point", "coordinates": [28.9377817, 41.0455255] } },
     { "type": "Feature", "properties": { "name": "Eyüpsultan", "@relations": [{"reltags": {"ref": "T7"}}] }, "geometry": { "type": "Point", "coordinates": [28.9318915, 41.0458604] } },
@@ -1530,14 +1384,8 @@ function haritaAc(e, hatKodu, renk) {
 
     setTimeout(() => { 
         map.invalidateSize(); 
-        ;if(lineGroup.getLayers().length > 0) {
-            const isMobile = window.innerWidth <= 768;
-            map.fitBounds(lineGroup.getBounds(), { 
-                paddingTopLeft: isMobile ? [20, 180] : [340, 40], 
-                paddingBottomRight: isMobile ? [20, 140] : [320, 40] 
-            }); 
-        }
-    }, 150);
+        if(lineGroup.getLayers().length > 0) map.fitBounds(lineGroup.getBounds(), { paddingTopLeft: [340, 40], paddingBottomRight: [320, 40] }); 
+    }, 100);
 }
 
 function haritaKapat() { 
