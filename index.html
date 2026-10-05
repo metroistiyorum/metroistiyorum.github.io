@@ -1306,6 +1306,21 @@ function haritayiIlkHazirla() {
         L.control.layers({"Renkli Harita": renkliHarita, "Gri Tonlu Harita": griHarita}, null, { position: 'bottomright' }).addTo(map);
         lineGroup = L.featureGroup().addTo(map);
         haritaYuklendi = true;
+        map.on('zoomend', () => {
+            const z = map.getZoom();
+            // Uzaklaştıkça (zoom azaldıkça) yarıçapı küçült, yaklaştıkça büyüt:
+            let r = 5;
+            if (z <= 10) r = 2.5;      // Çok uzaktan bakarken (tüm şehir/Marmara)
+            else if (z <= 12) r = 3.5; // Orta uzaklık
+            else if (z <= 14) r = 5;   // Normal hat görünümü
+            else r = 6.5;              // Yakın sokak görünümü
+
+            Object.values(stationMarkers).forEach(m => {
+                if (m && m.setRadius) {
+                    m.setRadius(r);
+                }
+            });
+        });
     }
 }
 function haritaAc(e, hatKodu, renk) {
