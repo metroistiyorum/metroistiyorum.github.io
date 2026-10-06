@@ -1316,12 +1316,10 @@ function haritayiIlkHazirla() {
         }
 
         map.on('zoomend', () => {
-            // SADECE MOBİLDE: Yakınlaştırma/uzaklaştırma yapılsa bile yarıçapı DEĞİŞTİRME, işlemi kes.
-            if (window.innerWidth <= 768) {
-                return;
-            }
+            // Mobilde hiçbir müdahale yapma, zemin dairesi kendi küçülsün
+            if (window.innerWidth <= 768) return;
 
-            // SADECE MASAÜSTÜNDE: Ölçek küçüldükçe noktaları küçültmeye devam et
+            // Masaüstü için mevcut ayarlar:
             const z = map.getZoom();
             let r = 5;
             if (z <= 10) r = 2.5;
@@ -1329,7 +1327,9 @@ function haritayiIlkHazirla() {
             else if (z <= 14) r = 5;
             else r = 6.5;
 
-            lineGroup.eachLayer(layer => noktalariGuncelle(layer, r));
+            Object.values(stationMarkers).forEach(m => {
+                if (m && m.setRadius) m.setRadius(r);
+            });
         });
     }
 }
@@ -1371,8 +1371,7 @@ function haritaAc(e, hatKodu, renk) {
         };
         b("m2AnaListUl", m2Ana); b("m2SeyrListUl", m2Seyr);
 
-        L.geoJSON(hF, { style: f => ({color: f.properties?.colour || renk, weight: 6, opacity: 0.95}), pointToLayer: (f, latlng) => { let m = L.circleMarker(latlng, {radius: 6, fillColor: renk, color: "#fff", weight: 2, fillOpacity: 1}).bindTooltip(f.properties.name || "", { direction: 'top', offset: [0, -6] }); stationMarkers[f.properties.name] = m; return m; } }).addTo(lineGroup);
-    } 
+        L.geoJSON(hF, { style: f => ({color: f.properties?.colour || renk, weight: 6, opacity: 0.95}), pointToLayer: (f, latlng) => { const isM = window.innerWidth <= 768; let m = isM ? L.circle(latlng, { radius: 90, fillColor: f.properties?.colour || renk, color: "#fff", weight: 1.5, fillOpacity: 1 }) : L.circleMarker(latlng, { radius: 6, fillColor: f.properties?.colour || renk, color: "#fff", weight: 2, fillOpacity: 1 }); m.bindTooltip(f.properties.name || "", { direction: 'top', offset: [0, -6] }); stationMarkers[f.properties.name] = m; return m; } }).addTo(lineGroup); }
     // ----------------------------------------------------
     // M10 / M4 PENDİK - KAYNARCA UZATMASI KONTROLÜ
     // ----------------------------------------------------
