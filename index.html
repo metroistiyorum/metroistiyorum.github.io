@@ -32,6 +32,7 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
 .bilgi-metin-alani { display: flex; flex-direction: column; gap: 12px; width: 100%; } .bilgi-ust-metin { font-size: 14px; line-height: 1.45; color: #333; text-align: left; } .bilgi-alt-metin { display: flex; justify-content: space-between; font-size: 13px; padding-top: 12px; border-top: 1px solid #ddd; }
 .hedef-tarih, .tahmin-tarih { display: flex; flex-direction: column; gap: 4px; font-weight: normal; } .hedef-tarih strong, .tahmin-tarih strong { font-weight: bold; color: #333; } .hedef-tarih span { color: #27ae60; font-weight: bold; } .tahmin-tarih span { color: #e67e22; font-weight: bold; } .tahmin-tarih { text-align: right; }
 #haritaModal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #1a1a1a; z-index: 2000; box-sizing: border-box; } #haritaKonteyner { width: 100%; height: 100%; position: relative; } #map { width: 100%; height: 100%; z-index: 1; }
+
 .harita-sol-kapsayici { position: absolute; top: 25px; left: 25px; z-index: 1005; display: flex; flex-direction: column; gap: 12px; pointer-events: none; }
 .harita-sol-panel { width: 320px; max-height: calc(100vh - 160px); background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-radius: 16px; padding: 22px; box-shadow: 0 12px 35px rgba(0,0,0,0.25); box-sizing: border-box; overflow-y: auto; border: 1px solid rgba(0,0,0,0.08); display: flex; flex-direction: column; gap: 16px; pointer-events: auto; }
 .tarihce-kutusu { width: 320px; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-radius: 16px; padding: 14px 18px; box-shadow: 0 8px 25px rgba(0,0,0,0.18); border: 1px solid rgba(0,0,0,0.08); box-sizing: border-box; pointer-events: auto; transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; }
@@ -1646,6 +1647,19 @@ function haritaKapat() {
     const btnMetin = document.getElementById("tarihceBtnMetin");
     if(btnMetin) btnMetin.innerText = "Tarihçeyi Göster";
 }
+// Harita açıldığında tarayıcı geçmişine sahte bir kayıt ekler
+const orijinalHaritaAc = haritaAc;
+haritaAc = function(e, hatKodu, renk) {
+    history.pushState({ haritaAcik: true }, "");
+    orijinalHaritaAc(e, hatKodu, renk);
+};
+
+// Telefonun fiziksel geri tuşuna basıldığında haritayı kapatır
+window.addEventListener("popstate", () => {
+    if (document.getElementById("haritaModal").style.display === "block") {
+        haritaKapat();
+    }
+});
 </script>
 <div class="surum-etiketi">v.07</div>
 </body></html>
