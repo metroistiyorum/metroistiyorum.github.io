@@ -1306,29 +1306,32 @@ function haritayiIlkHazirla() {
         L.control.layers({"Renkli Harita": renkliHarita, "Gri Tonlu Harita": griHarita}, null, { position: 'bottomright' }).addTo(map);
         lineGroup = L.featureGroup().addTo(map);
         haritaYuklendi = true;
-       // Yarıçapı güncelleyen yardımcı fonksiyon (iç içe tüm alt katmanları bulur)
-        function noktalariGuncelle(katman, yeniR) {
-            if (katman instanceof L.CircleMarker) {
-                katman.setRadius(yeniR);
-            } else if (katman.eachLayer) {
-                katman.eachLayer(altKatman => noktalariGuncelle(altKatman, yeniR));
-            }
-        }
 
         map.on('zoomend', () => {
-            // Mobilde hiçbir müdahale yapma, zemin dairesi kendi küçülsün
-            if (window.innerWidth <= 768) return;
-
-            // Masaüstü için mevcut ayarlar:
             const z = map.getZoom();
-            let r = 5;
-            if (z <= 10) r = 2.5;
-            else if (z <= 12) r = 3.5;
-            else if (z <= 14) r = 5;
-            else r = 6.5;
+            const isMobile = window.innerWidth <= 768;
+            
+            // Yarıçap (r) belirleme
+            let r = 6;
+            if (isMobile) {
+                // MOBİLDE: Uzaklaştıkça (zoom azaldıkça) noktalar devasa kalmasın diye yarıçapı 2 piksele kadar düşürüyoruz.
+                if (z <= 10) r = 2;
+                else if (z <= 11) r = 3;
+                else if (z <= 12) r = 4;
+                else r = 5.5;
+            } else {
+                // MASAÜSTÜNDE: Kendi orijinal dengesinde devam ediyor.
+                if (z <= 10) r = 3;
+                else if (z <= 12) r = 4.5;
+                else if (z <= 14) r = 6;
+                else r = 6.5;
+            }
 
+            // Hesaplanan yeni boyutu anında tüm noktalara uygula
             Object.values(stationMarkers).forEach(m => {
-                if (m && m.setRadius) m.setRadius(r);
+                if (m && m.setRadius) {
+                    m.setRadius(r);
+                }
             });
         });
     }
@@ -1371,7 +1374,8 @@ function haritaAc(e, hatKodu, renk) {
         };
         b("m2AnaListUl", m2Ana); b("m2SeyrListUl", m2Seyr);
 
-        L.geoJSON(hF, { style: f => ({color: f.properties?.colour || renk, weight: 6, opacity: 0.95}), pointToLayer: (f, latlng) => { const isM = window.innerWidth <= 768; let m = isM ? L.circle(latlng, { radius: 90, fillColor: f.properties?.colour || renk, color: "#fff", weight: 1.5, fillOpacity: 1 }) : L.circleMarker(latlng, { radius: 6, fillColor: f.properties?.colour || renk, color: "#fff", weight: 2, fillOpacity: 1 }); m.bindTooltip(f.properties.name || "", { direction: 'top', offset: [0, -6] }); stationMarkers[f.properties.name] = m; return m; } }).addTo(lineGroup); }
+         L.geoJSON(hF, { style: f => ({color: f.properties?.colour || renk, weight: 6, opacity: 0.95}), pointToLayer: (f, latlng) => { let m = L.circleMarker(latlng, {radius: 6, fillColor: renk, color: "#fff", weight: 2, fillOpacity: 1}).bindTooltip(f.properties.name || "", { direction: 'top', offset: [0, -6] }); stationMarkers[f.properties.name] = m; return m; } }).addTo(lineGroup);
+    } 
     // ----------------------------------------------------
     // M10 / M4 PENDİK - KAYNARCA UZATMASI KONTROLÜ
     // ----------------------------------------------------
