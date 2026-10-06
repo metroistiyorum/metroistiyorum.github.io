@@ -440,7 +440,7 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
                         <div class="bilgi-balonu" id="m14AltunizadeBilgi">
                             <div class="ilerleme-alani"><div class="ilerleme-halkasi" style="background: conic-gradient(#ce863f 76.2%, #e0e0e0 0);"><div class="ilerleme-ic" style="color: #ce863f;">%76.2</div></div></div>
                             <div class="bilgi-metin-alani">
-                                <div class="bilgi-ust-metin">Ray imalatları Altunizade istasyonundan başladı. Bosna Bulvarı'nda kuyruk tünellerinin kazısına devam ediliyor<div style="margin-top: 8px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: space-between;"><span>5 km &nbsp;|&nbsp; 4 istasyon</span><span style="color: #ce863f; cursor: pointer; text-decoration: underline; font-size: 13px;" onclick="haritaAc(event, 'M14', '#ce863f')">Güzergahı Göster</span></div></div>
+                                <div class="bilgi-ust-metin">Ray imalatları Altunizade istasyonundan başladı. Bosna Bulvarı'nda kuyruk tünellerinin kazısına devam ediliyor<div style="margin-top: 8px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: space-between;"><span>4.5 km &nbsp;|&nbsp; 4 istasyon</span><span style="color: #ce863f; cursor: pointer; text-decoration: underline; font-size: 13px;" onclick="haritaAc(event, 'M14', '#ce863f')">Güzergahı Göster</span></div></div>
                                 <div class="bilgi-alt-metin"><div class="hedef-tarih"><strong>Resmi Açılış Hedefi:</strong> <span style="color: #27ae60;">Nisan 2027</span></div><div class="tahmin-tarih"><strong>Tutarlı Tahmin:</strong> <span style="color: #e67e22;">2027 sonu</span></div></div>
                             </div>
                         </div>
@@ -1306,14 +1306,26 @@ function haritayiIlkHazirla() {
         L.control.layers({"Renkli Harita": renkliHarita, "Gri Tonlu Harita": griHarita}, null, { position: 'bottomright' }).addTo(map);
         lineGroup = L.featureGroup().addTo(map);
         haritaYuklendi = true;
-        map.on('zoomend', () => {
+       map.on('zoomend', () => {
+            const isMobile = window.innerWidth <= 768;
+
+            // Mobilde noktalar açıldığı boyutta (6px) sabit kalsın, büyümesin:
+            if (isMobile) {
+                Object.values(stationMarkers).forEach(m => {
+                    if (m && m.setRadius) {
+                        m.setRadius(6);
+                    }
+                });
+                return;
+            }
+
+            // Masaüstü için mevcut dinamik boyutlandırma aynen korunur:
             const z = map.getZoom();
-            // Uzaklaştıkça (zoom azaldıkça) yarıçapı küçült, yaklaştıkça büyüt:
             let r = 5;
-            if (z <= 10) r = 2.5;      // Çok uzaktan bakarken (tüm şehir/Marmara)
-            else if (z <= 12) r = 3.5; // Orta uzaklık
-            else if (z <= 14) r = 5;   // Normal hat görünümü
-            else r = 6.5;              // Yakın sokak görünümü
+            if (z <= 10) r = 2.5;
+            else if (z <= 12) r = 3.5;
+            else if (z <= 14) r = 5;
+            else r = 6.5;
 
             Object.values(stationMarkers).forEach(m => {
                 if (m && m.setRadius) {
