@@ -1374,8 +1374,8 @@ function haritaAc(e, hatKodu, renk) {
         };
         b("m2AnaListUl", m2Ana); b("m2SeyrListUl", m2Seyr);
 
-         L.geoJSON(hF, { style: f => ({color: f.properties?.colour || renk, weight: 6, opacity: 0.95}), pointToLayer: (f, latlng) => { let m = L.circleMarker(latlng, {radius: 6, fillColor: renk, color: "#fff", weight: 2, fillOpacity: 1}).bindTooltip(f.properties.name || "", { direction: 'top', offset: [0, -6] }); stationMarkers[f.properties.name] = m; return m; } }).addTo(lineGroup);
-    } 
+         L.geoJSON(hF, { style: f => ({color: f.properties?.colour || renk, weight: 6, opacity: 0.95}), pointToLayer: (f, latlng) => { let z = map.getZoom(), isM = window.innerWidth <= 768, r = isM ? (z<=10?2:z<=11?3:z<=12?4:5.5) : (z<=10?3:z<=12?4.5:z<=14?6:6.5); let m = L.circleMarker(latlng, {radius: r, fillColor: f.properties?.colour || renk, color: "#fff", weight: 2, fillOpacity: 1}).bindTooltip(f.properties.name || "", { direction: 'top', offset: [0, -6] }); stationMarkers[f.properties.name] = m; return m; } }).addTo(lineGroup);
+    }
     // ----------------------------------------------------
     // M10 / M4 PENDİK - KAYNARCA UZATMASI KONTROLÜ
     // ----------------------------------------------------
