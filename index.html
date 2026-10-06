@@ -1306,28 +1306,30 @@ function haritayiIlkHazirla() {
         L.control.layers({"Renkli Harita": renkliHarita, "Gri Tonlu Harita": griHarita}, null, { position: 'bottomright' }).addTo(map);
         lineGroup = L.featureGroup().addTo(map);
         haritaYuklendi = true;
-       map.on('zoomend', () => {
-            const isMobile = window.innerWidth <= 768;
+       // Yarıçapı güncelleyen yardımcı fonksiyon (iç içe tüm alt katmanları bulur)
+        function noktalariGuncelle(katman, yeniR) {
+            if (katman instanceof L.CircleMarker) {
+                katman.setRadius(yeniR);
+            } else if (katman.eachLayer) {
+                katman.eachLayer(altKatman => noktalariGuncelle(altKatman, yeniR));
+            }
+        }
 
-            // lineGroup içindeki tüm istasyon noktalarını doğrudan Leaflet katmanından yakala
-            lineGroup.eachLayer(layer => {
-                if (layer instanceof L.CircleMarker) {
-                    if (isMobile) {
-                        // Mobilde ölçek değişse bile açıldığı 6px boyutunda çakılı kalsın
-                        layer.setRadius(6);
-                    } else {
-                        // Masaüstü dinamik ölçekleme
-                        const z = map.getZoom();
-                        let r = 5;
-                        if (z <= 10) r = 2.5;
-                        else if (z <= 12) r = 3.5;
-                        else if (z <= 14) r = 5;
-                        else r = 6.5;
+        map.on('zoomend', () => {
+            // SADECE MOBİLDE: Yakınlaştırma/uzaklaştırma yapılsa bile yarıçapı DEĞİŞTİRME, işlemi kes.
+            if (window.innerWidth <= 768) {
+                return;
+            }
 
-                        layer.setRadius(r);
-                    }
-                }
-            });
+            // SADECE MASAÜSTÜNDE: Ölçek küçüldükçe noktaları küçültmeye devam et
+            const z = map.getZoom();
+            let r = 5;
+            if (z <= 10) r = 2.5;
+            else if (z <= 12) r = 3.5;
+            else if (z <= 14) r = 5;
+            else r = 6.5;
+
+            lineGroup.eachLayer(layer => noktalariGuncelle(layer, r));
         });
     }
 }
