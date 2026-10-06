@@ -1309,27 +1309,23 @@ function haritayiIlkHazirla() {
        map.on('zoomend', () => {
             const isMobile = window.innerWidth <= 768;
 
-            // Mobilde noktalar açıldığı boyutta (6px) sabit kalsın, büyümesin:
-            if (isMobile) {
-                Object.values(stationMarkers).forEach(m => {
-                    if (m && m.setRadius) {
-                        m.setRadius(6);
+            // lineGroup içindeki tüm istasyon noktalarını doğrudan Leaflet katmanından yakala
+            lineGroup.eachLayer(layer => {
+                if (layer instanceof L.CircleMarker) {
+                    if (isMobile) {
+                        // Mobilde ölçek değişse bile açıldığı 6px boyutunda çakılı kalsın
+                        layer.setRadius(6);
+                    } else {
+                        // Masaüstü dinamik ölçekleme
+                        const z = map.getZoom();
+                        let r = 5;
+                        if (z <= 10) r = 2.5;
+                        else if (z <= 12) r = 3.5;
+                        else if (z <= 14) r = 5;
+                        else r = 6.5;
+
+                        layer.setRadius(r);
                     }
-                });
-                return;
-            }
-
-            // Masaüstü için mevcut dinamik boyutlandırma aynen korunur:
-            const z = map.getZoom();
-            let r = 5;
-            if (z <= 10) r = 2.5;
-            else if (z <= 12) r = 3.5;
-            else if (z <= 14) r = 5;
-            else r = 6.5;
-
-            Object.values(stationMarkers).forEach(m => {
-                if (m && m.setRadius) {
-                    m.setRadius(r);
                 }
             });
         });
