@@ -324,16 +324,38 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
         overflow-y: auto !important;
     }
 
-    /* Sağ paneli alt kata taşıyarak ortadaki haritayı serbest bırak */
-    .harita-sag-panel {
+    /* Sağ kapsayıcıyı (İstasyon Paneli + İnşaat Butonu) tek blok halinde alta sabitle */
+    .harita-sag-kapsayici {
         top: auto !important;
-        bottom: 60px !important;
+        bottom: 55px !important;
         left: 10px !important;
         right: 10px !important;
         width: auto !important;
-        max-height: 22vh !important;
-        padding: 12px !important;
+        max-height: 28vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        pointer-events: none !important;
+    }
+
+    .harita-sag-panel {
+        position: static !important;
+        width: 100% !important;
+        max-height: 18vh !important;
+        padding: 10px 14px !important;
         border-radius: 12px !important;
+        pointer-events: auto !important;
+    }
+
+    .insa-kutusu {
+        width: 100% !important;
+        padding: 8px 12px !important;
+        border-radius: 12px !important;
+        pointer-events: auto !important;
+    }
+
+    .insa-baslik-btn {
+        font-size: 13px !important;
     }
 
     #kapatBtn {
