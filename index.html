@@ -50,12 +50,118 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
 .sol-panel-kart { display: flex; flex-direction: column; gap: 2px; } .sol-panel-kart:not(:last-child) { padding-bottom: 14px; border-bottom: 2px solid #e5e5e5; }
 .sol-panel-baslik { font-size: 19px; font-weight: bold; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; line-height: 1.3; } .sol-panel-rozet { display: inline-block; padding: 4px 10px; color: #fff; border-radius: 6px; font-size: 14px; font-weight: bold; flex-shrink: 0; }
 .sol-panel-bilgi-satir { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #eee; font-size: 14px; color: #444; } .sol-panel-bilgi-satir strong { color: #111; text-align: right; }
-.harita-sag-panel { position: absolute; top: 25px; right: 25px; width: 300px; max-height: calc(100vh - 50px); background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-radius: 16px; padding: 20px; box-shadow: 0 12px 35px rgba(0,0,0,0.25); z-index: 1005; box-sizing: border-box; display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.08); overflow-y: auto; gap: 16px; }
+.harita-sag-panel {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 300px;
+    max-height: calc(100vh - 50px);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); /* Eski ağır gölge (0 12px 35px) kaldırıldı */
+    z-index: 1005;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow-y: auto;
+    gap: 16px;
+}
+
+.insa-kutusu {
+    width: 300px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 14px 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Neredeyse tamamen sıfırlandı */
+    border: 1px solid rgba(0,0,0,0.08);
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+
+/* İçindeki buton - Tarayıcının varsayılan iç gölge ve gradyanlarını tamamen yok eder */
+.insa-baslik-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #2c3e50 !important;
+    padding: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    font-family: inherit !important;
+}
+
+.insa-baslik-btn:hover {
+    color: #000 !important;
+    background: transparent !important;
+}
+
+.insa-baslik-btn:focus,
+.insa-baslik-btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
 .sag-panel-kart { display: flex; flex-direction: column; gap: 6px; } .sag-panel-kart:not(:last-child) { padding-bottom: 14px; border-bottom: 2px solid #e5e5e5; }
 .sag-panel-baslik { font-size: 16px; font-weight: bold; color: #222; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; padding-bottom: 8px; border-bottom: 2px solid #eee; }
 .istasyon-listesi { list-style: none; padding: 0; margin: 0; overflow-y: auto; flex-grow: 1; } .istasyon-ogesi { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; font-size: 13px; font-weight: 500; color: #333; cursor: pointer; transition: all 0.2s ease; } .istasyon-ogesi:hover { background-color: #f0f0f0; transform: translateX(4px); } .istasyon-nokta { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 #kapatBtn { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); z-index: 1010; background: #e74c3c; color: white; border: none; padding: 12px 30px; font-size: 15px; font-weight: bold; border-radius: 30px; cursor: pointer; box-shadow: 0 8px 20px rgba(231,76,60,0.4); transition: all 0.2s; } #kapatBtn:hover { background: #c0392b; transform: translateX(-50%) scale(1.05); }
 .gri-harita { filter: grayscale(100%) opacity(70%) !important; }
+/* İnşaat Hatları Buton Baloncuğu (Tarihçe Butonu ile Birebir Aynı Tasarım) */
+.insa-kutusu {
+    width: 300px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+.insa-baslik-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c3e50;
+    padding: 0;
+    outline: none;
+    font-family: inherit;
+}
+.insa-baslik-btn:hover {
+    color: #000;
+}
+.harita-sag-kapsayici {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 1005;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none;
+}
 /* Alt Detay Oku ve Kutusu (Kutusuz Standart Satır Görünümü) */
 .ok-btn { background: none; border: none; width: 100%; cursor: pointer; padding: 5px 0 0 0; color: #888; display: flex; justify-content: center; align-items: center; transition: color 0.2s; outline: none; }
 .ok-btn:hover { color: #333; }
@@ -263,7 +369,14 @@ body { margin: 0; height: 100vh; display: flex; justify-content: center; align-i
         <div class="tarihce-icerik" id="tarihceIcerik"></div>
     </div>
 </div>
-<div class="harita-sag-panel" id="haritaSagPanel"></div>
+<div class="harita-sag-kapsayici" id="haritaSagKapsayici">
+    <div class="harita-sag-panel" id="haritaSagPanel" style="position: static; max-height: calc(100vh - 120px);"></div>
+    <div class="insa-kutusu" id="insaKutusu">
+        <button class="insa-baslik-btn" onclick="insaHalindekiTumHatlariGoster()">
+            <span>İnşa Halindeki Tüm Hatları Göster</span>
+        </button>
+    </div>
+</div>
     <button id="kapatBtn" onclick="haritaKapat()">Haritayı Kapat</button><div id="map"></div>
 </div></div>
 <div class="sayfa-icerik" id="sayfaIcerik">
@@ -919,6 +1032,7 @@ const tumHatlarVerisi = { "type": "FeatureCollection", "features": [
    
     { "type": "Feature", "properties": { "name": "Olimpiyat", "@relations": [{"reltags": {"ref": "M9"}}] }, "geometry": { "type": "Point", "coordinates": [28.7670768, 41.0796429] } },
     { "type": "Feature", "properties": { "name": "Ataköy", "@relations": [{"reltags": {"ref": "M9"}}] }, "geometry": { "type": "Point", "coordinates": [28.8562751, 40.979832] } },
+    
     { "type": "Feature", "properties": { "name": "Altunizade", "@relations": [{"reltags": {"ref": "M14"}}, {}] }, "geometry": { "type": "Point", "coordinates": [29.0472991, 41.0222298] } },
     { "type": "Feature", "properties": { "name": "Ferah Mahallesi", "@relations": [{"reltags": {"ref": "M14"}}] }, "geometry": { "type": "Point", "coordinates": [29.0748238, 41.0258302] } },
     { "type": "Feature", "properties": { "name": "Çamlıca Camii", "@relations": [{"reltags": {"ref": "M14"}}] }, "geometry": { "type": "Point", "coordinates": [29.0717478, 41.0341829] } },
@@ -926,7 +1040,9 @@ const tumHatlarVerisi = { "type": "FeatureCollection", "features": [
     { "type": "Feature", "properties": { "name": "Bosna Bulvarı (Mevcut)", "@relations": [{"reltags": {"ref": "M14_Umraniye"}}] }, "geometry": { "type": "Point", "coordinates": [29.0788687, 41.0344528] } },
     { "type": "Feature", "properties": { "name": "Yavuztürk Mahallesi", "@relations": [{"reltags": {"ref": "M14_Umraniye"}}] }, "geometry": { "type": "Point", "coordinates": [29.0861325, 41.0396267] } },
     { "type": "Feature", "properties": { "name": "Kâzım Karabekir", "@relations": [{"reltags": {"ref": "M14_Umraniye"}}] }, "geometry": { "type": "Point", "coordinates": [29.0983254, 41.0434727] } },
+    { "type": "Feature", "properties": { "name": "Topağacı Mahallesi", "@relations": [{"reltags": {"ref": "M14_Umraniye"}}] }, "geometry": { "type": "Point", "coordinates": [29.1072317, 41.0512078] } },
     { "type": "Feature", "properties": { "name": "Ümraniye Spor Köyü", "@relations": [{"reltags": {"ref": "M14_Umraniye"}}] }, "geometry": { "type": "Point", "coordinates": [29.1066016, 41.0588875] } },
+    
     { "type": "Feature", "properties": { "name": "Barbaros", "@relations": [{"reltags": {"ref": "M1B_Halkali"}}] }, "geometry": { "type": "Point", "coordinates": [28.8365904, 41.0235338] } },
     { "type": "Feature", "properties": { "name": "Malazgirt", "@relations": [{"reltags": {"ref": "M1B_Halkali"}}] }, "geometry": { "type": "Point", "coordinates": [28.8282314, 41.0221026] } },
     { "type": "Feature", "properties": { "name": "Mimar Sinan", "@relations": [{"reltags": {"ref": "M1B_Halkali"}}] }, "geometry": { "type": "Point", "coordinates": [28.8164322, 41.0251913] } },
@@ -935,7 +1051,7 @@ const tumHatlarVerisi = { "type": "FeatureCollection", "features": [
     { "type": "Feature", "properties": { "name": "Yıldız", "@relations": [{"reltags": {"ref": "M7"}}] }, "geometry": { "type": "Point", "coordinates": [29.009666, 41.054072] } },
     { "type": "Feature", "properties": { "name": "Yıldız (Mevcut)", "@relations": [{"reltags": {"ref": "M7_Kabatas"}}] }, "geometry": { "type": "Point", "coordinates": [29.009666, 41.054072] } },
     { "type": "Feature", "properties": { "name": "Beşiktaş", "@relations": [{"reltags": {"ref": "M7_Kabatas"}}] }, "geometry": { "type": "Point", "coordinates": [29.0069, 41.0431] } },
-    { "type": "Feature", "properties": { "name": "Kabataş", "colour": "#f5a2b1", "@relations": [{"reltags": {"ref": "M7_Kabatas"}}] }, "geometry": { "type": "Point", "coordinates": [28.9901453, 41.0329656] } },
+    { "type": "Feature", "properties": { "name": "Kabataş","@relations": [{"reltags": {"ref": "M7_Kabatas"}}] }, "geometry": { "type": "Point", "coordinates": [28.9901453, 41.0329656] } },
     { "type": "Feature", "properties": { "name": "Mahmutbey", "@relations": [{"reltags": {"ref": "M7"}}, {"reltags": {"ref": "M3"}}] }, "geometry": { "type": "Point", "coordinates": [28.8305816, 41.0552752] } },
     
     { "type": "Feature", "properties": { "name": "Mahmutbey (Mevcut)", "@relations": [{"reltags": {"ref": "M7_Kss"}}] }, "geometry": { "type": "Point", "coordinates": [28.8305816, 41.0552752] } },
@@ -1035,7 +1151,7 @@ const tumHatlarVerisi = { "type": "FeatureCollection", "features": [
     { "type": "Feature", "properties": { "name": "Kurtköy", "colour": "#E91E76", "@relations": [{"reltags": {"ref": "M4"}}] }, "geometry": { "type": "Point", "coordinates": [29.2967277, 40.9098874] } },
     { "type": "Feature", "properties": { "name": "Sabiha Gökçen Havalimanı", "colour": "#E91E76", "@relations": [{"reltags": {"ref": "M4"}}] }, "geometry": { "type": "Point", "coordinates": [29.3114591, 40.9065703] } },
 
-    { "type": "Feature", "properties": { "name": "Levent", "@relations": [{"reltags": {"ref": "M6"}}, {"reltags": {"ref": "M2"}}] }, "geometry": { "type": "Point", "coordinates": [29.0144803, 41.0758404] } },
+    { "type": "Feature", "properties": { "name": "Levent", "@relations": [{"reltags": {"ref": "M6"}}, {}] }, "geometry": { "type": "Point", "coordinates": [29.0144803, 41.0758404] } },
     { "type": "Feature", "properties": { "name": "Nispetiye", "@relations": [{"reltags": {"ref": "M6"}}] }, "geometry": { "type": "Point", "coordinates": [29.0240046, 41.0773859] } },
     { "type": "Feature", "properties": { "name": "Etiler", "@relations": [{"reltags": {"ref": "M6"}}] }, "geometry": { "type": "Point", "coordinates": [29.0375989, 41.0824567] } },
     { "type": "Feature", "properties": { "name": "Boğaziçi Üniversitesi", "@relations": [{"reltags": {"ref": "M6"}}, {}] }, "geometry": { "type": "Point", "coordinates": [29.0456413, 41.0851345] } },
@@ -1156,6 +1272,9 @@ const tumHatlarVerisi = { "type": "FeatureCollection", "features": [
     { "type": "Feature", "properties": { "name": "Darıca", "@relations": [{"reltags": {"ref": "B1"}}] }, "geometry": { "type": "Point", "coordinates": [29.3919766, 40.7914702] } },
     { "type": "Feature", "properties": { "name": "Gebze", "@relations": [{"reltags": {"ref": "B1"}}] }, "geometry": { "type": "Point", "coordinates": [29.4107806, 40.7838682] } },
 
+{ "type": "Feature", "properties": { "name": "Pendik Merkez", "colour": "#89c068", "@relations": [{"reltags": {"ref": "M10"}}] }, "geometry": { "type": "Point", "coordinates": [29.2313701, 40.8807675] } },
+    { "type": "Feature", "properties": { "name": "Kaynarca Merkez", "colour": "#89c068", "@relations": [{"reltags": {"ref": "M10"}}] }, "geometry": { "type": "Point", "coordinates": [29.2604500, 40.8791621] } },
+    { "type": "Feature", "properties": { "name": "Kaynarca Merkez", "colour": "#E91365", "@relations": [{"reltags": {"ref": "M10"}}] }, "geometry": { "type": "Point", "coordinates": [29.2604500, 40.8791621] } },
 
     { "type": "Feature", "properties": { "name": "Gayrettepe", "@relations": [{"reltags": {"ref": "M11"}}] }, "geometry": { "type": "Point", "coordinates": [29.0105059, 41.0667555] } },
     { "type": "Feature", "properties": { "name": "Kağıthane", "@relations": [{"reltags": {"ref": "M11"}}] }, "geometry": { "type": "Point", "coordinates": [28.9764623, 41.0800228] } },
@@ -1295,6 +1414,23 @@ const tumHatlarVerisi = { "type": "FeatureCollection", "features": [
     { "type": "Feature", "properties": { "name": "Fevzi Çakmak - Hastane", "colour": "#89c068", "@relations": [{"reltags": {"ref": "M10"}}] }, "geometry": { "type": "Point", "coordinates": [29.2624462, 40.8888001] } },
 ] };
 
+// Hem tekil hem çoğul harita için ortak yarıçap belirleyici
+// Hem tekil hem çoğul haritaların tüm ölçek adımlarında kullandığı tek kural
+function hesaplaNoktaYaricapi(z) {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        if (z <= 10) return 2;
+        if (z <= 11) return 3;
+        if (z <= 12) return 4;
+        return 5.5;
+    } else {
+        // ra44.html'deki orijinal zarif masaüstü ölçekleri:
+        if (z <= 10) return 3;
+        if (z <= 12) return 4.5; // Zoom 11 ve 12'de küçük görseldeki gibi tam 4.5px durur
+        if (z <= 14) return 6;
+        return 6.5;
+    }
+}
 function haritayiIlkHazirla() {
     if (!haritaYuklendi) {
         let renkliHarita = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap', maxZoom: 19 });
@@ -1306,25 +1442,8 @@ function haritayiIlkHazirla() {
 
         map.on('zoomend', () => {
             const z = map.getZoom();
-            const isMobile = window.innerWidth <= 768;
-            
-            // Yarıçap (r) belirleme
-            let r = 6;
-            if (isMobile) {
-                // MOBİLDE: Uzaklaştıkça (zoom azaldıkça) noktalar devasa kalmasın diye yarıçapı 2 piksele kadar düşürüyoruz.
-                if (z <= 10) r = 2;
-                else if (z <= 11) r = 3;
-                else if (z <= 12) r = 4;
-                else r = 5.5;
-            } else {
-                // MASAÜSTÜNDE: Kendi orijinal dengesinde devam ediyor.
-                if (z <= 10) r = 3;
-                else if (z <= 12) r = 4.5;
-                else if (z <= 14) r = 6;
-                else r = 6.5;
-            }
+            const r = hesaplaNoktaYaricapi(z);
 
-            // Hesaplanan yeni boyutu anında tüm noktalara uygula
             Object.values(stationMarkers).forEach(m => {
                 if (m && m.setRadius) {
                     m.setRadius(r);
@@ -1373,7 +1492,8 @@ function haritaAc(e, hatKodu, renk) {
 
          L.geoJSON(hF, { style: f => ({color: f.properties?.colour || renk, weight: 6, opacity: 0.95}), pointToLayer: (f, latlng) => { let z = map.getZoom(), isM = window.innerWidth <= 768, r = isM ? (z<=10?2:z<=11?3:z<=12?4:5.5) : (z<=10?3:z<=12?4.5:z<=14?6:6.5); let m = L.circleMarker(latlng, {radius: r, fillColor: f.properties?.colour || renk, color: "#fff", weight: 2, fillOpacity: 1}).bindTooltip(f.properties.name || "", { direction: 'top', offset: [0, -6] }); stationMarkers[f.properties.name] = m; return m; } }).addTo(lineGroup);
     }
-    // ----------------------------------------------------
+
+// ----------------------------------------------------
     // M10 / M4 PENDİK - KAYNARCA UZATMASI KONTROLÜ
     // ----------------------------------------------------
     else if (hatKodu === "M10") {
@@ -1422,29 +1542,41 @@ function haritaAc(e, hatKodu, renk) {
             list.forEach((ist, i) => {
                 let li = document.createElement("li"); li.className = "istasyon-ogesi";
                 li.innerHTML = `<span class="istasyon-nokta" style="background-color: ${lstRenk};"></span> ${i + 1}. ${ist.properties.name.replace("(Mevcut)", '<b style="font-weight:700; color:#111;">(Mevcut)</b>')}`;
-                li.onclick = () => { map.flyTo([ist.geometry.coordinates[1], ist.geometry.coordinates[0]], 15, { duration: 1 }); stationMarkers[ist.properties.name]?.openTooltip(); };
+                li.onclick = () => { 
+                    map.flyTo([ist.geometry.coordinates[1], ist.geometry.coordinates[0]], 15, { duration: 1 }); 
+                    const mKey = `${ist.properties.name}_${lstRenk}`;
+                    (stationMarkers[mKey] || stationMarkers[ist.properties.name])?.openTooltip(); 
+                };
                 ul.appendChild(li);
             });
         };
         b("m10ListUl", m10Ist, "#89c068");
         b("m4UzListUl", m4Ist, "#E91365");
 
-        L.geoJSON(hF, { 
-            style: f => ({ color: f.properties?.colour || renk, weight: 6, opacity: 0.95 }), 
+       L.geoJSON(hF, { 
+            style: f => ({
+                color: f.properties?.colour || renk, 
+                weight: 6, 
+                opacity: 0.95,
+                dashArray: f.properties?.dashArray || null
+            }), 
             pointToLayer: (f, latlng) => { 
-                let noktaRengi = f.properties?.colour || renk;
-                if (f.properties?.name?.includes("Tavşantepe") || f.properties?.name?.includes("Kaynarca Merkez")) {
-                    noktaRengi = "#E91365"; 
-                } else if (f.properties?.name?.includes("Pendik") || f.properties?.name?.includes("Fevzi Çakmak")) {
-                    noktaRengi = "#89c068";
-                }
-                let m = L.circleMarker(latlng, { radius: 6, fillColor: noktaRengi, color: "#fff", weight: 2, fillOpacity: 1 }).bindTooltip(f.properties.name || "", { direction: 'top', offset: [0, -6] }); 
+                // Sabit 6 yerine haritanın o anki ölçeğine denk gelen yarıçapı al
+                const r = hesaplaNoktaYaricapi(map.getZoom());
+
+                let m = L.circleMarker(latlng, {
+                    radius: r,
+                    fillColor: f.properties?.colour || renk,
+                    color: "#fff",
+                    weight: 2,
+                    fillOpacity: 1
+                }).bindTooltip(f.properties.name || "", { direction: 'top', offset: [0, -6] }); 
+                
                 stationMarkers[f.properties.name] = m; 
                 return m; 
             } 
         }).addTo(lineGroup);
-    } 
-
+    }
     // ----------------------------------------------------
     // M7 3 AYRI İŞLETME ETABI (MAHMUTBEY - NURTEPE / NURTEPE - ÇAĞLAYAN / MECİDİYEKÖY - YILDIZ)
     // ----------------------------------------------------
@@ -1637,12 +1769,112 @@ function haritaAc(e, hatKodu, renk) {
     }, 150);
 }
 
+// YENİ VE KUSURSUZ İNŞAAT GÖSTERİM FONKSİYONU
+
+
+function insaHalindekiTumHatlariGoster() {
+    const solKapsayici = document.querySelector(".harita-sol-kapsayici");
+    if (solKapsayici) solKapsayici.style.display = "none";
+
+    const sagKapsayici = document.getElementById("haritaSagKapsayici");
+    if (sagKapsayici) sagKapsayici.style.display = "none";
+
+    const sagPanel = document.getElementById("haritaSagPanel");
+    if (sagPanel) sagPanel.style.display = "none";
+
+    if (lineGroup) lineGroup.clearLayers();
+    stationMarkers = {};
+
+    const refRenkleri = {};
+    tumHatlarVerisi.features.forEach(f => {
+        if (f.geometry.type !== "Point" && f.properties?.ref && f.properties?.colour) {
+            refRenkleri[f.properties.ref.toUpperCase()] = f.properties.colour;
+        }
+    });
+
+    const insaatKodlari = [
+        "M1B_HALKALI", "M7_KABATAS", "M7_KSS", "M10", 
+        "M12", "M13", "M14", "M14_UMRANIYE", "T7"
+    ];
+
+    const insaHatlariVerisi = tumHatlarVerisi.features.filter(f => {
+        const ref = (f.properties?.ref || "").toUpperCase();
+        if (insaatKodlari.includes(ref)) return true;
+
+        if (f.geometry.type === "Point" && f.properties?.["@relations"]) {
+            return f.properties["@relations"].some(r => {
+                const rRef = (r.reltags?.ref || "").toUpperCase();
+                return insaatKodlari.includes(rRef);
+            });
+        }
+        return false;
+    });
+
+    const insaKatmani = L.geoJSON({
+        type: "FeatureCollection",
+        features: insaHatlariVerisi
+    }, {
+        style: (f) => {
+            const ref = (f.properties?.ref || "").toUpperCase();
+            return {
+                color: f.properties?.colour || refRenkleri[ref],
+                weight: 6,
+                opacity: 0.95
+            };
+        },
+        pointToLayer: (f, latlng) => {
+            let noktaRengi = f.properties?.colour;
+
+            if (!noktaRengi && f.properties?.["@relations"]) {
+                for (let r of f.properties["@relations"]) {
+                    const rRef = (r.reltags?.ref || "").toUpperCase();
+                    if (refRenkleri[rRef]) {
+                        noktaRengi = refRenkleri[rRef];
+                        break;
+                    }
+                }
+            }
+
+            const r = hesaplaNoktaYaricapi(map.getZoom());
+
+            const marker = L.circleMarker(latlng, {
+                radius: r,
+                fillColor: noktaRengi,
+                color: "#ffffff",
+                weight: 2,
+                fillOpacity: 1
+            });
+
+            if (f.properties?.name) {
+                stationMarkers[f.properties.name + "_" + (noktaRengi || "")] = marker;
+                marker.bindTooltip(f.properties.name.replace("(Mevcut)", ""), { direction: 'top', offset: [0, -6] });
+            }
+
+            return marker;
+        }
+    }).addTo(lineGroup);
+
+    if (insaKatmani.getBounds().isValid()) {
+        map.fitBounds(insaKatmani.getBounds(), { padding: [50, 50] });
+    }
+}
 function haritaKapat() { 
     document.getElementById("haritaModal").style.display = "none"; 
     document.getElementById("tarihceKutusu")?.classList.remove("genis");
     const btnMetin = document.getElementById("tarihceBtnMetin");
     if(btnMetin) btnMetin.innerText = "Tarihçeyi Göster";
+    
+    // Panelleri tekrar görünürlüğe hazırla
+    const solKapsayici = document.querySelector(".harita-sol-kapsayici");
+    if (solKapsayici) solKapsayici.style.display = "";
+    
+    const sagKapsayici = document.getElementById("haritaSagKapsayici");
+    if (sagKapsayici) sagKapsayici.style.display = "";
+    
+    const sagPanel = document.getElementById("haritaSagPanel");
+    if (sagPanel) sagPanel.style.display = "";
 }
+
 // Harita açıldığında tarayıcı geçmişine sahte bir kayıt ekler
 const orijinalHaritaAc = haritaAc;
 haritaAc = function(e, hatKodu, renk) {
